@@ -1,0 +1,18 @@
+﻿@model Hsr.Models.CommTestPlan
+
+@{
+    ViewBag.Title = "Create";
+    Layout = null;
+}
+ 
+@using (Html.BeginForm("Create", "Hsr.Models.CommTestPlan", FormMethod.Post, new { @class = "form-horizontal" })) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+ 
+		@Html.Partial("_CreateOrEdit", Model)
+    </fieldset>
+ 
+}
+ 
+
+

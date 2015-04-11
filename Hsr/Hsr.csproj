@@ -1,0 +1,864 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{01F775AA-25D1-4306-B3C4-E83E4588BD09}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Hsr</RootNamespace>
+    <AssemblyName>Hsr</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AntiXSSLibrary">
+      <HintPath>..\packages\AntiXSS.4.0.1\lib\net35\AntiXSSLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac, Version=3.4.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.3.4.0\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.Mvc5.3.3.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=3.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah">
+      <HintPath>..\packages\elmah.corelibrary.1.2.1\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah.Mvc">
+      <HintPath>..\packages\Elmah.MVC.2.1.1\lib\net40\Elmah.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Extended">
+      <HintPath>..\packages\EntityFramework.Extended.6.1.0.133\lib\net45\EntityFramework.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\packages\FluentValidation.5.4.0.0\lib\Net40\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation.Mvc">
+      <HintPath>..\packages\FluentValidation.MVC5.5.4.0.0\lib\Net45\FluentValidation.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlSanitizationLibrary">
+      <HintPath>..\packages\AntiXSS.4.0.1\lib\net35\HtmlSanitizationLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.1.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.1.2\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MiniProfiler">
+      <HintPath>..\packages\MiniProfiler.3.1.1.140\lib\net40\MiniProfiler.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\MySql.Data.6.9.6\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.9.6\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="RouteDebug">
+      <HintPath>..\packages\RouteDebug\RouteDebug.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=4.0.30.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ServiceStack.Text.4.0.30\lib\net40\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="App_Start\AutoMapperStartupTask.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Common\TreeEx.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="Controllers\AuthorityController.cs" />
+    <Compile Include="Controllers\CommTestPlanController.cs" />
+    <Compile Include="Controllers\ControllerFilterDataController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImportController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\PluginController.cs" />
+    <Compile Include="Controllers\RyanController.cs" />
+    <Compile Include="Controllers\OrganizeInfoController.cs" />
+    <Compile Include="Controllers\SysroleController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\UserSummaryInfoController.cs" />
+    <Compile Include="Filter\PermisionFilter.cs" />
+    <Compile Include="FluentCnResource\ValidationResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValidationResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="HsrBaseController.cs" />
+    <Compile Include="HsrRegister.cs" />
+    <Compile Include="HtmlHelperEX\ActionLinkEx.cs" />
+    <Compile Include="Models\CommTestPlanRepository.cs" />
+    <Compile Include="Models\HsrContext.cs" />
+    <Compile Include="Models\OrganizeInfoRepository.cs" />
+    <Compile Include="Models\SysroleRepository.cs" />
+    <Compile Include="Models\UserSummaryInfoRepository.cs" />
+    <Compile Include="Modules\CostumModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PublicDataContext.cs" />
+    <Compile Include="Upload\UncFileUpLoadAction.cs" />
+    <Compile Include="Upload\UpLoadSingle.ashx.cs">
+      <DependentUpon>UpLoadSingle.ashx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\InstalledPlugins.txt" />
+    <Content Include="Content\base\hint.css" />
+    <Content Include="Content\base\menu.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\CustomScrollbar\jquery.mCustomScrollbar.css" />
+    <Content Include="Content\CustomScrollbar\jquery.mCustomScrollbar.min.css" />
+    <Content Include="Content\CustomScrollbar\mCSB_buttons.png" />
+    <Content Include="Content\DatePicker\bootstrap-datepicker.min.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Images\0vLxyVB.png" />
+    <Content Include="Content\Images\checkbox.png" />
+    <Content Include="Content\JsTree\32px.png" />
+    <Content Include="Content\JsTree\40px.png" />
+    <Content Include="Content\JsTree\style.css" />
+    <Content Include="Content\JsTree\throbber.gif" />
+    <Content Include="Content\Mobile\JmGather\Loading.css" />
+    <Content Include="Content\Mobile\JmGather\Validator.css" />
+    <Content Include="Content\Login\normalize.css" />
+    <Content Include="Content\Login\style.css" />
+    <Content Include="Content\Message\messenger-theme-flat.css" />
+    <Content Include="Content\Message\messenger.css" />
+    <Content Include="Content\Mobile\Site.css" />
+    <Content Include="Content\Mobile\themes\images\ajax-loader.gif" />
+    <Content Include="Content\Mobile\themes\images\icons-png\action-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\action-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\alert-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\alert-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\arrow-d-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\arrow-d-l-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\arrow-d-l-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\arrow-d-r-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\arrow-d-r-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\arrow-d-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\arrow-l-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\arrow-l-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\arrow-r-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\arrow-r-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\arrow-u-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\arrow-u-l-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\arrow-u-l-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\arrow-u-r-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\arrow-u-r-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\arrow-u-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\audio-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\audio-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\back-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\back-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\bars-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\bars-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\bullets-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\bullets-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\calendar-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\calendar-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\camera-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\camera-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\carat-d-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\carat-d-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\carat-l-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\carat-l-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\carat-r-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\carat-r-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\carat-u-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\carat-u-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\check-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\check-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\clock-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\clock-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\cloud-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\cloud-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\comment-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\comment-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\delete-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\delete-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\edit-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\edit-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\eye-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\eye-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\forbidden-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\forbidden-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\forward-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\forward-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\gear-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\gear-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\grid-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\grid-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\heart-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\heart-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\home-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\home-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\info-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\info-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\location-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\location-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\lock-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\lock-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\mail-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\mail-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\minus-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\minus-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\navigation-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\navigation-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\phone-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\phone-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\plus-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\plus-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\power-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\power-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\recycle-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\recycle-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\refresh-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\refresh-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\search-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\search-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\shop-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\shop-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\star-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\star-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\tag-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\tag-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\user-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\user-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\video-black.png" />
+    <Content Include="Content\Mobile\themes\images\icons-png\video-white.png" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\action-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\action-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\alert-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\alert-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\arrow-d-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\arrow-d-l-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\arrow-d-l-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\arrow-d-r-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\arrow-d-r-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\arrow-d-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\arrow-l-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\arrow-l-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\arrow-r-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\arrow-r-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\arrow-u-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\arrow-u-l-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\arrow-u-l-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\arrow-u-r-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\arrow-u-r-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\arrow-u-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\audio-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\audio-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\back-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\back-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\bars-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\bars-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\bullets-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\bullets-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\calendar-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\calendar-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\camera-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\camera-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\carat-d-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\carat-d-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\carat-l-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\carat-l-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\carat-r-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\carat-r-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\carat-u-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\carat-u-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\check-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\check-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\clock-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\clock-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\cloud-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\cloud-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\comment-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\comment-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\delete-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\delete-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\edit-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\edit-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\eye-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\eye-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\forbidden-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\forbidden-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\forward-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\forward-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\gear-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\gear-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\grid-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\grid-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\heart-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\heart-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\home-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\home-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\info-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\info-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\location-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\location-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\lock-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\lock-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\mail-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\mail-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\minus-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\minus-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\navigation-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\navigation-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\phone-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\phone-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\plus-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\plus-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\power-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\power-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\recycle-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\recycle-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\refresh-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\refresh-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\search-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\search-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\shop-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\shop-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\star-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\star-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\tag-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\tag-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\user-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\user-white.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\video-black.svg" />
+    <Content Include="Content\Mobile\themes\images\icons-svg\video-white.svg" />
+    <Content Include="Content\Mobile\themes\jquery.mobile-1.4.4.css" />
+    <Content Include="Content\Mobile\themes\jquery.mobile-1.4.4.min.css" />
+    <Content Include="Content\Mobile\themes\jquery.mobile.external-png-1.4.4.css" />
+    <Content Include="Content\Mobile\themes\jquery.mobile.external-png-1.4.4.min.css" />
+    <Content Include="Content\Mobile\themes\jquery.mobile.icons-1.4.4.css" />
+    <Content Include="Content\Mobile\themes\jquery.mobile.icons-1.4.4.min.css" />
+    <Content Include="Content\Mobile\themes\jquery.mobile.inline-png-1.4.4.css" />
+    <Content Include="Content\Mobile\themes\jquery.mobile.inline-png-1.4.4.min.css" />
+    <Content Include="Content\Mobile\themes\jquery.mobile.inline-svg-1.4.4.css" />
+    <Content Include="Content\Mobile\themes\jquery.mobile.inline-svg-1.4.4.min.css" />
+    <Content Include="Content\Mobile\themes\jquery.mobile.structure-1.4.4.css" />
+    <Content Include="Content\Mobile\themes\jquery.mobile.structure-1.4.4.min.css" />
+    <Content Include="Content\Mobile\themes\jquery.mobile.theme-1.4.4.css" />
+    <Content Include="Content\Mobile\themes\jquery.mobile.theme-1.4.4.min.css" />
+    <Content Include="Content\Mobile\themes\jquery.mobile.theme.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\bg.gif" />
+    <Content Include="Images\bub.png" />
+    <Content Include="Images\correctness.png" />
+    <Content Include="Images\error.png" />
+    <Content Include="Images\home.png" />
+    <Content Include="Images\calendar.png" />
+    <Content Include="Images\pie.png" />
+    <Content Include="Images\sysManage.png" />
+    <Content Include="Images\巡检报表.png" />
+    <Content Include="Images\最新关注_1.png" />
+    <Content Include="Images\项目报表.png" />
+    <Content Include="Log4Net.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="CodeTemplates\Scaffolders\MvcScaffolding.Controller\ControllerWithRepository.cs.t4" />
+    <Content Include="CodeTemplates\Scaffolders\MvcScaffolding.RazorView\Create.cs.t4" />
+    <Content Include="CodeTemplates\Scaffolders\MvcScaffolding.RazorView\_CreateOrEdit.cs.t4" />
+    <Content Include="CodeTemplates\Scaffolders\MvcScaffolding.RazorView\Delete.cs.t4" />
+    <Content Include="CodeTemplates\Scaffolders\MvcScaffolding.RazorView\Details.cs.t4" />
+    <Content Include="CodeTemplates\Scaffolders\MvcScaffolding.RazorView\Edit.cs.t4" />
+    <Content Include="CodeTemplates\Scaffolders\MvcScaffolding.RazorView\Index.cs.t4" />
+    <Content Include="App_Readme\Handlebarsjs_README.md" />
+    <Content Include="App_Readme\Handlebarsjs_LICENSE" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Properties\PublishProfiles\Hsr.pubxml" />
+    <None Include="Properties\PublishProfiles\ss.pubxml" />
+    <None Include="Properties\PublishProfiles\web.pubxml" />
+    <None Include="Scripts\jquery-2.1.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\Chart.min.js" />
+    <Content Include="Scripts\CustomScrollbar\jquery.mCustomScrollbar.js" />
+    <Content Include="Scripts\DatePicker\bootstrap-datepicker.js" />
+    <Content Include="Scripts\handlebars.amd.js" />
+    <Content Include="Scripts\handlebars.amd.min.js" />
+    <Content Include="Scripts\handlebars.js" />
+    <Content Include="Scripts\handlebars.min.js" />
+    <Content Include="Scripts\handlebars.runtime.amd.js" />
+    <Content Include="Scripts\handlebars.runtime.amd.min.js" />
+    <Content Include="Scripts\handlebars.runtime.js" />
+    <Content Include="Scripts\handlebars.runtime.min.js" />
+    <Content Include="Scripts\JmDatepicker\external\jquery-ui\datepicker.js" />
+    <Content Include="Scripts\JmDatepicker\jquery.mobile.datepicker.css" />
+    <Content Include="Scripts\JmDatepicker\jquery.mobile.datepicker.js" />
+    <Content Include="Scripts\JmDatepicker\jquery.mobile.datepicker.theme.css" />
+    <Content Include="Scripts\jquery-2.1.1.js" />
+    <Content Include="Scripts\jquery-2.1.1.min.js" />
+    <Content Include="Scripts\CustomScrollbar\jquery.mCustomScrollbar.concat.min.js" />
+    <Content Include="Scripts\jquery.metadata.js" />
+    <Content Include="Scripts\Mobile\JmFilterList\JmFilter.css" />
+    <Content Include="Scripts\Mobile\JmFilterList\JmFilter.js" />
+    <Content Include="Scripts\Mobile\jquery.mobile-1.4.4.js" />
+    <Content Include="Scripts\Mobile\jquery.mobile-1.4.4.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.1.2.js" />
+    <Content Include="Scripts\jquery.signalR-2.1.2.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jsmd5.js" />
+    <Content Include="Scripts\JsTree\jstree.js" />
+    <Content Include="Scripts\JsTree\jstree.min.js" />
+    <Content Include="Scripts\knockout-2.1.0.debug.js" />
+    <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\Message\messenger-theme-flat.js" />
+    <Content Include="Scripts\Message\messenger.js" />
+    <Content Include="Scripts\modernizr.custom.js" />
+    <Content Include="Scripts\mustache.js" />
+    <Content Include="Scripts\MVCControls\Grid\grid.jqueryui.js" />
+    <Content Include="Scripts\MVCControls\Grid\grid.locale-cn.js" />
+    <Content Include="Scripts\MVCControls\Grid\jquery.jqGrid.min.js" />
+    <Content Include="Scripts\MVCControls\Grid\jquery.jqGrid.src.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery-ui-i18n.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-af.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-ar-DZ.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-ar.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-az.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-bg.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-bs.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-ca.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-cs.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-da.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-de.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-el.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-en-AU.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-en-GB.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-en-NZ.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-eo.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-es.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-et.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-eu.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-fa.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-fi.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-fo.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-fr-CH.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-fr.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-gl.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-he.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-hr.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-hu.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-hy.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-id.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-is.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-it.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-ja.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-ko.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-kz.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-lt.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-lv.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-ml.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-ms.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-nl.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-no.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-pl.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-pt-BR.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-pt.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-rm.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-ro.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-ru.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-sk.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-sl.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-sq.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-sr-SR.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-sr.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-sv.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-ta.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-th.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-tj.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-tr.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-uk.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-vi.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-zh-CN.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-zh-HK.js" />
+    <Content Include="Scripts\MVCControls\i18n\jquery.ui.datepicker-zh-TW.js" />
+    <Content Include="Scripts\MVCControls\mvc.controls.manager.js" />
+    <Content Include="Scripts\Progress\Jquery-ui-progressbar.css" />
+    <Content Include="Scripts\System\AreaTree.js" />
+    <Content Include="Scripts\System\Authority.js" />
+    <Content Include="Scripts\System\CompTree.js" />
+    <Content Include="Scripts\System\DeptList.js" />
+    <Content Include="Scripts\System\Import.js" />
+    <Content Include="Scripts\System\LoadAnima.js" />
+    <Content Include="Scripts\System\menu.js" />
+    <Content Include="Scripts\System\Navigation.js" />
+    <Content Include="Scripts\System\organizeInfo.js" />
+    <Content Include="Scripts\System\RoleTree.js" />
+    <Content Include="Scripts\System\ScrollBarInitial.js" />
+    <Content Include="Scripts\System\sysRole.js" />
+    <Content Include="Scripts\System\usersummaryinfo.js" />
+    <Content Include="Scripts\System\SelectMenu.js" />
+    <Content Include="Scripts\System\comtestPlan.js" />
+    <Content Include="Scripts\typeahead.bundle.js" />
+    <Content Include="Scripts\UpLoad\SingleFileUpLoad.js" />
+    <Content Include="Scripts\Utility.js" />
+    <Content Include="Scripts\Common.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Images\accent.png" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\orderedList0.png" />
+    <Content Include="Images\orderedList1.png" />
+    <Content Include="Images\orderedList2.png" />
+    <Content Include="Images\orderedList3.png" />
+    <Content Include="Images\orderedList4.png" />
+    <Content Include="Images\orderedList5.png" />
+    <Content Include="Images\orderedList6.png" />
+    <Content Include="Images\orderedList7.png" />
+    <Content Include="Images\orderedList8.png" />
+    <Content Include="Images\orderedList9.png" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\About.mobile.cshtml" />
+    <Content Include="Views\Home\Contact.mobile.cshtml" />
+    <Content Include="Views\Home\Index.mobile.cshtml" />
+    <Content Include="Views\Shared\Error.mobile.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.mobile.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Test\Create.cshtml" />
+    <Content Include="Views\Test\Edit.cshtml" />
+    <Content Include="Views\Test\Delete.cshtml" />
+    <Content Include="Views\Test\Details.cshtml" />
+    <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\Test\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Sysrole\Create.mobile.cshtml" />
+    <Content Include="Views\Sysrole\Details.mobile.cshtml" />
+    <Content Include="Views\Sysrole\Edit.mobile.cshtml" />
+    <Content Include="Views\Sysrole\Index.mobile.cshtml" />
+    <Content Include="Views\Sysrole\_CreateOrEdit.mobile.cshtml" />
+    <Content Include="Views\Sysrole\RoleNav.mobile.cshtml" />
+    <Content Include="Views\Sysrole\RoleList.mobile.cshtml" />
+    <Content Include="Views\OrganizeInfo\Index.mobile.cshtml" />
+    <Content Include="Views\OrganizeInfo\OrganizeInfoList.mobile.cshtml" />
+    <Content Include="Views\OrganizeInfo\OrganizeInfoNav.mobile.cshtml" />
+    <Content Include="Views\UserSummaryInfo\Index.mobile.cshtml" />
+    <Content Include="Views\UserSummaryInfo\_CreateOrEdit.mobile.cshtml" />
+    <Content Include="Views\UserSummaryInfo\Create.mobile.cshtml" />
+    <Content Include="Views\UserSummaryInfo\Edit.mobile.cshtml" />
+    <Content Include="Views\UserSummaryInfo\UserList.mobile.cshtml" />
+    <Content Include="Views\UserSummaryInfo\View.mobile.cshtml" />
+    <Content Include="Views\UserSummaryInfo\_UserView.mobile.cshtml" />
+    <Content Include="Views\Home\TopMenu.mobile.cshtml" />
+    <Content Include="Views\Menu\Create.mobile.cshtml" />
+    <Content Include="Views\Menu\Details.mobile.cshtml" />
+    <Content Include="Views\Menu\Edit.mobile.cshtml" />
+    <Content Include="Views\Menu\Index.mobile.cshtml" />
+    <Content Include="Views\Menu\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Common\_Tree.cshtml" />
+    <Content Include="Views\Menu\MenuList.mobile.cshtml" />
+    <Content Include="Views\Account\LoginNew.mobile.cshtml" />
+    <Content Include="Views\Common\_Dialog.cshtml" />
+    <Content Include="Views\Sysrole\dio.mobile.cshtml" />
+    <Content Include="Views\UserSummaryInfo\Delete.mobile.cshtml" />
+    <Content Include="Views\OrganizeInfo\Create.mobile.cshtml" />
+    <Content Include="Views\OrganizeInfo\Details.mobile.cshtml" />
+    <Content Include="Views\OrganizeInfo\Edit.mobile.cshtml" />
+    <Content Include="Views\OrganizeInfo\GetOrg.mobile.cshtml" />
+    <Content Include="Views\OrganizeInfo\_CreateOrEdit.mobile.cshtml" />
+    <Content Include="Views\Common\_JustTree.cshtml" />
+    <Content Include="Views\Authority\Index.cshtml" />
+    <Content Include="Static\TestData.json" />
+    <Content Include="Upload\UpLoadSingle.ashx" />
+    <Content Include="Views\Shared\NoPermision.mobile.cshtml" />
+    <Content Include="Views\Shared\_PageLayout.mobile.cshtml" />
+    <Content Include="Scripts\Progress\jquery-ui-progressbar.js" />
+    <Content Include="Views\Import\Index.mobile.cshtml" />
+    <Content Include="Views\Import\_CreateOrEdit.mobile.cshtml" />
+    <Content Include="Views\Import\_CreateOrEditColumn.mobile.cshtml" />
+    <Content Include="Views\Import\Create.mobile.cshtml" />
+    <Content Include="Views\Import\Edit.mobile.cshtml" />
+    <Content Include="Views\Import\CreateColumn.mobile.cshtml" />
+    <Content Include="Views\Import\EditColumn.mobile.cshtml" />
+    <Content Include="Views\Import\Detal.mobile.cshtml" />
+    <Content Include="Views\Import\DetalColumn.mobile.cshtml" />
+    <Content Include="Views\Authority\Index.mobile.cshtml" />
+    <Content Include="Views\Account\LoginNew.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\TopMenu.cshtml" />
+    <Content Include="Views\Import\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Import\_CreateOrEditColumn.cshtml" />
+    <Content Include="Views\Import\Create.cshtml" />
+    <Content Include="Views\Import\CreateColumn.cshtml" />
+    <Content Include="Views\Import\Detal.cshtml" />
+    <Content Include="Views\Import\DetalColumn.cshtml" />
+    <Content Include="Views\Import\Edit.cshtml" />
+    <Content Include="Views\Import\EditColumn.cshtml" />
+    <Content Include="Views\Import\Index.cshtml" />
+    <Content Include="Views\Menu\_CreateOrEdit.mobile.cshtml" />
+    <Content Include="Views\Menu\Create.cshtml" />
+    <Content Include="Views\Menu\Edit.cshtml" />
+    <Content Include="Views\Menu\Details.cshtml" />
+    <Content Include="Views\Menu\Index.cshtml" />
+    <Content Include="Views\Menu\MenuList.cshtml" />
+    <Content Include="Views\Shared\_Layout.mobile.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_PageLayout.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\NoPermision.cshtml" />
+    <Content Include="Views\Sysrole\dio.cshtml" />
+    <Content Include="Views\UserSummaryInfo\UserList.cshtml" />
+    <Content Include="Views\Plugin\Index.cshtml" />
+    <Content Include="Views\Shared\NotFound.cshtml" />
+    <Content Include="Views\UserSummaryInfo\Create.cshtml" />
+    <Content Include="Views\UserSummaryInfo\Edit.cshtml" />
+    <Content Include="Views\UserSummaryInfo\Delete.cshtml" />
+    <Content Include="Views\UserSummaryInfo\Details.cshtml" />
+    <Content Include="Views\UserSummaryInfo\Index.cshtml" />
+    <Content Include="Views\UserSummaryInfo\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Sysrole\Create.cshtml" />
+    <Content Include="Views\Sysrole\Edit.cshtml" />
+    <Content Include="Views\Sysrole\_CreateOrEdit.cshtml" />
+    <Content Include="Views\Sysrole\Index.cshtml" />
+    <Content Include="Views\Sysrole\RoleList.cshtml" />
+    <Content Include="Views\Sysrole\Details.cshtml" />
+    <Content Include="Views\OrganizeInfo\Create.cshtml" />
+    <Content Include="Views\OrganizeInfo\Edit.cshtml" />
+    <Content Include="Views\OrganizeInfo\Delete.cshtml" />
+    <Content Include="Views\OrganizeInfo\Details.cshtml" />
+    <Content Include="Views\OrganizeInfo\Index.cshtml" />
+    <Content Include="Views\OrganizeInfo\_CreateOrEdit.cshtml" />
+    <Content Include="Views\OrganizeInfo\OrgList.cshtml" />
+    <Content Include="Views\Menu\CreateTemplate.cshtml" />
+    <Content Include="Views\CommTestPlan\Create.cshtml" />
+    <Content Include="Views\CommTestPlan\Edit.cshtml" />
+    <Content Include="Views\CommTestPlan\Index.cshtml" />
+    <Content Include="Views\CommTestPlan\_CreateOrEdit.cshtml" />
+    <Content Include="Views\CommTestPlan\_PlanList.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hsr.Core\Hsr.Core.csproj">
+      <Project>{6b5f3c0f-8ff2-4937-9675-efa03ce1cf8a}</Project>
+      <Name>Hsr.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hsr.Data\Hsr.Data.csproj">
+      <Project>{1507e927-192e-4571-a847-24fd40b41294}</Project>
+      <Name>Hsr.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hsr.Model\Hsr.Model.csproj">
+      <Project>{41aafa27-77ec-4abd-b90f-24753a5ddd9a}</Project>
+      <Name>Hsr.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hsr.Service\Hsr.Service.csproj">
+      <Project>{40efab71-b29c-4707-a4d9-31882491e4a1}</Project>
+      <Name>Hsr.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVC.Controls\MVC.Controls.csproj">
+      <Project>{1adb25c4-9475-4b7d-b016-ebbb66403215}</Project>
+      <Name>MVC.Controls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FluentCnResource\ValidationResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidationResource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\Filters\" />
+    <Folder Include="Plugins\bin\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>17811</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:40052/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\AutoMapper.3.2.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.2.1\tools\AutoMapper.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

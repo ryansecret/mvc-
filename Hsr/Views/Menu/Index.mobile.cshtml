@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Hsr.Model.Models.ViewModel.MenuVm>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="self-adaption">
+<div class="col w2" style="overflow-y:visible" id="menuTreeId">
+    <div data-role="collapsible"  data-theme="b" data-iconpos="none" data-collapsed="false">
+    
+        <h1>角色管理</h1>
+        <div id="divTree" >
+            @Html.Action("GetTree")
+        </div>
+    </div>
+</div>
+</div>
+<input  type="hidden" value="0" id="selectedId" />
+
+ 
+
+<div class="col w8 last box header">   
+    <div data-role="controlgroup" data-type="horizontal">
+        <a class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext" onclick="PanelWay('menuTreeId',400)"  style="height: 20px"></a>
+        <input type="button" id="Create"   name="Create" value="新建" class="ui-btn"  data-theme="d"/>
+    </div>
+    <div class="head"><div></div></div>
+    <h2 class="ui-bar ui-bar-a ui-corner-all">菜单列表</h2>
+    <div id="divList" class="ui-body ui-corner-all">
+
+        @Html.Partial("MenuList", Model)
+    </div>
+    <div class="bottom"><div></div></div>
+</div>
+<style>
+    .ui-collapsible-heading .ui-btn {
+        text-align: center;
+    }
+     
+    .ui-page-theme-a .ui-body-inherit{
+        background-color: transparent;
+        border-color: transparent;
+          
+    }
+ 
+</style>
+@section  scripts
+{
+    @Styles.Render(BundleConfig.JsTreeCss)
+    @Scripts.Render("~/bundles/jstree")
+    @Scripts.Render("~/bundles/menu")
+    <script>
+        var hsrTree = new HsrTree({ searchUri: '@Url.Action("GetList")', delUri: '@Url.Action("Delete")', addUri: '@Url.Action("AddMenu")' });
+        hsrTree.initial();
+        //$.mobile.document.on("pageshow", "div[data-url='/Menu']", function () {
+
+        //});
+
+
+    </script>
+}
+ 
+
+
+ 
+

@@ -1,0 +1,220 @@
+﻿@using Hsr.Core.HtmlEx
+@model Hsr.Models.UserSummaryInfo
+@{
+    Dictionary<string, object> attributes = new Dictionary<string, object>();
+    attributes.Add("class", "form-control");
+    attributes.Add("data-provide", "datepicker");
+}
+<div class="row" >
+    <div class="col-md-6">
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">基本信息</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Detail.CompId, new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.HiddenFor(d=>d.Detail.CompName)
+                            @Html.HiddenFor(d => d.Detail.CompId)
+                            <div class="dropdown" id="CompDrop">
+                                <button class="btn btn-default dropdown-toggle" type="button" data-ishold="true" data-toggle="dropdown" aria-expanded="true">
+                                    <b class="dropResult"></b>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" ishold="true">
+                                    <li role="presentation">
+                                        <div id="compTree"></div>
+                                    </li>
+                                </ul>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Detail.CompId)
+                        </div>
+                    </div> 
+                    
+                 
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Detail.DeptId, new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.HiddenFor(d => d.Detail.DeptId)
+                            @Html.HiddenFor(d=>d.Detail.DeptName)
+                            <div class="dropdown" id="DeptDrop">
+                                <button class="btn btn-default dropdown-toggle" type="button" data-ishold="true" data-toggle="dropdown" aria-expanded="true">
+                                    <b class="dropResult"></b>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" ishold="true">
+                                    <li role="presentation">
+                                        <div id="deptTree"><h3>请选择公司</h3></div>
+                                    </li>
+                                </ul>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.Detail.DeptId)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.RoleIds, new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.HiddenFor(d => d.RoleIds)
+                            @Html.HiddenFor(d=>d.RoleNames)
+                            <div class="dropdown" id="roleDrop">
+                                <button class="btn btn-default dropdown-toggle" type="button" data-ishold="true" data-toggle="dropdown" aria-expanded="true">
+                                    <b class="dropResult"></b>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" ishold="true">
+                                    <li role="presentation">
+                                        <div id="roleTree"></div>
+                                    </li>
+                                </ul>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.RoleIds)
+                        </div>
+                    </div>
+                     @if (!string.IsNullOrWhiteSpace(Model.Auid))
+                     {
+                    @Html.HiddenFor(d=>d.LoginTime,new {@class="ignore"})
+                    @Html.HiddenFor(d=>d.LoginIp)
+                    @Html.HiddenFor(d=>d.LoginSum)
+                    @Html.HiddenFor(d=>d.Detail.CreateTime,new {@class="ignore"})
+                    @Html.HiddenFor(d=>d.Detail.CreateBy)
+                    @Html.HiddenFor(d=>d.Detail.CreateUserid)
+                    @Html.HiddenFor(d=>d.Detail.ModiTime,new {@class="ignore"})
+                    @Html.HiddenFor(d=>d.Detail.ModiUserid)
+                         <div class="form-group">
+                      
+                             @Html.LabelFor(model => model.UserName, new {@class = "control-label col-md-3"})
+                             <div class="col-md-9">
+                                 
+                                 <input name="UserName" value="@Model.UserName" class="form-control" readonly="readonly"/>
+                             </div>
+                         </div>
+                     }
+                     else
+                     {
+                          <div class="form-group">
+                      
+                             @Html.LabelFor(model => model.UserName, new {@class = "control-label col-md-3"})
+                             <div class="col-md-9">
+                                 @Html.TextBoxFor(model => model.UserName, new {@class = "form-control"})
+                                 @Html.ValidationMessageFor(d=>d.UserName)
+                             </div>
+                         </div>
+                     }
+                    @if (string.IsNullOrWhiteSpace(Model.Auid))
+                    {
+                     <div class="form-group">
+                        @Html.LabelFor(model => model.UserPw, new { @class = "control-label col-md-3" })
+
+                         <div class="col-md-9">
+                             
+                             @Html.TextBoxFor(model => model.UserPw, new { @class = "form-control" })
+                             @Html.ValidationMessageFor(model => model.UserPw)
+                         </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.UserPwCompare, new { @class = "control-label col-md-3" })
+
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(model => model.UserPwCompare, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.UserPwCompare)
+                        </div>
+                    </div>
+                    }
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Detail.RealName, new { @class = "control-label col-md-3" })
+
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(model => model.Detail.RealName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Detail.RealName)
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">联系方式</div>
+                <div class="panel-body">
+                 
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Detail.Mobile, new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(model => model.Detail.Mobile, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Detail.Mobile)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Detail.Telphone, new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+
+                            @Html.TextBoxFor(model => model.Detail.Telphone, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Detail.Telphone)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Detail.Email, new { @class = "control-label col-md-3" })
+
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(model => model.Detail.Email, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Detail.Email)
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">个人资料</div>
+                <div class="panel-body">
+                    <div  class="imageContainer">
+                        @Html.HiddenFor(d=>d.Detail.Photo)
+                        <img alt="个人头像"  class="img-thumbnail imagePhoto"  id="photo"/>
+                        <div class="progress imageProgress">
+                            <div class="progress-bar" role="progressbar"  style="width: 2%;">
+                                2%
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Detail.Sex, new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            <div class="radio">
+                                 <label class="radio-inline">
+                                @Html.RadioButtonFor(d=>d.Detail.Sex,1)男
+                            </label>
+                            <label class="radio-inline">
+                                @Html.RadioButtonFor(d=>d.Detail.Sex,2)女
+                            </label>
+                            </div>
+                           
+                            @Html.ValidationMessageFor(model => model.Detail.Sex)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Detail.Birthday, new { @class = "control-label col-md-3" })
+                        <div class="col-md-9">
+                            @Html.TextBoxFor(model => model.Detail.Birthday,"{0:yyyy年MM月dd日}", attributes)
+                            @Html.ValidationMessageFor(model => model.Detail.Birthday)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Detail.Description, new { @class = "control-label col-md-3" })
+
+                        <div class="col-md-9">
+                            @Html.TextAreaFor(model => model.Detail.Description,new { @class = "form-control" ,rows="3"} )
+                            @Html.ValidationMessageFor(model => model.Detail.Description)
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

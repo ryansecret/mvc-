@@ -1,0 +1,50 @@
+﻿
+
+@{var num = 0;}
+@model Hsr.Models.DatamappingColumn
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DetalColumn</title>
+</head>
+<body>
+    <h2 class="ui-bar ui-bar-a ui-corner-all">查看</h2>
+        @using (Html.BeginForm())
+        {
+
+
+            <div class="editor-label">
+                数据库表列名称
+            </div>
+
+            <div class="editor-field">
+                <input type="text" disabled="disabled" value="@Model.Dbcolname" />
+
+            </div>
+
+            <div class="editor-label">
+                模板列名称
+            </div>
+
+            <div class="editor-field">
+                <input type="text" disabled="disabled" value="@Model.Tempalecolname" />
+            </div>
+            
+            <div class="editor-label">
+                数据类型
+            </div>
+
+            <div class="editor-field">
+                <input type="text" disabled="disabled" value="@Model.Datatype" />
+            </div>
+            
+        }  
+    <div>
+    <a href="/Import/Index " data-role="button">返回</a>
+</div>
+</body>
+</html>
+
+

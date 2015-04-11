@@ -1,0 +1,29 @@
+@model Hsr.Models.Test
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>删除</h2>
+
+<h3>确定删除当前所选?</h3>
+<fieldset>
+    <legend>Test</legend>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">@Model.Name</div>
+
+    <div class="display-label">Ids</div>
+    <div class="display-field">@Model.Ids</div>
+
+    <div class="display-label">Person</div>
+    <div class="display-field">@(Model.Person == null ? "None" : Model.Person.Count.ToString())</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("退回", "Index")
+    </p>
+}
+
+

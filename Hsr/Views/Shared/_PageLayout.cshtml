@@ -1,0 +1,41 @@
+﻿@using Hsr.App_Start
+@{
+    Layout = null;
+}
+
+<div  data-role="page">
+    <div role="main">
+        @RenderSection("featured", required: false)
+                 
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div> 
+</div>
+   @Scripts.Render("~/bundles/jquery")
+
+        @Styles.Render(BundleConfig.UiCss)
+ @Scripts.Render(BundleConfig.UiJs) 
+        @Styles.Render(BundleConfig.MessageStylePath)
+        @Scripts.Render(BundleConfig.MessageJsPath)
+        @Scripts.Render("~/bundles/jqueryval")
+        
+       @RenderSection("scripts", required: false)
+        <script>
+            function ShowLoding() {
+            }
+
+            function HideLoding() {
+            }
+            function ModalDialog(parameters) {
+                $.fn.ModalDialog(parameters);
+            }
+            Messenger.options = {
+                extraClasses: 'messenger-fixed messenger-on-top',
+                theme: 'flat'
+            }
+
+            function ShowMessage(parameters) {
+                 
+            }
+        </script>

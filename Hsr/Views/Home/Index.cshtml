@@ -1,0 +1,568 @@
+﻿@using Hsr.App_Start
+@using Hsr.Core.HtmlEx
+@using MVC.Controls
+@using MVC.Controls.Tab
+@{
+    ViewBag.Title = "主页";
+}
+@section featured {
+
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+          
+        </div>
+        
+        <div id="dialog-message" title="Download complete">
+            <p>
+                <span class="ui-icon ui-icon-circle-check" style="float: left; margin: 0 7px 50px 0;"></span>
+                Your files have downloaded successfully into the My Downloads folder.
+            </p>
+            <p>
+                Currently using <b>36% of your storage space</b>.
+            </p>
+        </div>
+    </section>
+}
+<div class="input-daterange" data-provide="datepicker">
+    <input type="text" class="datepicker" value="2012/4/5" />
+    <span class="add-on">到</span>
+    <input type="text" class="datepicker" value="2012-4-19" />
+</div>
+<input data-provide="datepicker" class="form-control" value="2015/3/11 17:21:00" >
+<input class="datepicker"/>
+<div class="input-append date" data-provide="datepicker">
+    <input type="text" value="12-02-2012">
+    <span class="add-on"><i class="glyphicon glyphicon-calendar"></i></span>
+</div>
+<input type="date" class="form-control" value="2014-05-16"/>
+<input type="date" class="form-control" value="2014年05月16"/>
+<input type="number" class="form-control"/>
+<input type="search" class="form-control"/>
+<div id="the-basics">
+    <input class="form-control" type="text" placeholder="States of USA">
+    
+        <button type="button" class="btn btn-danger dropdown-toggle" style="display: inline-block">
+            <span class="caret"></span>
+        </button>
+   
+</div> 
+<div id="prefeach">
+<input class="form-control"  type="text" placeholder="prefeach">
+</div> 
+<div id="remote">
+<input class="form-control"  type="text" placeholder="remote">
+</div>
+ 
+<form class="form-horizontal">
+  <div class="form-group has-error">
+    <label class="control-label col-sm-3" for="inputSuccess3">Input with success</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="inputSuccess3" aria-describedby="inputSuccess3Status">
+      <span class="glyphicon glyphicon-ok " aria-hidden="true"></span>
+      <span id="inputSuccess3Status" class="sr-only">(success)</span>
+    </div>
+  </div>
+  
+</form>
+<div class="form-group has-error">
+  <label class="control-label sr-only" for="inputGroupSuccess4">Input group with success</label>
+  <div class="input-group">
+    <span class="input-group-addon">@@</span>
+    <input type="text" class="form-control" id="inputGroupSuccess4" aria-describedby="inputGroupSuccess4Status">
+  </div>
+  <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+  
+</div>
+<select class="form-control">
+  <option>1</option>
+  <option>2</option>
+  <option>3</option>
+  <option>4</option>
+  <option>5</option>
+</select>
+<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+    60%
+  </div>
+</div>
+        <div class="bs-example" data-example-id="embedded-scrollspy" style="display: none">
+    <nav id="navbar-example2" class="navbar navbar-default navbar-static">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-example-js-navbar-scrollspy">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project Name</a>
+        </div>
+        <div class="collapse navbar-collapse bs-example-js-navbar-scrollspy">
+          <ul class="nav navbar-nav">
+            <li><a href="#fat">@@fat</a></li>
+            <li><a href="#mdo">@@mdo</a></li>
+            <li class="dropdown">
+              <a href="#" id="navbarDrop1" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="navbarDrop1">
+                <li><a href="#one" tabindex="-1">one</a></li>
+                <li><a href="#two" tabindex="-1">two</a></li>
+                <li class="divider"></li>
+                <li><a href="#three" tabindex="-1">three</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="scrollspy-example" style="max-height: 200px;overflow-y: scroll; position: relative">
+      <h4 id="fat">@@fat</h4>
+      <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
+      <h4 id="mdo">@@mdo</h4>
+      <p>Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard. Freegan beard aliqua cupidatat mcsweeney's vero. Cupidatat four loko nisi, ea helvetica nulla carles. Tattooed cosby sweater food truck, mcsweeney's quis non freegan vinyl. Lo-fi wes anderson +1 sartorial. Carles non aesthetic exercitation quis gentrify. Brooklyn adipisicing craft beer vice keytar deserunt.</p>
+      <h4 id="one">one</h4>
+      <p>Occaecat commodo aliqua delectus. Fap craft beer deserunt skateboard ea. Lomo bicycle rights adipisicing banh mi, velit ea sunt next level locavore single-origin coffee in magna veniam. High life id vinyl, echo park consequat quis aliquip banh mi pitchfork. Vero VHS est adipisicing. Consectetur nisi DIY minim messenger bag. Cred ex in, sustainable delectus consectetur fanny pack iphone.</p>
+      <h4 id="two">two</h4>
+      <p>In incididunt echo park, officia deserunt mcsweeney's proident master cleanse thundercats sapiente veniam. Excepteur VHS elit, proident shoreditch +1 biodiesel laborum craft beer. Single-origin coffee wayfarers irure four loko, cupidatat terry richardson master cleanse. Assumenda you probably haven't heard of them art party fanny pack, tattooed nulla cardigan tempor ad. Proident wolf nesciunt sartorial keffiyeh eu banh mi sustainable. Elit wolf voluptate, lo-fi ea portland before they sold out four loko. Locavore enim nostrud mlkshk brooklyn nesciunt.</p>
+      <h4 id="three">three</h4>
+      <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
+      <p>Keytar twee blog, culpa messenger bag marfa whatever delectus food truck. Sapiente synth id assumenda. Locavore sed helvetica cliche irony, thundercats you probably haven't heard of them consequat hoodie gluten-free lo-fi fap aliquip. Labore elit placeat before they sold out, terry richardson proident brunch nesciunt quis cosby sweater pariatur keffiyeh ut helvetica artisan. Cardigan craft beer seitan readymade velit. VHS chambray laboris tempor veniam. Anim mollit minim commodo ullamco thundercats.
+      </p>
+    </div>
+ 
+ 
+</div>
+<div class="jumbotron">
+    <h1>Jumbotron</h1>
+    <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    <p><a class="btn btn-primary btn-lg">Learn more</a></p>
+</div>
+ 
+<h3>Example heading <span class="label label-primary">New</span></h3>
+<div class="row col-md-12">
+    <span class="label label-default">Default</span>
+    <span class="label label-primary">Primary</span>
+    <span class="label label-success">Success</span>
+    <span class="label label-info">Info</span>
+    <span class="label label-warning">Warning</span>
+    <span class="label label-danger">Danger</span>
+</div>
+<div>
+    <button type="button" class="btn btn-default" aria-label="Left Align">
+        <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+    </button>
+
+    <button type="button" class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+    </button>
+    <h2>Emphasis classes</h2>
+    <p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>
+    <p class="text-primary">Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+    <p class="text-warning">Etiam porta sem malesuada magna mollis euismod.</p>
+    <p class="text-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
+    <p class="text-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+    <p class="text-info">Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+</div>
+<ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a href="#">Home</a></li>
+    <li role="presentation"><a href="#">Profile</a></li>
+    <li role="presentation"><a href="#">Messages</a></li>
+</ul>
+<ul class="nav nav-pills">
+    <li role="presentation" class="active"><a href="#">Home</a></li>
+    <li role="presentation"><a href="#">Profile</a></li>
+    <li role="presentation"><a href="#">Messages</a></li>
+</ul>
+ <div role="tabpanel">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home"><button type="button" class="btn btn-primary btn-lg" data-toggle="modal"  data-target="#myModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content ryanLoading">
+       
+    </div>
+  </div>
+</div></div>
+    <div role="tabpanel" class="tab-pane" id="profile">profile...</div>
+    <div role="tabpanel" class="tab-pane" id="messages">messages...</div>
+    <div role="tabpanel" class="tab-pane" id="settings">settings...</div>
+  </div>
+
+</div>
+<div class="btn-group">
+  <button type="button" class="btn btn-danger">Action</button>
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+</div>
+ <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+      Dropdown
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a href="#">Dropdown link</a></li>
+      <li><a href="#">Dropdown link</a></li>
+    </ul>
+  </div>
+<div class="form-group">
+    <label class="control-label" for="disabledInput">Disabled input</label>
+    <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here..." disabled="">
+</div>
+<div class="form-group">
+    <label class="control-label">Input addons</label>
+    <div class="input-group">
+        <span class="input-group-addon">$</span>
+        <input type="text" class="form-control">
+        <span class="input-group-btn">
+            <button class="btn" type="button">Button</button>
+        </span>
+    </div>
+</div>
+<ul class="list-group">
+    <li class="list-group-item">
+        <span class="badge">14</span>
+        Cras justo odio
+    </li>
+</ul>
+<div class="list-group">
+  <a href="#" class="list-group-item active">
+    Cras justo odio
+  </a>
+  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+  <a href="#" class="list-group-item">Morbi leo risus</a>
+  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+  <a href="#" class="list-group-item">Vestibulum at eros</a>
+</div>
+<div class="progress">
+    <div class="progress-bar progress-bar-success" style="width: 35%"></div>
+    <div class="progress-bar progress-bar-warning" style="width: 20%"></div>
+    <div class="progress-bar progress-bar-danger" style="width: 10%"></div>
+</div>
+<div class="well well-lg">
+    Look, I'm in a large well!
+</div>
+<div class="col-md-push-4">
+    <button class="btn" data-original-title="Tooltip on left" title="" data-placement="left" data-toggle="tooltip" type="button">Left</button>
+<button class="btn btn-default" data-original-title="Tooltip on top" title="" data-placement="top" data-toggle="tooltip" type="button">Top</button>
+<button class="btn btn-default" data-original-title="Tooltip on bottom" title="" data-placement="bottom" data-toggle="tooltip" type="button">Bottom</button>
+<button class="btn" data-original-title="Tooltip on right" title="" data-placement="right" data-toggle="tooltip" type="button">Right</button>
+</div>
+<div class="progress progress-striped active">
+    <div class="progress-bar" style="width: 45%"></div>
+</div>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Panel primary</h3>
+  </div>
+  <div class="panel-body">
+    Panel content
+  </div>
+</div>
+
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title">Panel success</h3>
+  </div>
+  <div class="panel-body">
+    Panel content
+  </div>
+</div>
+
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <h3 class="panel-title">Panel warning</h3>
+  </div>
+  <div class="panel-body">
+    Panel content
+  </div>
+</div>
+<table class="table table-striped table-hover ">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Column heading</th>
+      <th>Column heading</th>
+      <th>Column heading</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr class="info">
+      <td>3</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr class="success">
+      <td>4</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr class="danger">
+      <td>5</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr class="warning">
+      <td>6</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr class="active">
+      <td>7</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+  </tbody>
+</table> 
+
+
+
+<blockquote class="blockquote-reverse has-error">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+</blockquote>
+<div class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>Warning!</strong> Better check yourself, you're not looking too good.
+</div>
+
+<ul class="nav nav-pills" role="tablist">
+  <li role="presentation" class="active"><a href="#">Home <span class="badge">42</span></a></li>
+  <li role="presentation"><a href="#" >Profile<span class="badge"></span></a></li>
+  <li role="presentation"><a href="#">Messages <span class="badge">3</span></a></li>
+</ul>
+<h3>下面是我们的建议:</h3>
+<ol class="round">
+    <li class="one">
+        <h5>开始使用</h5>
+        ASP.NET MVC 为你提供了一种用于生成动态网站的方式，
+        该方式基于模式，十分强大，使你可以清晰地分离各种考虑因素，让你能够完全控制标记，
+        以便进行灵活而有趣的开发。ASP.NET MVC 包括许多功能，你可以使用这些功能进行
+        TDD 友好的快速开发，以创建使用
+        最新 Web 标准的复杂应用程序。
+        <a href="http://go.microsoft.com/fwlink/?LinkId=245151">了解详细信息...</a>
+    </li>
+
+    <li class="two">
+        <h5>添加 NuGet 程序包并快速开始编码</h5>
+        通过 NuGet，可以轻松地安装和更新免费的库和工具。
+        <a href="http://go.microsoft.com/fwlink/?LinkId=245153">了解详细信息...</a>
+    </li>
+
+    <li class="three">
+        <h5>查找 Web 宿主</h5>
+        你可以轻松找到所提供的功能和价格
+        都适合你应用程序的 Web 宿主公司。
+        <a href="http://go.microsoft.com/fwlink/?LinkId=245157">了解详细信息...</a>
+    </li>
+</ol>
+@section scripts
+{
+    @Styles.Render(BundleConfig.JsTreeCss)
+     
+    @Scripts.Render(BundleConfig.TypeAheadJs)
+    @Scripts.Render("~/bundles/jstree")
+    @Scripts.Render(BundleConfig.WizardJs)
+    @Scripts.Render(BundleConfig.ModernizrJs)
+    <script>
+
+        $(function () {
+            if (Modernizr.inputtypes.date) {
+                alert("sdfsdf");
+            }
+            Modernizr.load(
+                {
+                    test: Modernizr.inputtypes.date,
+                    nope: ["bundles/datePickerJs", "Content/DatePicker/bootstrap-datepicker.min.css"],
+                    callback: function () {
+                        $.fn.datepicker.defaults.format = "yyyy/mm/dd";
+                        $('.datepicker').datepicker({ language: 'zh-CN' })
+                    }
+                }
+            );
+            $('[data-toggle="tooltip"]').tooltip();
+            $("#largeModel").click(function () {
+                $(this).ModalDialog({ cache: true, isLoading: true });
+                var that = $(this);
+
+                setTimeout(function () {
+                    that.ModalDialog({ bodyContent: "haha" });
+                }, 3000);
+            });
+            var substringMatcher = function (strs) {
+                return function findMatches(q, cb) {
+                    var matches, substrRegex;
+
+                    // an array that will be populated with substring matches
+                    matches = [];
+
+                    // regex used to determine if a string contains the substring `q`
+                    substrRegex = new RegExp(q, 'i');
+
+                    // iterate through the pool of strings and for any string that
+                    // contains the substring `q`, add it to the `matches` array
+                    $.each(strs, function (i, str) {
+                        if (substrRegex.test(str)) {
+                            // the typeahead jQuery plugin expects suggestions to a
+                            // JavaScript object, refer to typeahead docs for more info
+                            matches.push({ value: str });
+                        }
+                    });
+
+                    cb(matches);
+                };
+            };
+
+            var states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
+                'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
+                'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
+                'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
+                'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
+                'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
+                'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
+                'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
+                'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+            ];
+
+            $('#the-basics input').typeahead({
+                hint: true,
+                highlight: true,
+                minLength: 1
+            },
+                {
+                    name: 'states',
+                    displayKey: 'value',
+                    source: substringMatcher(states)
+                });
+
+
+            var countries = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                limit: 5,
+                prefetch: {
+                    url: 'Home/RemoteData',
+                    // the json file contains an array of strings, but the Bloodhound
+                    // suggestion engine expects JavaScript objects so this converts all of
+                    // those strings
+                    filter: function (list) {
+                        return $.map(list,
+                            function (country) {
+                                return { name: country };
+                            });
+                    }
+                }
+            });
+
+            // kicks off the loading/processing of `local` and `prefetch`
+            countries.initialize();
+
+
+            $('#prefeach input').typeahead(null, {
+                name: 'countries',
+                displayKey: 'name',
+                // `ttAdapter` wraps the suggestion engine in an adapter that
+                // is compatible with the typeahead jQuery plugin
+                source: countries.ttAdapter()
+            });
+
+
+            var bestPictures = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+
+                remote: {
+                    url: '/Home/RemoteData?q=%QUERY',
+                    filter: function (list) {
+                        return $.map(list,
+                            function (country) {
+                                return { name: country };
+                            });
+                    }
+                }
+            });
+
+            bestPictures.initialize();
+
+            $('#remote input').typeahead(null, {
+                name: 'bestpictures',
+                displayKey: 'name',
+
+                source: bestPictures.ttAdapter()
+            });
+
+
+            var remoteCities = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('CityName'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                // 在文本框输入字符时才发起请求
+                remote: '/Home/GetCities?q=%QUERY'
+            });
+
+            remoteCities.initialize();
+
+            $('#ajax-remote-example input').typeahead(null, {
+                name: 'cities',
+                displayKey: 'CityName',
+                source: remoteCities.ttAdapter(),
+                templates: {
+                    empty: [
+                        '<div class="empty-message">',
+                        '没有查询结果',
+                        '</div>'
+                    ].join('\n')
+                }
+            });
+            $("#ajax-remote-example button").click(function () {
+                // $('#ajax-remote-example input').text("济南");
+                // $('#ajax-remote-example input').typeahead('val', "济南");
+                $('#prefeach input').typeahead("updateHint");
+                // $('#ajax-remote-example input').trigger("input");
+
+            });
+        });
+    </script>
+      
+    
+}

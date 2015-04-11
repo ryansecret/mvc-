@@ -1,0 +1,29 @@
+﻿@model Hsr.Model.Models.ViewModel.RoleVm
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+   
+ 
+
+<script src="~/Scripts/jquery-2.1.1.js"></script>
+<h2 class="ui-bar ui-bar-a ui-corner-all">Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Sysrole</legend>
+
+        @Html.HiddenFor(model => model.RoleId)
+		@Html.Partial("_CreateOrEdit", Model)
+
+        <p>
+            <input type="submit" value="保存" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    <a href="/Sysrole/Index" data-role="button" data-icon="back">Return</a>
+</div>

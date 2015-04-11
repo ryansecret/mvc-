@@ -1,0 +1,49 @@
+﻿@using Hsr.App_Start
+@using Hsr.HtmlHelperEX
+@model IEnumerable<Hsr.Model.Models.ViewModel.MenuVm>
+@{
+    ViewBag.Title = "Index";
+}
+<div id="div-body">
+    <div class="div-custom">
+        <div class="row">
+            <button class="btn btn-primary btn-none" onclick="$('#menuTreeId').toggle(300)" data-toggle="button" ><span class="glyphicon glyphicon-pushpin" ></span></button>
+        </div>
+     </div>
+    <div class="col-md-3"  id="menuTreeId">
+        <div  class="panel panel-primary">
+            <div class="panel-heading row">
+                <h5 class="tree-title"><span class="glyphicon glyphicon-th-list" style="margin-right: 5px"></span>菜单管理</h5>
+            </div>
+            <div id="divTree" class="panel-body treeContainer">
+                @Html.Action("GetTree")
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="row">
+            <h4 style="float:left">菜单列表</h4>
+            @Html.ActionLinks(@"新建", "Create", "Menu", null, new {@class = "btn btn-success btn-sm", @style="float: right; margin-top: 5px",id="Create"})
+        </div>
+        <div id="divList">
+            @Html.Partial("MenuList", Model)
+        </div>
+    </div>
+</div>
+
+@section  scripts
+{
+    @Styles.Render(BundleConfig.JsTreeCss)
+    @Scripts.Render("~/bundles/jstree")
+    @Scripts.Render("~/bundles/menu")
+    <script>
+     
+        var hsrTree = new HsrTree({ searchUri: '@Url.Action("GetList")', delUri: '@Url.Action("Delete")', addUri: '@Url.Action("Create")',addTempalteUri:'@Url.Action("Create")'});
+        hsrTree.initial();
+    </script>
+}
+
+
+
+
+

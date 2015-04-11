@@ -1,0 +1,86 @@
+﻿@model Hsr.Model.Models.ViewModel.OrganizeInfoVm
+@using Hsr.Core.HtmlEx
+ 
+    
+<div class="ui-body   ui-corner-all">
+
+    <div class="editor-label" data-role="fieldcontain">
+        <label for="fullname">所属机构  </label> 
+   
+        @if(ViewBag.name=="0")
+        {
+            @: 所属机构
+        }
+        else
+        {
+            @ViewBag.name
+        }
+    
+    </div>
+
+    <div class="editor-label" data-role="fieldcontain">
+        <label for="fullname">公司名称</label> 
+        @Html.EditorFor(model => model.Orgname)
+        @Html.ValidationMessageFor(model => model.Orgname)
+    </div>
+   
+    <div class="editor-label" data-role="fieldcontain">
+        <label for="fullname">所属省份</label> 
+         
+        @Html.SelectMenu(model=>model.ProvinceId,"province", ViewBag.province as List<SelectListItem>,iconpos:true,multiple:false)
+        @Html.ValidationMessageFor(model => model.ProvinceId)
+    
+    </div>
+    <div class="editor-label" data-role="fieldcontain">
+        <label for="fullname">所属城市</label>
+        @Html.SelectMenu(model=>model.CityId,"CityId", ViewBag.city as List<SelectListItem>,iconpos:true,multiple:false)
+        @Html.ValidationMessageFor(model => model.CityId)
+    </div>
+
+    <div class="editor-label" data-role="fieldcontain">
+        <label for="fullname">所属地区</label> 
+        @Html.SelectMenu(model=>model.AreaId,"AreaId",ViewBag.area as List<SelectListItem>,iconpos:true,multiple:false)
+        @Html.ValidationMessageFor(model => model.AreaId)
+    </div>
+
+    <div class="editor-label" data-role="fieldcontain">
+        <label for="fullname" >手机号码</label> 
+        @Html.EditorFor(model => model.Phone)
+        @Html.ValidationMessageFor(model => model.Phone)
+    </div>
+
+  
+
+    <div class="editor-label" data-role="fieldcontain">
+        <label for="fullname" >传真</label> 
+        @Html.EditorFor(model => model.Fax)
+        @Html.ValidationMessageFor(model => model.Fax)
+    </div>
+    
+    <div class="editor-label" data-role="fieldcontain">
+        <label for="fullname" >邮编</label> 
+    
+        @Html.EditorFor(model => model.PostCode)
+        @Html.ValidationMessageFor(model => model.PostCode)
+    
+    </div>
+ 
+    @Html.FlipSwichFor(d=>d.Isenabled,isChecked:Model.Isenabled)
+
+    <div class="editor-label" data-role="fieldcontain">
+        <label for="fullname">地址</label>
+        @Html.TextBoxFor(d=>d.Address)
+        @Html.ValidationMessageFor(model => model.Address)
+    </div>
+ 
+
+    @Html.HiddenFor(d => d.OrgPid)
+    @Html.HiddenFor(d=>d.Layer)
+    @Html.HiddenFor(d=>d.OrderNum)
+    @Html.HiddenFor(d=>d.Category)
+   
+
+ 
+   
+</div>
+ 

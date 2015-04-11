@@ -1,0 +1,46 @@
+﻿@model Hsr.Model.Models.ViewModel.MenuVm
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 class="ui-bar ui-bar-a ui-corner-all">明细</h2>
+
+<fieldset>
+    <legend>Menu</legend>
+
+    <div class="display-label">@Html.LabelFor(model => model.Menuname)</div>
+    <div class="display-field">@Model.Menuname</div>
+
+    <div class="display-label">@Html.LabelFor(model => model.Pid)</div>
+    <div class="display-field">@String.Format("{0:F}", Model.Pid)</div>
+
+    <div class="display-label">@Html.LabelFor(model => model.PmenuName)</div>
+    <div class="display-field">@Model.PmenuName</div>
+
+    <div class="display-label">@Html.LabelFor(model => model.Layer)</div>
+    <div class="display-field">@String.Format("{0:F}", Model.Layer)</div>
+
+    <div class="display-label">@Html.LabelFor(model => model.Isenabled)</div>
+    <div class="display-field">@String.Format("{0}", Model.Isenabled?"是":"否")</div>
+
+    <div class="display-label">@Html.LabelFor(model => model.Action)</div>
+    <div class="display-field">@Model.Action</div>
+
+    <div class="display-label">@Html.LabelFor(model => model.Controller)</div>
+    <div class="display-field">@Model.Controller</div>
+
+    <div class="display-label">@Html.LabelFor(model => model.Icon)</div>
+    <div class="display-field">@Model.Icon</div>
+
+    <div class="display-label">@Html.LabelFor(model => model.OrderNum)</div>
+    <div class="display-field">@String.Format("{0:F}", Model.OrderNum)</div>
+
+ 
+</fieldset>
+<p>
+    @Html.ActionLink("编辑", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("返回", "Index")
+</p>
+
+

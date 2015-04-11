@@ -1,0 +1,32 @@
+﻿@using Hsr.App_Start
+@model Hsr.Models.Datamapping
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <h2 class="ui-bar ui-bar-a ui-corner-all">修改</h2>
+
+@using (Html.BeginForm())
+{
+   
+    <fieldset>
+        
+        
+		@Html.Partial("_CreateOrEdit", Model)
+
+        <p>
+            <input type="submit" id="edit" value="保存" />
+        </p>
+       
+    </fieldset>
+}
+        <div>
+    <a href="/Import/Index" data-role="button">返回</a>
+</div>
+</body>
+</html>

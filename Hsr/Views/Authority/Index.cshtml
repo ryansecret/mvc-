@@ -1,0 +1,43 @@
+﻿@using Hsr.App_Start
+@using Hsr.HtmlHelperEX
+@model Hsr.Model.Models.ViewModel.RoleVms
+@{
+    ViewBag.Title = "Index";
+}
+<div class="div-custom row">
+     <button class="btn btn-primary btn-none" onclick="$('#menuTreeId').toggle(300)" data-toggle="button"><span class="glyphicon glyphicon-pushpin"></span></button>
+</div>
+<div class="col-md-3" id="menuTreeId">
+    <div class="panel panel-primary">
+        <div class="panel-heading row">
+            <h5 class="tree-title"><span class="glyphicon glyphicon-user"></span>角色</h5>
+        </div>
+        <div id="divTree" class="panel-body treeContainer">
+            @Html.Action("GetTree", "Sysrole")
+        </div>
+    </div>
+</div>
+
+<div class="col-md-8">
+        <div class="panel panel-default" style="min-height:500px">
+            <div class="panel-heading">当前角色:<b></b></div>
+            <div class="panel-body">
+                <div id="menuTree" style="overflow-y: auto">
+                </div>
+                <div>
+                     @Html.ActionLink(@"设置权限", "Create", "Authority",null,new{@class="btn btn-primary btn-sm",id="saveAuthority"})
+                     @Html.ActionLinks(@"清除权限", "Create", "Authority",null,new{@class="btn btn-primary btn-sm",id="clearAuthority"})
+                </div>
+            </div>
+    </div>
+
+</div>
+@section scripts
+{
+    @Scripts.Render(BundleConfig.JsTree)
+    @Styles.Render(BundleConfig.JsTreeCss)
+    @Scripts.Render("~/bundles/Authority")
+}
+
+
+

@@ -1,0 +1,39 @@
+﻿@model Hsr.Model.Models.ViewModel.MenuVm
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<fieldset>
+    <legend>明细</legend>
+    <div class="row">
+            <div class="col-md-2">@Html.LabelFor(model => model.Menuname)</div>
+            <div class="col-md-10">@Model.Menuname</div>
+    </div>
+
+    <div class="row">
+          <div class="col-md-2">@Html.LabelFor(model => model.Pid)</div>
+          <div class="col-md-10">@String.Format("{0:F}", Model.Pid)</div>
+    </div>
+  
+    <div class="row">
+         <div class="col-md-2">@Html.LabelFor(model => model.PmenuName)</div>
+    <div class="col-md-10">@Model.PmenuName</div>
+    </div>
+   
+    <div class="row">
+        <div class="col-md-2">@Html.LabelFor(model => model.Layer)</div>
+        <div class="col-md-10">@String.Format("{0:F}", Model.Layer)</div>
+    </div>
+    
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.Isenabled)</div>
+          <div class="col-md-10">@String.Format("{0}", Model.Isenabled?"是":"否")</div>
+    </div>
+</fieldset>
+<p >
+     @Html.ActionLink("返回", "Index",null,new{@class="btn  btn-default",role="button"}) 
+     @Html.ActionLink("编辑", "Edit", new { id=Model.Id },new{@class="btn btn-primary",role="button"}) 
+</p>
+
+

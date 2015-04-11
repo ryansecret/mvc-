@@ -1,0 +1,16 @@
+﻿@model  Hsr.Model.Models.ViewModel.OrganizeInfoVm
+@{
+    Layout = null;
+    
+}
+<form    enctype="multipart/form-data" method="post">
+    <input type="file" id="imageInput" name="fileToUpload" style="display: none"/>
+</form>
+@using (Html.BeginForm("Edit", "OrganizeInfo", FormMethod.Post, new { @class = "form-horizontal" })) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        @Html.HiddenFor(model => model.OrgId)
+		@Html.Partial("_CreateOrEdit", Model)
+  </fieldset>
+}
+

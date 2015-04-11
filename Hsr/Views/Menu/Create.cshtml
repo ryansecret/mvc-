@@ -1,0 +1,23 @@
+﻿@model Hsr.Model.Models.ViewModel.MenuVm
+@{
+    ViewBag.Title = "Create";
+}
+<div class="panel center-block">
+    
+    <div class="panel-body">
+        @using (Html.BeginForm("Create", "Menu", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            <fieldset>
+                <legend>新建</legend>
+                @Html.Partial("_CreateOrEdit", Model)
+            </fieldset>
+            <p>
+                @Html.ActionLink("返回", "Index",null,new{@class="btn  btn-default",role="button"}) 
+                <input type="submit" class="btn btn-primary" value="提交"/>
+            </p>
+        }
+    </div>
+</div>
+  
+
+

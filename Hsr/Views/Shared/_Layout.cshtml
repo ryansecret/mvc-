@@ -1,0 +1,99 @@
+﻿@using Hsr
+@using Hsr.App_Start
+@using MVC.Controls
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - Hsr 应用程序</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+ 
+        <meta name="viewport" content="width=device-width" />
+ 
+       
+
+        @Styles.Render(BundleConfig.UiCss)
+    
+        @*@StackExchange.Profiling.MiniProfiler.RenderIncludes()*@
+       @* @{
+           var d = Url.Action("Index", "PlugTest");
+            var ss = "/ryantest" + d;
+          // var ss = Url.RouteUrl("ryan", new {controller = "PlugTest", action = "Index"});
+           
+        }*@
+        
+    </head>
+    <body style="" class="">
+       <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#"></a>
+  </div>
+     <div class="navbar-collapse collapse">
+         @{
+             Html.RenderAction("Menu","Home");
+         }
+         <form class="navbar-form navbar-left">
+             <div class="searchbox-container">
+                <div class="form-group form-group-sm ">
+                    <input class="searchbox-form-control" placeholder="查询" type="text">
+                </div>
+             <button type="submit" class="btn btn-default btn-image" aria-label="查询">
+                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+             </button>
+             </div>
+            
+         </form>
+      
+      @Html.Partial("_LoginPartial")
+        
+  </div>
+       </div>
+        
+        <div id="body" class="container" style="min-height:650px">
+            <div style="position: fixed;margin: 20% auto;left: 0;right: 0;z-index:2000;display: none" class="Loading" id="HsrLoading">
+            <div class='bounce1'></div><div class='bounce2'></div><div></div>
+        </div>    
+            @RenderSection("featured", required: false)
+            <section class="container center-block">
+                @RenderBody()
+            </section>
+        </div>
+        
+        <footer style="text-align: center">
+            <div class="row">
+                <p>&copy; @DateTime.Now.Year - 我的 ASP.NET MVC 应用程序</p>
+            </div>
+ 
+        </footer>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render(BundleConfig.UiJs) 
+        @Styles.Render(BundleConfig.MessageStylePath)
+        @Scripts.Render(BundleConfig.MessageJsPath)
+        @Scripts.Render("~/bundles/jqueryval")
+        
+       @RenderSection("scripts", required: false)
+        <script>
+            function ShowLoding() {
+                $("#HsrLoading").show();
+            }
+
+            function HideLoding() {
+                $("#HsrLoading").hide();
+            }
+            function ModalDialog(parameters) {
+                $.fn.ModalDialog(parameters);
+            }
+            Messenger.options = {
+                extraClasses: 'messenger-fixed messenger-on-top',
+                theme: 'flat'
+            }
+        </script>
+    
+    </body>
+</html>

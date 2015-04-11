@@ -1,0 +1,75 @@
+﻿@using MVC.Controls
+@using Hsr.HtmlHelperEX
+@model Hsr.Models.UserSummaryInfos
+@{var num = 0;}
+@{
+    foreach (var dt in Model.Data)
+    {
+        dt.Detail.ModiTime = DateTime.Today;
+
+    }   
+}
+<div id="divUserList"  >
+    <div id="contentid" style="height:100%;width:800px" >
+        <table  style="width: 1300px" class="ui-responsive ui-table ui-table-reflow" data-role="table" >
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>省</th>
+                    <th>市</th>
+                    <th>部门</th>
+                    <th>用户名</th>
+                    <th>姓名</th> 
+                    <th>角色名称</th>
+                    <th>有效标志</th>
+                    <th>操作</th>
+                    <th>最后登录时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Data)
+                {
+                    <tr>
+                        <th style="background-color:transparent;font-size:1em;font-weight:normal">
+                            <b class="ui-table-cell-label">序号</b>
+                            @{num = num + 1; }
+                            @num.ToString()
+                        </th>
+                        <td><b class="ui-table-cell-label">省</b>@item.ProvinceName</td>
+                        <td><b class="ui-table-cell-label">市</b>@item.CityName</td>
+                        <td><b class="ui-table-cell-label">部门</b>@item.Detail.DeptName</td>
+                        <td><b class="ui-table-cell-label">用户名</b>@item.UserName</td>
+                        <td><b class="ui-table-cell-label">姓名</b>@item.Detail.RealName</td>
+                        @try
+                        {
+                            <td><b class="ui-table-cell-label">角色名称</b>@foreach(var rm in item.Role)
+                                {   
+                                    @rm.RoleName 
+                                } 
+                            </td>
+                        }
+                        catch
+                        {
+                  
+                        }
+                        <td><b class="ui-table-cell-label">有效标志</b>@item.Detail.Isenabled</td>
+                        <td><b class="ui-table-cell-label">操作</b>
+                            @Html.ActionLinks("编辑","Edit","UserSummaryInfo", new { id = item.Auid },new {@class="ui-btn ui-mini ui-btn-inline ui-icon-edit ui-btn-icon-notext",style="margin: 0"}) 
+                            @Html.ActionLinks("查看","View","UserSummaryInfo", new { id = item.Auid  },new {@class="ui-btn ui-mini ui-btn-inline  ui-icon-action ui-btn-icon-notext",style="margin: 0"})
+                            @Html.ActionLinks("删除","Delete","UserSummaryInfo",null,new {onclick="Delete("+"'"+@item.Auid+"'"+")", href="javascript:void(0)",@class="ui-btn ui-mini ui-btn-inline   ui-icon-delete ui-btn-icon-notext",style="margin: 0"})
+                            @*<a href="javascript:void(0)" onclick="Delete('@item.Auid')" >删除</a>*@
+                        </td>
+                        <td><b class="ui-table-cell-label">最后登录时间</b>@item.LoginTime</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+    <div class="pager" id="pager">
+        @Html.Pager(Model).QueryParam("pagenumber").ShowTotalSummary(true)
+    </div>
+</div>
+<script type="text/javascript">
+    ScrollBar('contentid');
+</script>

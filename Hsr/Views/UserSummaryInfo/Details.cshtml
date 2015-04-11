@@ -1,0 +1,94 @@
+﻿@model Hsr.Models.UserSummaryInfo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>明细</h2>
+
+<fieldset>
+    <legend>UserSummaryInfo</legend>
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.LastActiveTime)</div>
+          <div class="col-md-10">@String.Format("{0:g}", Model.LastActiveTime)</div>
+    </div>
+     
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.UserGuid)</div>
+          <div class="col-md-10">@Model.UserGuid</div>
+    </div>
+     
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.PasswordTime)</div>
+          <div class="col-md-10">@String.Format("{0:g}", Model.PasswordTime)</div>
+    </div>
+     
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.LoginIp)</div>
+          <div class="col-md-10">@Model.LoginIp</div>
+    </div>
+     
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.LoginTime)</div>
+          <div class="col-md-10">@String.Format("{0:g}", Model.LoginTime)</div>
+    </div>
+     
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.LoginSum)</div>
+          <div class="col-md-10">@Model.LoginSum</div>
+    </div>
+     
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.Isline)</div>
+          <div class="col-md-10">@String.Format("{0:F}", Model.Isline)</div>
+    </div>
+     
+    
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.AreaName)</div>
+          <div class="col-md-10">@Model.AreaName</div>
+    </div>
+     
+ 
+     
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.CityName)</div>
+          <div class="col-md-10">@Model.CityName</div>
+    </div>
+     
+    
+     
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.ProvinceName)</div>
+          <div class="col-md-10">@Model.ProvinceName</div>
+    </div>
+ 
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.UserName)</div>
+          <div class="col-md-10">@Model.UserName</div>
+    </div>
+     
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.UserType)</div>
+          <div class="col-md-10">@Model.UserType</div>
+    </div>
+     
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.RoleIds)</div>
+          <div class="col-md-10">@Model.RoleIds</div>
+    </div>
+     
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.RoleNames)</div>
+          <div class="col-md-10">@Model.RoleNames</div>
+    </div>
+     
+   
+     
+</fieldset>
+<p>
+     @Html.ActionLink("返回", "Index",null,new{@class="btn  btn-default",role="button"}) 
+     @Html.ActionLink("编辑", "Edit", new { id=Model.Auid  },new{@class="btn btn-primary",role="button"}) 
+</p>
+
+

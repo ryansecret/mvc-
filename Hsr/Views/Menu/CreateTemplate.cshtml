@@ -1,0 +1,75 @@
+﻿@model Hsr.Model.Models.ViewModel.MenuVm
+ 
+<div class="panel center-block">
+    
+    <div class="panel-body">
+        @using (Html.BeginForm("Create", "Menu", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            <fieldset>
+ 
+<div class="form-group">
+    @Html.Label("功能名",new{@class="control-label col-md-3"})
+<div class="col-md-9">
+    @Html.TextBoxFor(model => model.Menuname,new{@class="form-control"})
+    @Html.ValidationMessageFor(model => model.Menuname)
+</div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Isenabled,new{@class="control-label col-md-3"})
+ 
+<div class="col-md-9">
+    @Html.CheckBoxFor(model => model.Isenabled,new{@class="form-control"})
+    @Html.ValidationMessageFor(model => model.Isenabled)
+</div>
+ </div>
+@if (Model!=null&&Model.Pid != 0)
+{
+    <div class="form-group">
+    @Html.LabelFor(model => model.Action,new{@class="control-label col-md-3"})
+ 
+<div class="col-md-9">
+    @Html.TextBoxFor(model => model.Action,new{@class="form-control"})
+    @Html.ValidationMessageFor(model => model.Action)
+</div></div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Controller,new{@class="control-label col-md-3"})
+
+    <div class="col-md-9">
+        @Html.TextBoxFor(model => model.Controller,new{@class="form-control"})
+        @Html.ValidationMessageFor(model => model.Controller)
+    </div>
+ </div>
+}
+
+@Html.HiddenFor(d=>d.Layer)
+@Html.HiddenFor(d=>d.PmenuName)
+@Html.HiddenFor(d=>d.Pid)
+<div class="form-group">
+    @Html.LabelFor(model => model.Icon,new{@class="control-label col-md-3"})
+
+    <div class="col-md-9">
+        @Html.TextBoxFor(model => model.Icon,new{@class="form-control"})
+        @Html.ValidationMessageFor(model => model.Icon)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.OrderNum,new{@class="control-label col-md-3"})
+
+    <div class="col-md-9">
+        
+        @Html.TextBoxFor(model => model.OrderNum,new{@class="form-control",type="number"})
+      
+        @Html.ValidationMessageFor(model => model.OrderNum)
+    </div>
+</div>
+            </fieldset>
+           
+        }
+    </div>
+</div>
+  
+
+

@@ -1,0 +1,61 @@
+﻿@using Hsr.HtmlHelperEX
+@model IEnumerable<Hsr.Model.Models.ViewModel.MenuVm>
+<table class="table table-striped table-hover table-bordered">
+    <thead>
+            <tr>
+                     
+                      <th>
+                          菜单名
+                      </th>
+                    
+                      
+                      <th>
+                          是否可用
+                      </th>
+                      <th>
+                          行为
+                      </th>
+                      <th>
+                          控制器
+                      </th>
+                      <th>
+                          图标路径
+                      </th>
+                    
+                      <th>
+                          操作
+                      </th>
+                  </tr>
+    </thead>
+    <tbody>
+            @foreach (var item in Model) {
+        <tr>
+
+            <td>
+                @item.Menuname
+            </td>
+            
+            <td>
+                @String.Format("{0}", item.Isenabled?"可用":"禁用")
+            </td>
+            <td>
+                @item.Action
+            </td>
+            <td>
+                @item.Controller
+            </td>
+            <td>
+                @item.Icon
+            </td>
+           
+            <td>
+                @Html.ActionLink(@"编辑", "Edit", "Menu",new { id=item.Id },null)
+                @* @Html.ActionLinks(@"编辑", "Edit", "Menu",new { id=item.Id },null)*@|
+                @Html.ActionLinks(@"详细", "Detail","Menu", new { id=item.Id },null)|
+                @Html.ActionLinks(@"删除","Delete","Menu",null,new {onclick="hsrTree.deleteItem("+"'"+@item.Id+"'"+")", href="javascript:void(0)"} )
+            </td>
+        </tr>
+    }
+   </tbody>
+
+</table>

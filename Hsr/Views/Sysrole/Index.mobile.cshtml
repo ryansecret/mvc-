@@ -1,0 +1,61 @@
+﻿@using Hsr.App_Start
+@model  Hsr.Model.Models.ViewModel.RoleVms
+@{
+    ViewBag.Title = "Index";
+}
+<div class="self-adaption">
+  <div class="col w2" style="overflow-y:visible" id="roleTreeId">
+    <div data-role="collapsible"  data-theme="b" data-iconpos="none" data-collapsed="false">
+        <h1>角色管理</h1>
+          <div id="divTree">
+            @Html.Action("GetTree")
+         </div>
+     </div>
+ </div>
+</div>
+<input  type="hidden" value="0" id="selectedId" />
+
+ 
+    <div class="col w8 last box  header" >   
+        <div data-role="controlgroup" data-type="horizontal">
+             <a class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext" onclick="PanelWay('roleTreeId',400)" style="height: 22px"></a>
+            <input type="button" id="Create"   name="Create" value="新建" class="ui-btn" data-theme="b" /> 
+        </div>
+        <div class="head"><div></div></div>
+        <h2 class="ui-bar ui-bar-a ui-corner-all">全部菜单</h2>
+
+        <div id="divRoleList" class="ui-body  ui-corner-all">
+            @Html.Partial("RoleList", Model.Data)
+        </div>
+      
+       
+    </div>
+    <div class="bottom"><div></div></div>
+ 
+
+<style>
+    .ui-collapsible-heading .ui-btn {
+        text-align:center;
+    }
+     
+    .ui-page-theme-a .ui-body-inherit{
+        background-color: transparent;
+        border-color: transparent;
+          
+    }
+</style>
+@section scripts
+{
+    @Styles.Render(BundleConfig.JsTreeCss)
+    @Scripts.Render("~/bundles/jstree")
+    @Scripts.Render("~/bundles/sysRole")
+  
+    <script>
+        $(function () {
+            InitialUri('@Url.Action("GetList")', '@Url.Action("Delete")', '@Url.Action("Create")');
+            Inital();
+        });
+
+    </script>
+}
+ 

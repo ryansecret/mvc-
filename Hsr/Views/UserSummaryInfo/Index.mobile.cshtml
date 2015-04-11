@@ -1,0 +1,92 @@
+@using Hsr.App_Start
+@model Hsr.Models.UserSummaryInfos
+ 
+@{
+    ViewBag.Title = "Index";
+}
+<div class="self-adaption">
+    
+
+<div class="col w2" id="userTreeId">
+    <div data-role="collapsible" data-collapsed-icon="carat-r" data-theme="b" id="OrgTreeOpen"  data-collapsed="false">
+        <h1>机构管理</h1>
+        <div >
+            
+            <div id='jstree'></div>
+        </div>
+    </div>
+    <div data-role="collapsible" data-collapsed-icon="carat-r" data-theme="b">
+        <h1>条件查询</h1>    
+        <div class="editor-field" data-role="fieldcontain">
+            <label>公司名称</label>
+            <input type="text" id="CompName"  value=""/>
+        </div>
+        <div class="editor-field" data-role="fieldcontain">
+            <label>部门名称</label>
+            <input type="text" id="DeptName"  value=""/>
+        </div>
+        <div class="editor-field" data-role="fieldcontain">
+            <label>角色名称</label>
+            <input type="text" id="RoleName" value=""/>
+        </div>
+        <div class="editor-field" data-role="fieldcontain">
+            <label>用户名称</label>
+            <input type="text" id="UsName" value=""/>
+        </div>
+        <div class="editor-field" data-role="fieldcontain">
+            <label>真实姓名</label>
+            <input type="text" id="RealName" value=""/>
+        </div>
+        <input type="button" value="查询" id="SearchContains"/>
+        <input type="button" value="清空" id="ClearContains"/>
+           
+    </div>
+    
+</div>
+</div>
+ 
+
+<div class="col w8 last box header">
+    <div data-role="controlgroup" data-type="horizontal">
+           <a class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext" onclick="PanelWay('userTreeId',400)" style="height : 20px"></a>
+        <input type="button" id="Create"  name="Create" value="新建" data-theme="b"  />
+    </div>
+    <h2 class="ui-bar ui-bar-a ui-corner-all">用户信息</h2>
+    <div class="ui-body  ui-corner-all">
+    @Html.Partial("UserList", Model)
+
+    </div>
+</div>
+<div id="canvas-holder">
+    <div class="col w5">
+        <canvas id="chart-area" width="300" height="300"/>
+    </div>
+    <div class="col w5 last">
+        <canvas id="canvas" height="450" width="600"></canvas>
+    </div>
+    <div id="">
+        <canvas id="barchart"></canvas>
+    </div>
+</div>
+<input type="hidden" value="" id="selectedId" />
+<input type="hidden" value="" id="selectedName" />
+ <style>
+    .ui-page-theme-a .ui-body-inherit{
+        background-color: transparent;
+        border-color: transparent;
+          
+    }
+</style>
+ @section scripts
+{
+        @Styles.Render(BundleConfig.JsTreeCss)
+        @Styles.Render("~/Content/Loading")
+        @Scripts.Render("~/bundles/jstree")
+        @Scripts.Render("~/bundles/usersummary")
+        @Scripts.Render(BundleConfig.ChartJsPath)
+@*        @Scripts.Render(BundleConfig.CustomScrollJsPath)
+        @Styles.Render(BundleConfig.CustomScrollStylePath)*@
+ }
+
+
+ 

@@ -1,0 +1,148 @@
+﻿@using Hsr.Core.HtmlEx
+@model Hsr.Model.Models.ViewModel.OrganizeInfoVm
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+@{
+    string colClass = Model.Category == "1" ? "col-md-6" : "";
+     
+  }
+    @Html.HiddenFor(d=>d.Category)
+   <div class='col @colClass'>
+    @if(Model.Category=="1")
+    {
+         
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProvinceId,new{@class="control-label col-md-2"})
+
+            <div class="col-md-10">
+                @Html.DropDownListFor(d=>d.ProvinceId,ViewBag.Province as List<SelectListItem>,new{@class="form-control"})
+        
+                @Html.ValidationMessageFor(model => model.ProvinceId)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.CityId,new{@class="control-label col-md-2"})
+
+            <div class="col-md-10">
+                @Html.DropDownListFor(d=>d.CityId,ViewBag.Citys as List<SelectListItem>,new{@class="form-control"})
+                @Html.ValidationMessageFor(model => model.CityId)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.AreaId,new{@class="control-label col-md-2"})
+
+            <div class="col-md-10">
+                @Html.DropDownListFor(d=>d.AreaId,ViewBag.Areas as List<SelectListItem>,new{@class="form-control"})
+                @Html.ValidationMessageFor(model => model.AreaId)
+            </div>
+        </div>
+    }
+    else
+    {
+        @Html.HiddenFor(d=>d.ProvinceId)
+        @Html.HiddenFor(d=>d.CityId)
+        @Html.HiddenFor(d=>d.AreaId)
+    }
+        
+    @Html.HiddenFor(d=>d.Isenabled)
+    @Html.HiddenFor(d=>d.OrgId)
+    @Html.HiddenFor(d=>d.CreateBy)
+    @Html.HiddenFor(d=>d.CreateTime,new{@class="ignore"})
+    @Html.HiddenFor(d=>d.CreateUserid)
+    @Html.HiddenFor(d=>d.OrgPid)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.OrgName,new{@class="control-label col-md-2"})
+
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.OrgName,new{@class="form-control"})
+            @Html.ValidationMessageFor(model => model.OrgName)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.OrgPName,new{@class="control-label col-md-2"})
+
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.OrgPName,new{@class="form-control"})
+            @Html.ValidationMessageFor(model => model.OrgPName)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.OrgType,new{@class="control-label col-md-2"})
+
+        <div class="col-md-10">
+            @Html.DropDownListFor(d=>d.OrgType,ViewBag.OrgTypes as List<SelectListItem>,new{@class="form-control"})
+            @Html.ValidationMessageFor(model => model.OrgType)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Address,new{@class="control-label col-md-2"})
+
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Address,new{@class="form-control"})
+            @Html.ValidationMessageFor(model => model.Address)
+        </div>
+    </div>
+ 
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PostCode,new{@class="control-label col-md-2"})
+
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.PostCode,new{@class="form-control"})
+            @Html.ValidationMessageFor(model => model.PostCode)
+        </div>
+    </div>
+ 
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Fax,new{@class="control-label col-md-2"})
+
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Fax,new{@class="form-control"})
+            @Html.ValidationMessageFor(model => model.Fax)
+        </div>
+    </div>
+ 
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Phone,new{@class="control-label col-md-2"})
+
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Phone,new{@class="form-control"})
+            @Html.ValidationMessageFor(model => model.Phone)
+        </div>
+    </div>
+ 
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description,new{@class="control-label col-md-2"})
+
+        <div class="col-md-10">
+            @Html.TextBoxFor(d=>d.Description,new{@class="form-control"})
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+    </div>
+        </div>
+@if(Model.Category == "1")
+{
+    
+     <div class="col col-md-6">
+         <div  class="imageContainer">
+             @Html.HiddenFor(d => d.Logo)
+             <img alt="公司 logo"  class="img-thumbnail imagePhoto"  id="photo"/>
+             <div class="progress imageProgress">
+                 <div class="progress-bar" role="progressbar"  style="width: 2%;">
+                     2%
+                 </div>
+             </div>
+         </div>
+     </div>
+ }
+
+
+
+
+

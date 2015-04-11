@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Hsr.Model.Models.ViewModel.MenuVm>
+<table class="ui-responsive ui-table ui-table-reflow" id="movie-table" data-role="table" data-mode="reflow" >
+    <thead>
+            <tr>
+                     
+                      <th>
+                          菜单名
+                      </th>
+                      <th>
+                          父节点
+                      </th>
+                      <th>
+                          父菜单
+                      </th>
+                      <th>
+                          层级
+                      </th>
+                      <th>
+                          是否可用
+                      </th>
+                      <th>
+                          行为
+                      </th>
+                      <th>
+                          控制器
+                      </th>
+                      <th>
+                          图标路径
+                      </th>
+                      <th>
+                          排序
+                      </th>
+                      <th>
+                          操作
+                      </th>
+                  </tr>
+    </thead>
+    <tbody>
+            @foreach (var item in Model) {
+        <tr>
+
+            <td>
+                @item.Menuname
+            </td>
+            <td>
+                @String.Format("{0:F}", item.Pid)
+            </td>
+            <td>
+                @item.PmenuName
+            </td>
+            <td>
+                @String.Format("{0:F}", item.Layer)
+            </td>
+            <td>
+                @String.Format("{0:F}", item.Isenabled)
+            </td>
+            <td>
+                @item.Action
+            </td>
+            <td>
+                @item.Controller
+            </td>
+            <td>
+                @item.Icon
+            </td>
+            <td>
+                @String.Format("{0:F}", item.OrderNum)
+            </td>
+             <td>
+                @Html.ActionLink(@"编辑", "Edit", new { id=item.Id },new {@class="ui-btn ui-mini ui-btn-inline ui-icon-edit ui-btn-icon-notext",style="margin: 0"}) 
+                @Html.ActionLink(@"详细", "Details", new { id=item.Id },new {@class="ui-btn ui-mini ui-btn-inline ui-btn-icon-notext ui-icon-action",style="margin: 0"}) 
+                <a href="javascript:void(0)" onclick="hsrTree.delete('@item.Id')" class="ui-btn ui-mini ui-btn-inline ui-btn-icon-notext  ui-icon-delete" style="margin: 0">删除</a> 
+               
+            </td>
+        </tr>
+    }
+   </tbody>
+
+</table>

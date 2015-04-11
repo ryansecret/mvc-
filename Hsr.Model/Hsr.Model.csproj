@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{41AAFA27-77EC-4ABD-B90F-24753A5DDD9A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Hsr.Model</RootNamespace>
+    <AssemblyName>Hsr.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\packages\FluentValidation.5.4.0.0\lib\Net40\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation.Mvc">
+      <HintPath>..\packages\FluentValidation.MVC5.5.4.0.0\lib\Net45\FluentValidation.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomValidators\EqualValidator.cs" />
+    <Compile Include="CustomValidators\IValidator.cs" />
+    <Compile Include="CustomValidators\LengthValidator.cs" />
+    <Compile Include="CustomValidators\NotEmptyValidator.cs" />
+    <Compile Include="CustomValidators\CellValidatorContext.cs" />
+    <Compile Include="CustomValidators\RegularValidator.cs" />
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\AreaInfoEntity.cs" />
+    <Compile Include="Models\AuthorityEntity.cs" />
+    <Compile Include="Models\AutoMapperConverter.cs" />
+    <Compile Include="Models\BaseCellInfoEntity.cs" />
+    <Compile Include="Models\BaseFloorsInfoEntity.cs" />
+    <Compile Include="Models\BaseSiteInfoEntity.cs" />
+    <Compile Include="Models\CellGsmInfoEntity.cs" />
+    <Compile Include="Models\CellLteInfoEntity.cs" />
+    <Compile Include="Models\CellTdscdmaInfoEntity.cs" />
+    <Compile Include="Models\CommTestPlanEntity.cs" />
+    <Compile Include="Models\DatamappingColumnEntity.cs" />
+    <Compile Include="Models\DatamappingColumnValidatorEntity.cs" />
+    <Compile Include="Models\DatamappingEntity.cs" />
+    <Compile Include="Models\DatamappingParamEntity.cs" />
+    <Compile Include="Models\DatamappingValidatorEntity.cs" />
+    <Compile Include="Models\DatamappingValidatorParamEntity.cs" />
+    <Compile Include="Models\DataNodeInfoEntity.cs" />
+    <Compile Include="Models\DataRuleEntity.cs" />
+    <Compile Include="Models\PollPlanDaiweiDetailEntity.cs" />
+    <Compile Include="Models\PollPlanDaiweiEntity.cs" />
+    <Compile Include="Models\PollPlanDetailEntity.cs" />
+    <Compile Include="Models\PollPlanEntity.cs" />
+    <Compile Include="Models\ProjectGroupInfoEntity.cs" />
+    <Compile Include="Models\ProjectInfoEntity.cs" />
+    <Compile Include="Models\SiteGsmInfoEntity.cs" />
+    <Compile Include="Models\SiteLteInfoEntity.cs" />
+    <Compile Include="Models\SiteTdscdmaInfoEntity.cs" />
+    <Compile Include="Models\SysDictionaryInfoEntity.cs" />
+    <Compile Include="Models\ViewModel\BarChartData.cs" />
+    <Compile Include="Models\ViewModel\BarChartDatasets.cs" />
+    <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\OrganizeInfoEntity.cs" />
+    <Compile Include="Models\Ryan.cs" />
+    <Compile Include="Models\Sysrole.cs" />
+    <Compile Include="Models\TreeJsonNode.cs" />
+    <Compile Include="Models\TreeNode.cs" />
+    <Compile Include="Models\UserDetailInfo.cs" />
+    <Compile Include="Models\UserRole.cs" />
+    <Compile Include="Models\UserSummaryInfo.cs" />
+    <Compile Include="Models\ViewModel\AreaVm.cs" />
+    <Compile Include="Models\ViewModel\ControllerFilterDataVm.cs" />
+    <Compile Include="Models\ViewModel\DatamappingEx.cs" />
+    <Compile Include="Models\ViewModel\LineChartData.cs" />
+    <Compile Include="Models\ViewModel\LineChartDatasets.cs" />
+    <Compile Include="Models\ViewModel\MenuVm.cs" />
+    <Compile Include="Models\ViewModel\OrganizeInfoVm.cs" />
+    <Compile Include="Models\ViewModel\PieData.cs" />
+    <Compile Include="Models\ViewModel\RoleVm.cs" />
+    <Compile Include="Models\ViewModel\TestPlanParam.cs" />
+    <Compile Include="Models\ViewModel\UserSearParm.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\DetailInfoValidator.cs" />
+    <Compile Include="Validators\MenuValidator.cs" />
+    <Compile Include="Validators\RoleValidator.cs" />
+    <Compile Include="Validators\RyanValidator.cs" />
+    <Compile Include="Validators\UserSummaryInfoValidator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hsr.Data\Hsr.Data.csproj">
+      <Project>{1507E927-192E-4571-A847-24FD40B41294}</Project>
+      <Name>Hsr.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVC.Controls\MVC.Controls.csproj">
+      <Project>{1ADB25C4-9475-4B7D-B016-EBBB66403215}</Project>
+      <Name>MVC.Controls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

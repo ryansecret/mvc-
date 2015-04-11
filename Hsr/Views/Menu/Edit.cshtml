@@ -1,0 +1,20 @@
+﻿@model Hsr.Model.Models.ViewModel.MenuVm
+
+@using (Html.BeginForm("Edit", "Menu", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>编辑</legend>
+        @Html.HiddenFor(model => model.Id)
+		@Html.Partial("_CreateOrEdit", Model)
+        @*<h3>禁用的功能</h3>
+        <button class="btn btn-primary" id="Add">添加</button>
+        @Html.Partial("MenuList", Model.Children)*@
+        <p>
+            <button class="btn" onclick="history.go(-1)">取消</button>
+            <button class="btn btn-primary" type="submit">保存</button>
+        </p>
+    </fieldset>
+}
+ 
+ 

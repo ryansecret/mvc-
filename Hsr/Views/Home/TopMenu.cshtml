@@ -1,0 +1,42 @@
+﻿ 
+@using Hsr.Model.Models.ViewModel
+@using Hsr.Models
+ 
+@model IEnumerable<Hsr.Model.Models.ViewModel.MenuVm>
+@{
+    ViewBag.Title = "关于";
+}
+
+<div >
+    <ul class="nav navbar-nav">
+        @foreach (MenuVm menu in Model.Where(d=>d.Layer==1))
+        {
+            string href = "#";
+            
+            string img = string.Empty;
+            if (!string.IsNullOrWhiteSpace(@menu.Icon))
+            {
+                img = @"<img src='" + menu.Icon + "'/>";
+            }
+            <li class="dropdown"><a href="@href" class="dropdown-toggle" data-toggle="dropdown">@menu.Menuname<b class="caret"></b></a>
+                @if (menu.Children!=null&&menu.Children.Any())
+                {
+                           <ul class="dropdown-menu">
+                                @foreach (var child in menu.Children)
+                                {
+                                    
+                                    if (!string.IsNullOrWhiteSpace(@menu.Icon))
+                                    {
+                                        img = @"<img src='"+child.Icon+"'/>";
+                                    }
+                                    <li><a href="@Url.Action(child.Action,child.Controller)">@child.Menuname</a></li>
+                                    
+                                }
+                            </ul>
+                        
+                }
+            </li>
+        }
+    </ul>
+</div>
+ 

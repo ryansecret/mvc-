@@ -1,0 +1,17 @@
+﻿@model Hsr.Model.Models.ViewModel.OrganizeInfoVm
+@{
+    ViewBag.Title = "Create";
+    Layout = null;
+}
+ <form    enctype="multipart/form-data" method="post">
+    <input type="file" id="imageInput" name="fileToUpload" style="display: none"/>
+</form>
+@using (Html.BeginForm("Create", "OrganizeInfo", FormMethod.Post, new { @class = "form-horizontal" })) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+		@Html.Partial("_CreateOrEdit", Model)
+    </fieldset>
+}
+ 
+
+

@@ -1,0 +1,65 @@
+﻿@model Hsr.Models.CommTestPlan
+<div class="form-group">
+    @Html.LabelFor(model => model.PlanName,new{@class="control-label col-md-2"})
+
+<div class="col-md-10">
+    @Html.TextBoxFor(model => model.PlanName,new{@class="form-control"})
+    @Html.ValidationMessageFor(model => model.PlanName)
+</div>
+</div>
+ 
+<div class="form-group">
+    @Html.LabelFor(model => model.PlanType,new{@class="control-label col-md-2"})
+
+    <div class="col-md-10">
+        @Html.DropDownListFor(model => model.PlanType,ViewBag.PlanTypes as List<SelectListItem>,new{@class="form-control"})
+        @Html.ValidationMessageFor(model => model.PlanType)
+    </div>
+</div>
+
+@Html.HiddenFor(d=>d.ProvinceId)
+@Html.HiddenFor(d=>d.CityId)
+@Html.HiddenFor(d=>d.AreaId)
+ 
+<div class="form-group">
+    @Html.LabelFor(model => model.LoopSum,new{@class="control-label col-md-2"})
+
+<div class="col-md-10">
+    @Html.TextBoxFor(model => model.LoopSum,new{@class="form-control",type="number"})
+    @Html.ValidationMessageFor(model => model.LoopSum)
+</div>
+</div>
+ 
+
+<div class="form-group">
+    @Html.LabelFor(model => model.LoopInterval,new{@class="control-label col-md-2"})
+<div class="col-md-10">
+    @Html.TextBoxFor(model => model.LoopInterval,new{@class="form-control",type="number"})
+    @Html.ValidationMessageFor(model => model.LoopInterval)
+</div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.IsEnable,new{@class="control-label col-md-2"})
+
+<div class="col-md-10">
+    @Html.CheckBox("IsEnable",Model.IsEnable,new{@class="form-control"})
+    @Html.ValidationMessageFor(model => model.IsEnable)
+</div>
+</div>
+ 
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Comments,new{@class="control-label col-md-2"})
+
+<div class="col-md-10">
+    @Html.TextAreaFor(model => model.Comments,new{@class="form-control",rows="3"})
+    @Html.ValidationMessageFor(model => model.Comments)
+</div>
+</div>
+ 
+
+ 
+
+
+ 
+

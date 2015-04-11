@@ -1,0 +1,56 @@
+﻿@using Hsr.App_Start
+@model Hsr.Model.Models.ViewModel.OrganizeInfoVm
+
+@{
+    ViewBag.Title = "Edit";
+}
+<script id="template" type="x-tmpl-mustache">
+  {{#areas}}
+     <option value="{{id}}">{{text}}</option>
+  {{/areas}}
+</script>
+<h2 class="ui-bar ui-bar-a ui-corner-all">修改</h2>
+ 
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Sysrole</legend>
+
+        @Html.HiddenFor(model => model.OrgId)
+       
+		@Html.Partial("_CreateOrEdit", Model)
+        
+        <p>
+            <input type="submit" value="保存" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    <a href="/OrganizeInfo/Index" data-role="button" data-icon="back">返回</a>
+</div>
+  @section scripts
+ {
+ 
+       @Styles.Render(BundleConfig.JsTreeCss)
+       @Scripts.Render("~/bundles/jstree")
+      @Scripts.Render(MobileBundle.HsrSelectMenu)
+       @Scripts.Render(BundleConfig.MusachesJsPath)
+      
+      @Scripts.Render("~/bundles/organizeInfo")  
+     <script>
+         $(function () {
+             var pro = new HsrSelectMenu({
+                 searchUri: '/Common/GetCitys',
+                 fromElementId: "province",
+                 destinyElmentId: "CityId"
+             });
+            var city= new HsrSelectMenu({
+                searchUri: '/Common/GetAreas',
+                 fromElementId: "CityId",
+                 destinyElmentId: "AreaId"
+             });
+         });
+     </script>
+ }

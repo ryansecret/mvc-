@@ -1,0 +1,23 @@
+@model Hsr.Models.UserSummaryInfo
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2 class="ui-bar ui-bar-a ui-corner-all">²é¿´</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>UserSummaryInfo</legend>
+
+      
+		@Html.Partial("_UserView", Model)
+
+    </fieldset>
+}
+<input type="hidden" id="DataSouceId" value="2" />  
+<div>
+    <a href="/UserSummaryInfo/Index " data-role="button">·µ»Ø</a>
+</div>
+

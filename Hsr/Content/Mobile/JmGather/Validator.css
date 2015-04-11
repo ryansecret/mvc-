@@ -1,0 +1,58 @@
+﻿
+
+
+.errContainer {
+    color: #C64442
+}
+.err-vali {
+    border: 1px solid #C64442 !important;
+   
+}
+
+.cor-vali {
+    border: none !important;
+}
+
+.field-validation-error {
+    color: #C64442;
+    font-weight: bold;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #C64442;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #C64442;
+    font-weight: bold;
+    font-size: 1.1em;
+    box-shadow: 0 1px 1px rgba(198,68, 66,255) inset;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.field-validation-error:before, .cor-vali:after {
+    font-weight: bold;
+    right: 0.5em;
+    position: absolute;
+    top:0;
+    border: none !important;
+}
+ .field-validation-error:before {
+    /*content: url(../../Images/error.png);*/
+     content: "×";
+}
+
+ .cor-vali:after {
+    content:"√";
+}

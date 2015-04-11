@@ -1,0 +1,20 @@
+﻿@using Hsr.App_Start
+@model Hsr.Models.UserSummaryInfo
+@{
+    ViewBag.Title = "Edit";
+    Layout = null;
+}
+<form   enctype="multipart/form-data" method="post" id="">
+    <input type="file" id="imageInput" name="fileToUpload" style="display: none"/>
+</form>
+@using (Html.BeginForm("Edit", "UserSummaryInfo", FormMethod.Post, new { @class = "form-horizontal" })) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+         
+        @Html.HiddenFor(model => model.Auid)
+		@Html.Partial("_CreateOrEdit", Model)
+
+   
+    </fieldset>
+}
+ 

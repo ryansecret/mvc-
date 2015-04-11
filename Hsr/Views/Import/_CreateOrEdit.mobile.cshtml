@@ -1,0 +1,67 @@
+﻿@using Hsr.HtmlHelperEX
+@using Hsr.Models
+@using MVC.Controls
+@model Hsr.Models.Datamapping
+@{var num = 0;}
+
+<div class="ui-body ui-body-a ui-corner-all">
+
+    <div class="editor-field" data-role="fieldcontain">
+        <label>数据库表名称</label>
+        @Html.EditorFor(model => model.Dbtable)
+        @Html.ValidationMessageFor(model => model.Dbtable)
+    </div>
+    <div class="editor-field" data-role="fieldcontain">
+        <label>用户起的别称</label>
+        @Html.EditorFor(model => model.Nickname)
+        @Html.ValidationMessageFor(model => model.Nickname)
+    </div>
+    
+</div>
+    <h2 class="ui-bar ui-bar-a ui-corner-all">导入信息</h2>
+    <input type="button" id="CreateColumn"  name="Datamapping" value="新建" data-theme="b"  />
+        
+        <div class="ui-body ui-body-a ui-corner-all">
+            
+            <div style="height: 100%; overflow-x: auto" >
+                <table   class="ui-responsive ui-table ui-table-reflow" data-role="table" >
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>数据库表列名称</th>
+                            <th>模板列名称</th>
+                            <th>数据类型</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                           @foreach (var item in (ViewBag.list as DatamappingColumns).Data)
+                        {
+                            <tr>
+                                <td>
+                                    @{num = num + 1; }
+                                    @num.ToString()
+                                </td>
+                                <td>@item.Dbcolname</td>
+                                <td>@item.Tempalecolname</td>
+                                <td>@item.Datatype</td>
+                                <td>
+                                    @Html.ActionLinks("编辑","EditColumn","Import", new { id = item.Id },new {@class="ui-btn ui-mini ui-btn-inline ui-icon-edit ui-btn-icon-notext",style="margin: 0"}) 
+                                    @Html.ActionLinks("查看","DetalColumn","Import", new { id = item.Id  },new {@class="ui-btn ui-mini ui-btn-inline  ui-icon-action ui-btn-icon-notext",style="margin: 0"})
+                                    @Html.ActionLinks("删除","DeleteColumn","Import",null,new {onclick="Delete("+"'"+@item.Id+"'"+")", href="javascript:void(0)",@class="ui-btn ui-mini ui-btn-inline   ui-icon-delete ui-btn-icon-notext",style="margin: 0"})
+                                    @*<a href="javascript:void(0)" onclick="Delete('@item.Auid')" >删除</a>*@
+                                </td>
+                        
+                            </tr>
+                        }
+                        
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="pager">
+                @Html.Pager(ViewBag.list as DatamappingColumns).QueryParam("pagenumber").ShowTotalSummary(true)
+            </div>
+
+
+</div>

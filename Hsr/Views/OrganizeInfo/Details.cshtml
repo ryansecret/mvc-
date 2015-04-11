@@ -1,0 +1,102 @@
+@model Hsr.Model.Models.OrganizeInfo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>明细</h2>
+
+<fieldset>
+    <legend>OrganizeInfo</legend>
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.OrderNum)</div>
+          <div class="col-md-10">@String.Format("{0:F}", Model.OrderNum)</div>
+    </div>
+     
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.Category)</div>
+          <div class="col-md-10">@Model.Category</div>
+    </div>
+     
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.Logo)</div>
+          <div class="col-md-10">@Model.Logo</div>
+    </div>
+     
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.AreaId)</div>
+          <div class="col-md-10">@String.Format("{0:F}", Model.AreaId)</div>
+    </div>
+     
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.CityId)</div>
+          <div class="col-md-10">@String.Format("{0:F}", Model.CityId)</div>
+    </div>
+     
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.ProvinceId)</div>
+          <div class="col-md-10">@String.Format("{0:F}", Model.ProvinceId)</div>
+    </div>
+     
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.Isenabled)</div>
+          <div class="col-md-10">@String.Format("{0:F}", Model.Isenabled)</div>
+    </div>
+     
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.CreateBy)</div>
+          <div class="col-md-10">@Model.CreateBy</div>
+    </div>
+     
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.CreateUserid)</div>
+          <div class="col-md-10">@Model.CreateUserid</div>
+    </div>
+     
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.CreateTime)</div>
+          <div class="col-md-10">@String.Format("{0:g}", Model.CreateTime)</div>
+    </div>
+     
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.Description)</div>
+          <div class="col-md-10">@Model.Description</div>
+    </div>
+     
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.Address)</div>
+          <div class="col-md-10">@Model.Address</div>
+    </div>
+     
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.PostCode)</div>
+          <div class="col-md-10">@String.Format("{0:F}", Model.PostCode)</div>
+    </div>
+     
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.Fax)</div>
+          <div class="col-md-10">@Model.Fax</div>
+    </div>
+     
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.Phone)</div>
+          <div class="col-md-10">@Model.Phone</div>
+    </div>
+     
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.OrgPid)</div>
+          <div class="col-md-10">@String.Format("{0:F}", Model.OrgPid)</div>
+    </div>
+     
+    <div class="row">
+           <div class="col-md-2">@Html.LabelFor(model => model.OrgName)</div>
+          <div class="col-md-10">@Model.OrgName</div>
+    </div>
+     
+</fieldset>
+<p>
+     @Html.ActionLink("返回", "Index",null,new{@class="btn  btn-default",role="button"}) 
+     @Html.ActionLink("编辑", "Edit", new { id=Model.OrgId  },new{@class="btn btn-primary",role="button"}) 
+</p>
+
+

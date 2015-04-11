@@ -1,0 +1,21 @@
+﻿@model Hsr.Model.Models.ViewModel.MenuVm
+@{
+    ViewBag.Title = "Create";
+}
+<div class="box header">
+    <h2 class="ui-bar ui-bar-a ui-corner-all">新建</h2>
+@using (Html.BeginForm("Create","Menu")) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+		@Html.Partial("_CreateOrEdit", Model)
+        <p>
+            <input type="submit" value="新建" />
+        </p>
+    </fieldset>
+}
+</div>
+<div>
+    <a href="#" data-rel="back" class="ui-btn  ui-btn-icon-notext ui-icon-carat-l">回退</a>
+</div>
+
+

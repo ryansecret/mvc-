@@ -1,0 +1,41 @@
+
+@using Hsr.App_Start
+@model Hsr.Models.UserSummaryInfo
+@section HeaderContent{
+@Scripts.Render("~/bundles/dateTime")
+}
+@{
+    ViewBag.Title = "Create";
+}
+<h2 class="ui-bar ui-bar-a ui-corner-all">添加</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>UserSummary</legend>
+        
+        @Html.Partial("_CreateOrEdit", Model)
+        <p>
+            <input type="submit"  value="新建" onclick="return roletest()" id="SaveNew"/>
+        </p>
+    </fieldset>
+    <input type="hidden" id="RoleIds" name="RoleIds">
+    <input type="hidden" id="RoleNames" name="RoleNames">
+}
+<input type="hidden" value="" id="selectedId" name=""/>
+<input type="hidden" id="DataSouceId" value="1" />  
+
+<div>
+    <a href="/UserSummaryInfo/Index" data-role="button">返回</a>
+</div>
+@section scripts
+{
+    @Styles.Render(BundleConfig.JsTreeCss)
+    @Scripts.Render("~/bundles/jstree")
+    @Scripts.Render("~/bundles/RoleTree")
+    @Scripts.Render("~/bundles/usersummary")
+    @Scripts.Render("~/bundles/Dept")
+    @Scripts.Render("~/bundles/Comp")
+ 
+    @Scripts.Render(BundleConfig.Md5ScriptPath)
+}

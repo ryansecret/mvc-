@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{40EFAB71-B29C-4707-A4D9-31882491E4A1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Hsr.Service</RootNamespace>
+    <AssemblyName>Hsr.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=3.4.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Autofac.3.4.0\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FileOperate\FileOperateService.cs" />
+    <Compile Include="FileOperate\IFileOperateService.cs" />
+    <Compile Include="Global.cs" />
+    <Compile Include="Iservice\IAreaService.cs" />
+    <Compile Include="Iservice\IDictionaryService.cs" />
+    <Compile Include="Iservice\ImportService.cs" />
+    <Compile Include="Iservice\IOrganizeInfoService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\AreaService.cs" />
+    <Compile Include="Service\DictionaryService.cs" />
+    <Compile Include="Service\ImportSevice.cs" />
+    <Compile Include="Iservice\IUserInfoService.cs" />
+    <Compile Include="Service\OrganizeInfoService.cs" />
+    <Compile Include="FileOperate\UNCAccessWithCredentials.cs" />
+    <Compile Include="Service\UserInfoService.cs" />
+    <Compile Include="ValidatorRegister.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hsr.Core\Hsr.Core.csproj">
+      <Project>{6B5F3C0F-8FF2-4937-9675-EFA03CE1CF8A}</Project>
+      <Name>Hsr.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hsr.Data\Hsr.Data.csproj">
+      <Project>{1507e927-192e-4571-a847-24fd40b41294}</Project>
+      <Name>Hsr.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hsr.Model\Hsr.Model.csproj">
+      <Project>{41aafa27-77ec-4abd-b90f-24753a5ddd9a}</Project>
+      <Name>Hsr.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MVC.Controls\MVC.Controls.csproj">
+      <Project>{1ADB25C4-9475-4B7D-B016-EBBB66403215}</Project>
+      <Name>MVC.Controls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

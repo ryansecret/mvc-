@@ -1,0 +1,20 @@
+﻿@using Hsr.App_Start
+@using Hsr.Core.HtmlEx
+@model Hsr.Models.UserSummaryInfo
+@{
+    ViewBag.Title = "Create";
+    Layout = null;
+}
+<form    enctype="multipart/form-data" method="post">
+    <input type="file" id="imageInput" name="fileToUpload" style="display: none"/>
+</form>
+@using (Html.BeginForm("Create", "UserSummaryInfo", FormMethod.Post, new { @class = "form-horizontal" ,id="createForm"})) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        @Html.Partial("_CreateOrEdit", Model)
+    </fieldset>
+ 
+}
+
+
+

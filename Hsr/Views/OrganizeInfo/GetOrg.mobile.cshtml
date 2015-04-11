@@ -1,0 +1,19 @@
+﻿@model  IEnumerable<Hsr.Model.Models.ViewModel.OrganizeInfoVm>
+
+ 
+  
+<fieldset data-role="controlgroup" data-filter-placeholder="搜索部门...." data-filter="true">
+    @{
+            
+        foreach(var item in Model)
+        {
+            <div data-role="fieldcontain">
+                <input name="radio-choice-v-1" id="@item.OrgId" type="radio"   value="@item.Orgname">
+                <label for="@item.OrgId">@item.Orgname</label>
+            </div>
+        }
+    }
+       
+</fieldset>
+
+ 

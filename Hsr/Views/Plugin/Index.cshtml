@@ -1,0 +1,78 @@
+﻿@using Hsr.Core.Plugins
+@model IEnumerable<PluginViewModel>
+<button class="btn"></button>
+<div class="row">
+    <div  class="panel">
+        <div class="panel-heading row">
+            <h4>插件管理</h4>
+        </div>
+        <div class="panel-body">
+             <table class="table table-striped table-hover table-bordered">
+    <thead>
+            <tr>
+                     
+                      <th>
+                          分组
+                      </th>
+                      <th>
+                          图标
+                      </th>
+                      <th>
+                          插件信息
+                      </th>
+                      <th>
+                          操作
+                      </th>
+                      
+                  </tr>
+    </thead>
+    <tbody>
+            @foreach (var item in Model) {
+        <tr>
+
+            <td>
+                @item.Group
+            </td>
+            <td>
+                <img src="@item.LogoUrl"/>
+            </td>
+            <td>
+                <b>@item.FriendlyName</b>
+<br>
+Version: @item.Version
+<br>
+Author: @item.Author
+<br>
+System name: @item.SystemName
+<br>
+Display order: @item.DisplayOrder
+<br>
+Installed:@if (item.Installed)
+          {
+             <span class="glyphicon glyphicon-ok"></span>
+          }
+          else
+          {
+             <span class="glyphicon glyphicon-remove"></span>
+          }
+<br>
+            </td>
+            <td>
+                @if (item.Installed)
+                {
+                    @Html.ActionLink("卸载","Uninstall",new{systemName=item.SystemName},new{@class="btn btn-primary"})
+                }
+                else
+                {
+                    @Html.ActionLink("安装","Install",new{systemName=item.SystemName},new{@class="btn btn-primary"})
+                }
+                
+            </td>
+        </tr>
+    }
+   </tbody>
+
+</table>
+        </div>
+    </div>
+</div>

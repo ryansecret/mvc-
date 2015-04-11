@@ -1,0 +1,24 @@
+﻿   
+@model Hsr.Models.DatamappingColumn
+<div class="ui-body ui-body-a ui-corner-all">
+    
+    <div class="editor-field" data-role="fieldcontain">
+        <label>数据库表列名称</label>
+        @Html.EditorFor(model => model.Dbcolname)
+        @Html.ValidationMessageFor(model => model.Dbcolname)
+    </div>
+
+    <div class="editor-field" data-role="fieldcontain">
+        <label>模板列名称</label>
+        @Html.EditorFor(model => model.Tempalecolname)
+        @Html.ValidationMessageFor(model => model.Tempalecolname)
+    </div>
+
+    <div class="editor-field" data-role="fieldcontain">
+        <label>数据类型</label>
+        @Html.EditorFor(model => model.Datatype)
+        @Html.ValidationMessageFor(model => model.Datatype)
+    </div>
+
+</div>
+    

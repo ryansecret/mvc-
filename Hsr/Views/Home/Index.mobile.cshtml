@@ -1,0 +1,818 @@
+﻿@using Hsr.App_Start
+@{
+    ViewBag.Title = "主页";  
+}
+@*@section featured {
+  
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+            <p>
+                若要了解有关 ASP.NET MVC 的详细信息，请访问
+                <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>。
+                该页提供 <mark>视频、教程和示例</mark> 以帮助你充分利用 ASP.NET MVC。
+                如果你对 ASP.NET MVC 有任何疑问，请访问
+                <a href="http://forums.asp.net/1146.aspx/1?MVC" title="ASP.NET MVC Forum">我们的论坛</a>。
+            </p>
+            <a href=#  class="hint--top" data-hint="Yeah, I am >:D" style="width:100px;z-index:0">Ls</a>
+ 
+        </div>
+ 
+    </section>
+}*@
+ 
+<form id="form" enctype="multipart/form-data" method="post">
+        <div>
+            <label for="fileToUpload">选择上传文件</label><br />
+            <input type="file" name="fileToUpload" id="fileToUpload"/>
+        </div>
+        
+        <div>
+            <input type="button"  value="上传" id="uploadBtn"/>
+        </div>
+</form>
+<div id="tree" data="name:'dddd'">
+    
+</div>
+<div id="canvas-holder">
+    <div class="col w5">
+        <canvas id="chart-area" width="300" height="300"/>
+    </div>
+    <div class="col w5 last">
+        <canvas id="canvas" height="450" width="600"></canvas>
+    </div>
+    
+</div>
+<div>
+    <a href="@Url.Action("Index","Menu")" id="demo" data-rel="popup" data-url="sss" data-position-to="window" data-transition="pop" class="ui-btn">test</a>
+</div>
+
+
+<button class="btn .btn--negative">negative</button>
+<button class="btn .btn--positive">positive</button>
+<button class="btn .btn--natural" >demo button</button>
+<button class="btn .btn--inactive" >demo button</button>
+<button class="btn .btn--hard" id="aaron2" >demo button</button>
+<div id="dialog11"  data-role="popup" data-dismissible="false" >
+    <h3>下面是我们的建议:测试</h3>
+</div>	
+<div data-role="popup" id="popupDialog" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+    <div data-role="header" data-theme="a">
+    <h1 id="diatitle">Delete Page?</h1>
+    </div>
+    <div role="main" class="ui-content">
+        <h3 class="ui-title">Are you sure you want to delete this page?</h3>
+    <p>This action cannot be undone.</p>
+        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Cancel</a>
+        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" data-transition="flow">Delete</a>
+    </div>
+</div>					
+<h3>下面是我们的建议:</h3>
+<ol class="round">
+    <li class="one">
+        <h5>开始使用</h5>
+        ASP.NET MVC 为你提供了一种用于生成动态网站的方式，
+        该方式基于模式，十分强大，使你可以清晰地分离各种考虑因素，让你能够完全控制标记，
+        以便进行灵活而有趣的开发。ASP.NET MVC 包括许多功能，你可以使用这些功能进行
+        TDD 友好的快速开发，以创建使用
+        最新 Web 标准的复杂应用程序。
+        <a href="http://go.microsoft.com/fwlink/?LinkId=245151">了解详细信息...</a>
+    </li>
+
+    <li class="two">
+        <h5>添加 NuGet 程序包并快速开始编码</h5>
+        通过 NuGet，可以轻松地安装和更新免费的库和工具。
+        <a href="http://go.microsoft.com/fwlink/?LinkId=245153">了解详细信息...</a>
+    </li>
+
+    <li class="three">
+        <h5>查找 Web 宿主</h5>
+        你可以轻松找到所提供的功能和价格
+        都适合你应用程序的 Web 宿主公司。
+        <a href="http://go.microsoft.com/fwlink/?LinkId=245157">了解详细信息...</a>
+    </li>
+</ol>
+
+<div id="grandfather">
+    <div id="father">
+        <div id="child1"></div>
+        <div id="child2"></div>
+        <div id="child3"></div>
+    </div>
+</div>
+
+ <style>
+  .ui-progressbar {
+    position: relative;
+  }
+  .progress-label {
+    position: absolute;
+    left: 50%;
+    top: 4px;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #fff;
+ }
+  </style>
+@section scripts
+{
+    @Scripts.Render(BundleConfig.ChartJsPath)
+    @Scripts.Render(BundleConfig.MetaDataJsPath)
+    @Scripts.Render(BundleConfig.SingleFileUpLoadJsPath) 
+    @Styles.Render(BundleConfig.MessageStylePath)
+    @Scripts.Render(BundleConfig.MessageJsPath)
+    <link href="~/Scripts/Progress/Jquery-ui-progressbar.css" rel="stylesheet" />
+    <script src="~/Scripts/Progress/jquery-ui-1.11.2.js"></script>
+
+    <script>
+        $(function () {
+           
+            $('#btndd').on('click', function () {
+               
+            });
+            
+            $('body').on('click', '#btndd', function () {
+                Messenger.options = {
+                    extraClasses: 'messenger-fixed messenger-on-top',
+                    theme: 'flat'
+                }
+                Messenger().post({
+                    message: 'There was an explosion while processing your request.',
+                    type: 'error',
+                    showCloseButton: true
+                });
+                
+                //var i;
+
+                //i = 0;
+
+                //Messenger().run({
+                //    errorMessage: 'Error destroying alien planet',
+                //    successMessage: 'Alien planet destroyed!',
+                //    action: function (opts) {
+                //        if (++i < 3) {
+                //            return opts.error({
+                //                status: 500,
+                //                readyState: 0,
+                //                responseText: 0
+                //            });
+                //        } else {
+                //            return opts.success();
+                //        }
+                //    }
+                //});
+
+            })
+            $("<button id='btndd'>btndd</button>").appendTo($('#grandfather'));
+            
+            $('#child1 + div').html("是我");
+
+            function Deferred() {
+                //内部deferred对象
+                var deferred = {};
+
+                //定义的基本接口
+                //Callbacks(once memory)的用法，就是只执行一次，并且保持以前的值
+                // 每个元组分别包含一些与当前deferred相关的信息: 
+                // 分别是：触发回调函数列表执行(函数名)，添加回调函数（函数名），回调函数列表（jQuery.Callbacks对象），deferred最终状态（第三组数据除外）
+                // 总体而言，三个元组会有对应的三个callbacklist对应于doneList, failList, processList
+                var tuples = [
+                    ["resolve", "done", jQuery.Callbacks("once memory"), "resolved"],
+                    ["reject", "fail", jQuery.Callbacks("once memory"), "rejected"],
+                    ["notify", "progress", jQuery.Callbacks("memory")]
+                ];
+
+                //deferred的状态，三种：pending(初始状态), resolved(解决状态), rejected(拒绝状态)
+                //其实就是tuples最后定义的
+                var state = "pending";
+
+                //内部promise对象,作用：
+                //1：通过promise.promise( deferred );混入到deferred中使用
+                //2：可以生成一个受限的deferred对象，
+                //   不在拥有resolve(With), reject(With), notify(With)这些能改变deferred对象状态并且执行callbacklist的方法了
+                //   换句话只能读，不能改变了
+                //扩展
+                //  done fail pipe process 
+                var promise = {
+                    state: function() {
+                    },
+                    always: function() {
+                    },
+                    then: function() {
+                    },
+                    promise: function(obj) {
+                        return obj != null ? jQuery.extend(obj, promise) : promise;
+                    }
+                }
+
+                //管道接口,API别名
+                promise.pipe = promise.then;
+
+                //遍历tuples
+                //把定义的接口混入到deferred中
+                jQuery.each(tuples, function(i, tuple) {
+                    var list = tuple[2],
+                        stateString = tuple[3];
+
+                    // 给上面的promise对象添加done，fail，process方法
+                    // 分别引用三个不同 jQuery.Callbacks("once memory")对象的add方法，在初始化就构建成了对象
+                    // 向各自的回调函数列表list（各自闭包中）中添加回调函数，互不干扰
+                    // promise = {
+                    //    done:
+                    //    fail:
+                    //    process
+                    // }
+                    promise[tuple[1]] = list.add;
+
+                    if (stateString) {
+                        list.add(function() {
+                            state = stateString;
+                        }, tuples[i ^ 1][2].disable, tuples[2][2].lock);
+                    }
+                    deferred[tuple[0]] = function() {
+                        deferred[tuple[0] + "With"](this === deferred ? promise : this, arguments);
+                        return this;
+                    };
+                    deferred[tuple[0] + "With"] = list.fireWith;
+                });
+                //混入方法
+                promise.promise(deferred);
+
+                return deferred;
+            }
+
+
+            $("#aaron2").on("click", function() {
+
+                var obj = {
+                    hello: function(name) {
+                        console.log("你好 " + name);
+                    }
+                };                
+                
+               
+                var dtd = Deferred();
+                dtd.promise(obj);
+                obj.done(function(name) {
+                    obj.hello(name);
+                }).hello("Aaron");
+                obj.resolve();
+                // 给deferred注册一个成功后的回调通知
+                dtd.done(function() {
+                    $('body').append('<li>Deferred成功</li>')
+                })
+                // 开始执行一段代码
+                setTimeout(function() {
+                    dtd.resolve(); // 改变deferred对象的执行状态
+                }, 500);
+            })
+            //$("#aaron2").on("click", function () {
+            //    var obj = {
+            //        hello: function (name) {
+            //            console.log("你好 " + name);
+            //        }
+            //    },
+            //     defer = $.Deferred();
+            //    // 设置一个promise
+            //    defer.promise(obj);
+            //    //解决一个deferred
+            //    defer.resolve("慕课网");
+            //    obj.done(function (name) {
+            //        obj.hello(name);
+            //    }).hello("Aaron");
+            //})
+
+            var d1 = new $.Deferred();
+            var d2 = new $.Deferred();
+
+            $.when(d1, d2).done(function(v1, v2) {
+                console.log(v1); // "Fish"
+                console.log(v2); // "Pizza"
+            });
+
+            d1.resolve("Fish");
+            d2.resolve("Pizza");
+
+            function task3(name) {
+                var dtd = $.Deferred();
+                setTimeout(function() {
+                    show('task3执行完毕', $("#aaron2"))
+                    dtd.resolve(name)
+                }, 500)
+                return dtd;
+            }
+
+            function task4(name) {
+                var dtd = $.Deferred();
+                setTimeout(function() {
+                    show('task4执行完毕', $("#aaron2"))
+                    dtd.resolve(name)
+                }, 1000)
+                return dtd;
+            }
+
+            $("#aaron2").click(function() {
+                $.when(task3('task1'), task4('task2')).done(function() {
+                    show('when处理成功', $("#aaron2"))
+                })
+            })
+            $.Callbacks("once").add();
+
+            function show(data, ele) {
+                (ele || $("body")).append('<li>' + data + '</li>')
+            }
+
+            function fn1(val) {
+                console.log('fn1 says ' + val);
+            }
+
+            function fn2(val) {
+                console.log('fn2 says ' + val);
+            }
+
+            function fn3(val) {
+                console.log('fn3 says ' + val);
+            }
+
+            var cbs = $.Callbacks('memory');
+            cbs.add(fn1);
+            cbs.fire('foo');
+            console.log('..........')
+
+            cbs.add(fn2);
+            cbs.fire('bar');
+
+            console.log('..........')
+            cbs.add(fn3);
+            cbs.fire('aaron');
+
+
+            $('#fileToUpload').singleSelected();
+            
+
+            $('#uploadBtn').click(function(event) {
+                event.preventDefault();
+                $('#fileToUpload').SingleUpLoad({ formId: 'form' });
+
+            });
+
+            jQuery.metadata.setType("attr", "data");
+            var data1 = $.metadata.get($('#tree')[0]);
+            console.log(data1.name);
+            $('#demo').click(function(event) {
+                event.preventDefault();
+                // $('#diatitle').text("what are you doing ");
+            });
+            var randomScalingFactor = function () { return Math.round(Math.random() * 100) };
+            //
+            var bardata = {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [
+                    {
+                        fillColor: "rgba(220,220,220,0.5)",
+                        strokeColor: "rgba(220,220,220,1)",
+                        data: [65, 59, 90, 81, 56, 55, 40]
+                    },
+                    {
+                        fillColor: "rgba(151,187,205,0.5)",
+                        strokeColor: "rgba(151,187,205,1)",
+                        data: [28, 48, 40, 19, 96, 27, 100]
+                    }
+                ]
+            }
+            var lineChartData = {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [
+                    {
+                        label: "My First dataset",
+                        fillColor: "rgba(220,220,220,0.2)",
+                        strokeColor: "rgba(220,220,220,1)",
+                        pointColor: "rgba(220,220,220,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(220,220,220,1)",
+                        data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+                    },
+                    {
+                        label: "My Second dataset",
+                        fillColor: "rgba(151,187,205,0.2)",
+                        strokeColor: "rgba(151,187,205,1)",
+                        pointColor: "rgba(151,187,205,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(151,187,205,1)",
+                        data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+                    }
+                ]
+            };
+
+            var pieData = [
+                {
+                    value: 300,
+                    color: "#F7464A",
+                    highlight: "#FF5A5E",
+                    label: "张"
+                },
+                {
+                    value: 50,
+                    color: "#46BFBD",
+                    highlight: "#5AD3D1",
+                    label: "王"
+                },
+                {
+                    value: 100,
+                    color: "#FDB45C",
+                    highlight: "#FFC870",
+                    label: "李"
+                },
+                {
+                    value: 40,
+                    color: "#949FB1",
+                    highlight: "#A8B3C5",
+                    label: "赵"
+                },
+                {
+                    value: 120,
+                    color: "#4D5360",
+                    highlight: "#616774",
+                    label: "Dark Grey"
+                }
+            ];
+            window.onload = function () {
+                var ctx = document.getElementById("chart-area").getContext("2d");
+                window.myPie = new Chart(ctx).Pie(pieData);
+                var ctx1 = document.getElementById("canvas").getContext("2d");
+                window.myLine = new Chart(ctx1).Line(lineChartData, {
+                    responsive: true
+                });
+            };
+        });
+      
+        var MYAPP = MYAPP || {};
+        MYAPP.namespace = function(ns_string) {
+            var parts = ns_string.split('.'),
+                parent = MYAPP,
+                i;
+
+            // 默认如果第一个节点是MYAPP的话，就忽略掉，比如MYAPP.ModuleA
+            if (parts[0] === "MYAPP") {
+                parts = parts.slice(1);
+            }
+
+            for (i = 0; i < parts.length; i += 1) {
+                // 如果属性不存在，就创建
+                if (typeof parent[parts[i]] === "undefined") {
+                    parent[parts[i]] = {};
+                }
+                parent = parent[parts[i]];
+            }
+            return parent;
+        };
+        var module2 = MYAPP.namespace('MYAPP.modules.module2');
+        console.log(module2 === MYAPP.modules.module2);
+// true
+
+        // 跳过MYAPP
+        MYAPP.namespace('modules.module51');
+
+
+        var parent = {
+            name: "Papa"
+        };
+
+        var child = Object.create(parent);
+
+        var child = Object.create(parent, {
+            age: { value: 2 } // ECMA5 descriptor
+        });
+        console.log(child.hasOwnProperty("age"));
+// true
+        var tree = {};
+        tree.decorate = function() {
+            console.write("this is just like abstract method");
+        };
+        tree.decorator = function(method) {
+            if (typeof tree[method] === "function") {
+                tree[method].prototype = this;
+                return new tree[method];
+            }
+            throw { messge: "you are suckes" };
+        };
+
+        function Universe() {
+
+            // 缓存实例
+            var instance;
+
+            // 重新构造函数
+            Universe = function Universe() {
+                return instance;
+            };
+
+            // 后期处理原型属性
+            Universe.prototype = this;
+
+            // 实例
+            instance = new Universe();
+
+            // 重设构造函数指针
+            instance.constructor = Universe;
+
+            // 其它功能
+            instance.start_time = 0;
+            instance.bang = "Big";
+
+            return instance;
+        }
+
+        var uni = new Universe();
+        var uni2 = new Universe();
+        console.log(uni === uni2);
+// true
+
+        //var x = 10;
+
+        //function foo() {
+        //    alert(x);
+        //}
+
+        //(function (funArg) {
+
+        //    var x = 20;
+
+        //    // 变量"x"在(lexical)上下文中静态保存的，在该函数创建的时候就保存了
+        //    funArg(); // 10, 而不是20
+
+        //})(foo);
+
+        var foo = { x: 10 };
+
+        var bar = {
+            x: 20,
+            test: function() {
+
+                alert(this === bar); // true
+                alert(this.x); // 20
+
+
+            }
+        };
+
+        // 在进入上下文的时候
+        // this被当成bar对象
+        // determined as "bar" object; why so - will
+        // be discussed below in detail
+
+        //bar.test(); // true, 20
+
+        //foo.test = bar.test;
+
+        //// 不过，这里this依然不会是foo
+        //// 尽管调用的是相同的function
+
+        //foo.test(); // false, 10
+        var data = [];
+
+        for (var k = 0; k < 3; k++) {
+            (function(x) {
+                data[k] = function() {
+                    alert(x);
+                };
+            })(k); // 将k当做参数传递进去
+        }
+
+        //// 结果正确
+        //data[0](); // 0
+        //data[1](); // 1
+        //data[2](); // 2
+        var AlarmSystem = {
+            arm: function(message) {
+                this.isAlarmed = true;
+                alert(message);
+            },
+            disarm: function(message) {
+                this.isAlarmed = false;
+                alert(message);
+            }
+        };
+
+        $(".selector").selectmenu({
+            iconpos: "left"
+        });
+
+        function Name(parameters) {
+
+            this.hellof = function() {
+                alert("just a test");
+            };
+
+        }
+
+        console.log(typeof Name.hellof);
+
+
+        var test = new Name();
+
+        function A() {
+            var b = 11;
+            // 更新新创建的对象
+            this.x = 10;
+            // 但返回的是不同的对象
+            return this;
+        }
+
+        A.prototype.ww = 6;
+        var a = new A();
+        console.log(a.x, a, a.b, a.ww);
+        (function() {
+            var F = function() {
+            };
+            Object.create = function(o) {
+                if (arguments.length > 1) {
+                    throw Error('Second argument not supported');
+                }
+                if (o === null) {
+                    throw Error('Cannot set a null [[Prototype]]');
+                }
+                if (typeof o != 'object') {
+                    throw TypeError('Argument must be an object');
+                }
+                F.prototype = o;
+                return new F();
+            };
+        })();
+
+        var switchProto = {
+            isOn: function isOn() {
+                return this.state;
+            },
+            toggle: function toggle() {
+                this.state = !this.state;
+                return this;
+            },
+            meta: {
+                name: 'Light switch'
+            },
+            state: false
+        };
+
+        var switch1 = Object.create(switchProto),
+            switch2 = Object.create(switchProto);
+
+        switch1.meta.name = "dont kown";
+
+        var dd = switch1.toggle();
+
+        var enemyPrototype = {
+            name: 'Wolf',
+            position: {
+// Override this with setPosition
+                x: 0,
+                y: 0
+            },
+            setPosition: function setPosition(x, y) {
+                this.position = {
+                    x: x,
+                    y: y
+                };
+                return this;
+            },
+            health: 20, // Overrides automatically on change
+            bite: function bite() {
+            },
+            evade: function evade() {
+            }
+        },
+            spawnEnemy = function() {
+                return Object.create(enemyPrototype);
+            };
+        //spawnEnemy.prototype = {}
+        //var wolf1 = spawnEnemy(),
+        //    wolf2 = spawnEnemy();
+
+        //var wolf3 = Object.create(enemyPrototype);
+        //var wolf4 = Object.create(enemyPrototype);
+
+        //var wolf5 = new EnemyPrototype();
+        //var wolf6 = new EnemyPrototype();
+        //wolf6.position.x = 55;
+        //var ss = wolf3.setPosition(33, 22);
+        //wolf3.position.x = 33;
+
+        var test = {
+            title: "sss",
+            toString: function() {
+                return this.title;
+            }
+        };
+        Array.prototype.sum = function() {
+            return this.reduce(function(previous, current) {
+                return previous + current;
+            });
+        };
+
+        var multiply = function multiply(x, y) {
+            return x * y;
+        };
+        partial = function partial(fn) {
+            // Drop the function from the arguments list and
+            // fix arguments in the closure.
+            var args = [].slice.call(arguments, 1);
+            // Return a new function with fixed arguments.
+            return function() {
+                // Combine fixed arguments with new arguments
+                // and call fn with them.
+                var combinedArgs = args.concat(
+                    [].slice.call(arguments));
+                return fn.apply(this, combinedArgs);
+            };
+        };
+
+        var timer = function timer(delay) {
+            var whenTimedOut = $.Deferred(),
+                promise = whenTimedOut.promise();
+            promise.cancel = function(payload) {
+                whenTimedOut.reject(payload);
+            };
+            setTimeout(function() {
+                whenTimedOut.resolve();
+            }, delay);
+            return promise;
+        };
+
+        var double = partial(multiply, 2);
+        var ss = double(4);
+        var boundDouble = multiply.bind(null, 2);
+        var dd = boundDouble(4);
+        var numbers = [1, 2, 3, 4, 5, 6];
+        numbers.sum();
+        var rotate = function rotate(arr) {
+            arr.push(arr.shift());
+            return arr;
+        };
+        var original = [1, 2, 3];
+        var result = rotate(original);
+        var shows = [
+            {
+                artist: 'Kreap',
+                city: 'Melbourne',
+                ticketPrice: '40'
+            },
+            {
+                artist: 'DJ EQ',
+                city: 'Paris',
+                ticketPrice: '38'
+            },
+            {
+                artist: 'Treasure Fingers',
+                city: 'London',
+                ticketPrice: '60'
+            }
+        ],
+            books = [
+                {
+                    title: 'How to DJ Proper',
+                    price: '18'
+                },
+                {
+                    title: 'Music Marketing for Dummies',
+                    price: '26'
+                },
+                {
+                    title: 'Turntablism for Beginners',
+                    price: '15'
+                }
+            ];
+
+        //var sortedShows = shows.sort(function(a, b) {
+        //    return a.ticketPrice < b.ticketPrice;
+        //});
+        
+
+
+
+
+        //function $() {
+        //    return document.getElementById("bar");
+        //}
+
+        //$('#uploadBtn').click(function() {
+        //     var bar = window.setInterval("go()", 50);
+        //    function go() {
+        //    $("bar").style.width = parseInt($("bar").style.width) + 1 + "%";
+        //    $("bar").innerHTML = $("bar").style.width;
+        //    if ($("bar").style.width == "100%") {
+        //        window.clearInterval(bar);
+        //    }
+        //}
+        //    bar;
+        //});
+        
+    </script>
+   
+ 
+}
+ 
+ 

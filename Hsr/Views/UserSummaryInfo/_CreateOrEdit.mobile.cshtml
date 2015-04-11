@@ -1,0 +1,192 @@
+@model Hsr.Models.UserSummaryInfo
+@using Hsr.Core.HtmlEx
+@{
+    int UserType = 0;
+
+    string Birthday = Model.Detail.Birthday.ToString();
+    
+    if (Model != null && Model.Detail != null)
+    {
+        Model.Detail.Birthday = DateTime.Now; 
+        Birthday = Model.Detail.Birthday.Value.ToString("yyyy-MM-dd");
+        UserType = Model.UserType;
+        //Birthday = (Model.detail.Birthday.ToString() == "0001/01/01" || Model.detail.Birthday.ToString("yyyy/MM/dd") == "0001-01-01") ? "" : Model.detail.Birthday.ToString("yyyy/MM/dd");
+    }
+    var userNameDic = new Dictionary<string, object>();
+    userNameDic.Add("data-clear-btn","true");
+}
+
+
+<style>
+    .ui-mobile label, .ui-controlgroup-label {
+        display: inline;
+    }
+</style>
+<div class="ui-body ui-body-a ui-corner-all">
+
+    <div class="editor-field" data-role="fieldcontain">
+ 
+        <label  for="UserType">用户类型</label>
+        <select  id="select-choice-1" name="UserType">
+            <option value="1" @(UserType == 1 ? "selected='selected'" : "")>普通用户</option>
+            <option value="2" @(UserType == 2 ? "selected='selected'" : "")>管理员</option>
+        </select> 
+    </div>
+    <div class="editor-label" data-role="fieldcontain">
+        <label for="fullname">用户名</label>
+        @Html.TextBoxFor(model => model.UserName,userNameDic)
+        <span id="same" class="field-validation-error"></span>
+        <img src="~/Content/themes/images/ajax-loader.gif" id="img" style="display: none; width:2%;margin:1% 0 0 -39%"/>
+        @Html.ValidationMessageFor(model => model.UserName)
+    </div>
+
+
+
+    <div id="CUserP_Id">
+
+
+        <div class="editor-field" data-role="fieldcontain">
+            <label>用户密码</label>
+            @Html.PasswordFor(model => model.UserPw,userNameDic)
+            @Html.ValidationMessageFor(model => model.UserPw)
+        </div>
+
+        <div class="editor-field" data-role="fieldcontain">
+            <label>确认密码</label>
+            <input type="password" onblur="password()" id="RePassword" />
+            <span id="zheng" class="field-validation-error"></span>
+        </div>
+    </div>
+
+
+
+    <div class="editor-field" data-role="fieldcontain">
+        <label>真实姓名</label>
+        @Html.EditorFor(model => model.Detail.RealName)
+        @Html.ValidationMessageFor(model => model.Detail.RealName)
+    </div>
+
+    @Html.FlipSwichFor(d=>d.Detail.Isenabled,isChecked:(Model.Detail.Isenabled==1?true:false),onText:"是",offText:"否",onValue:"1",offValue:"0")
+ 
+
+
+
+    <div class="editor-label" data-role="fieldcontain">
+        <label>公司</label>
+        <a href="#Comppopup" id="Comp" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b">选择公司</a>
+        <div data-role="popup" id="Comppopup" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+            <div data-role="header" data-theme="a">
+                <h1>公司列表</h1>
+            </div>
+            <div id="menuTree">
+            </div>
+            <a href="#" data-rel="back" id="CompClose" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+        </div> <input type="text" disabled="disabled" value="" id="comptext"/>
+    </div>
+
+
+    <div class="editor-label" data-role="fieldcontain">
+        <label>部门</label>
+        <a href="#Deptpopup" id="Dept" data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b">选择部门</a>
+        <div data-role="popup" id="Deptpopup" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+            <div data-role="header" data-theme="a">
+                <h1>部门列表</h1>
+            </div>
+    
+            <div role="main" class="ui-content" >
+                <fieldset data-role="controlgroup" data-filter-placeholder="搜索部门...." data-filter="true">
+                    <div id="DeptpopupDialog" >
+        
+                    </div>
+                </fieldset>  
+            </div>
+ 
+            <a href="#" id="DeptClose" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+        </div>
+        <input type="text" value="" disabled="disabled" id="depttext"/>
+    </div>
+
+
+    <div class="editor-label" data-role="fieldcontain">
+        <label>角色</label>
+        <a href="#popup" id="rolemenu" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b">选择角色</a>
+        <div data-role="popup" id="popup" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+            <div data-role="header" data-theme="a">
+                <h1>角色列表</h1>
+            </div>
+            <div role="main" class="ui-content" id="roletree">
+           
+            </div>
+            <a href="#" data-rel="back" id="roleClose" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+        </div>
+        <input type="text" value="" disabled="disabled" id="roletext"/>
+    </div>
+
+
+
+
+    @Html.FlipSwichFor(d=>d.Detail.Sex,isChecked:(Model.Detail.Sex==2?false:true),onText:"男",offText:"女",onValue:"1",offValue:"2")
+
+
+
+    <div class="editor-field" data-role="fieldcontain">
+        <label>手机号</label>
+        @Html.EditorFor(model => model.Detail.Mobile)
+        @Html.ValidationMessageFor(model => model.Detail.Mobile)
+    </div>
+
+    <div class="editor-field" data-role="fieldcontain">
+        <label>座机号</label>
+        @Html.EditorFor(model => model.Detail.Telphone)
+        @Html.ValidationMessageFor(model => model.Detail.Telphone)
+    </div>
+
+    <div class="editor-field" data-role="fieldcontain" for="detail.Birthday">
+        <label>出生日期</label> 
+        <input type="date" name="detail.Birthday" id="detail.Birthday"
+               value="@Birthday" />
+        <span id="datatype" class="field-validation-error"></span>
+        @Html.ValidationMessageFor(model => model.Detail.Birthday)
+    </div>
+
+    <div class="editor-field" data-role="fieldcontain">
+        <label>邮箱</label>
+        @Html.EditorFor(model => model.Detail.Email)
+        @Html.ValidationMessageFor(model => model.Detail.Email)
+    </div>
+
+    <div class="editor-field" data-role="fieldcontain">
+        <label>备注</label>
+        @Html.EditorFor(model => model.Detail.Description)
+        @Html.ValidationMessageFor(model => model.Detail.Description)
+    </div>
+
+
+    <div class="editor-field">
+        @Html.HiddenFor(model => model.Auid)
+    </div> 
+
+    <div class="editor-field">
+        @if(Model.Isline==null)
+        {
+            Model.Isline = 0;
+            Model.Detail.CompId = ViewBag.id;
+            Model.Detail.CompName = ViewBag.name;
+        }
+        @Html.HiddenFor(model=>model.Detail.DeptName)
+        @Html.HiddenFor(model => model.Detail.DeptId)
+        @Html.HiddenFor(model => model.ProvinceId)
+        @Html.HiddenFor(model => model.CityId)
+        @Html.HiddenFor(model => model.AreaId)
+        @Html.HiddenFor(model=>model.Detail.UserAuid)
+        @Html.HiddenFor(model => model.Isline)
+        @Html.HiddenFor(model => model.Detail.CompId)
+        @Html.HiddenFor(model=>model.Detail.CompName)
+    </div>
+
+</div>
+
+
+
+
+

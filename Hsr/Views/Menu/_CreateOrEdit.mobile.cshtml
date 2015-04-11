@@ -1,0 +1,59 @@
+﻿@model Hsr.Model.Models.ViewModel.MenuVm
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+<div class="ui-body ui-body-a ui-corner-all">
+<div class="editor-label">
+    @Html.LabelFor(model => model.Menuname)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Menuname)
+    @Html.ValidationMessageFor(model => model.Menuname)
+</div>
+
+ 
+<div class="editor-label">
+    @Html.LabelFor(model => model.Isenabled)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Isenabled)
+    @Html.ValidationMessageFor(model => model.Isenabled)
+</div>
+@if (Model!=null&&Model.Pid != 0)
+{
+    <div class="editor-label">
+    @Html.LabelFor(model => model.Action)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Action)
+    @Html.ValidationMessageFor(model => model.Action)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Controller)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Controller)
+    @Html.ValidationMessageFor(model => model.Controller)
+</div>
+}
+
+@Html.HiddenFor(d=>d.Layer)
+@Html.HiddenFor(d=>d.PmenuName)
+@Html.HiddenFor(d=>d.Pid)
+<div class="editor-label">
+    @Html.LabelFor(model => model.Icon)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Icon)
+    @Html.ValidationMessageFor(model => model.Icon)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.OrderNum)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.OrderNum)
+    @Html.ValidationMessageFor(model => model.OrderNum)
+</div>
+ 
+    </div>

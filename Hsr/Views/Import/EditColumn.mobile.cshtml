@@ -1,0 +1,26 @@
+﻿@using Hsr.App_Start
+@model Hsr.Models.DatamappingColumn
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditColumn</title>
+</head>
+<body>
+@using (Html.BeginForm())
+{
+   
+		@Html.Partial("_CreateOrEditColumn", Model)
+
+        <p>
+            <input type="submit" id="edit" value="保存" />
+        </p>
+      
+}
+        <div>
+    <a href="/Import/Edit" data-role="button">返回</a>
+</div>
+</body>
+</html>

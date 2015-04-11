@@ -1,0 +1,96 @@
+﻿#region
+
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Hsr.Data;
+using Hsr.Data.CustomAttribute;
+
+#endregion
+
+namespace Hsr.Models
+{
+    [Table("BASE_SITE_INFO", Schema = "MNCMS_APP")]
+    public class BaseSiteInfo : BaseModel
+    {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [KeyGenerate(KeyKind = KeyKind.Id, SeqenceName = "SEQ_BASE_SITE_INFO")]
+        [Column("SITE_ID")]
+        public decimal? SiteId { get; set; }
+
+        [Column("SITE_NAME")]
+        public string SiteName { get; set; }
+
+        [Column("LAC")]
+        public decimal? Lac { get; set; }
+
+        [Column("CI")]
+        public decimal? Ci { get; set; }
+
+        [Column("MECH_TILT")]
+        public decimal? MechTilt { get; set; }
+
+        [Column("AZIMUTH")]
+        public decimal? Azimuth { get; set; }
+
+        [Column("SITE_TYPE")]
+        public decimal? SiteType { get; set; }
+
+        [Column("PROVINCE_ID")]
+        public decimal? ProvinceId { get; set; }
+
+        [Column("CITY_ID")]
+        public decimal? CityId { get; set; }
+
+        [Column("AREA_ID")]
+        public decimal? AreaId { get; set; }
+
+        [Column("ATTACH_COMP_ID")]
+        public decimal? AttachCompId { get; set; }
+
+        [Column("ATTACH_COMP")]
+        public string AttachComp { get; set; }
+
+        [Column("ATTACH_BUILDING")]
+        public string AttachBuilding { get; set; }
+
+        [Column("LONGITUDE")]
+        public decimal? Longitude { get; set; }
+
+        [Column("LATITUDE")]
+        public decimal? Latitude { get; set; }
+
+        [Column("DEVICE_TYPE")]
+        public string DeviceType { get; set; }
+
+        [Column("VENDOR_ID")]
+        public string VendorId { get; set; }
+
+        [Column("LAST_UPDATETIME")]
+        public DateTime LastUpdatetime { get; set; }
+
+        [Column("LAST_UPDATEUSERID")]
+        public decimal? LastUpdateuserid { get; set; }
+
+        [Column("LAST_UPDATEUSER")]
+        public string LastUpdateuser { get; set; }
+
+        [Column("SITE_STATUS")]
+        public decimal? SiteStatus { get; set; }
+
+        [Column("MARK")]
+        public string Mark { get; set; }
+
+        [Column("SITE_LEVEL")]
+        public decimal? SiteLevel { get; set; }
+
+        [Column("NET_TYPE")]
+        public decimal? NetType { get; set; }
+
+        [Column("DELFLAG")]
+        public decimal? Delflag { get; set; }
+
+        [Column("ISENABLED")]
+        public decimal? Isenabled { get; set; }
+    }
+}

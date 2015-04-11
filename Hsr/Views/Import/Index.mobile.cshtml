@@ -1,0 +1,64 @@
+﻿@using Hsr.App_Start
+@using Hsr.HtmlHelperEX
+@using MVC.Controls
+@model Hsr.Models.Datamappings
+@{var num = 0;}
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Index</title>
+    </head>
+    <body>
+        <h2 class="ui-bar ui-bar-a ui-corner-all">导入信息</h2>
+        <input type="button" id="Create"  name="Create" value="新建" data-theme="b"  />
+        <div class="ui-body ui-body-a ui-corner-all" id="Datamapping">
+            
+            <div style="height: 100%; overflow-x: auto" >
+                <table   class="ui-responsive ui-table ui-table-reflow" data-role="table" >
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>数据库表名称</th>
+                            <th>用户起的别称</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if(ViewBag.list!=null)
+                        {
+                            foreach (var item in Model.Data)
+                        {
+                            <tr>
+                                <td>
+                                    @{num = num + 1; }
+                                    @num.ToString()
+                                </td>
+                                <td>@item.Dbtable</td>
+                                <td>@item.Nickname</td>
+                                <td>
+                                    @Html.ActionLinks("编辑","Edit","Import", new { id = item.Id },new {@class="ui-btn ui-mini ui-btn-inline ui-icon-edit ui-btn-icon-notext",style="margin: 0"}) 
+                                    @Html.ActionLinks("查看","Detal","Import", new { id = item.Id  },new {@class="ui-btn ui-mini ui-btn-inline  ui-icon-action ui-btn-icon-notext",style="margin: 0"})
+                                    @Html.ActionLinks("删除","Delete","Import",null,new {onclick="Delete("+"'"+@item.Id+"'"+")", href="javascript:void(0)",@class="ui-btn ui-mini ui-btn-inline   ui-icon-delete ui-btn-icon-notext",style="margin: 0"})
+                                    @*<a href="javascript:void(0)" onclick="Delete('@item.Auid')" >删除</a>*@
+                                </td>
+                        
+                            </tr>
+                        }
+                        }
+                        
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="pager">
+                @Html.Pager(Model).QueryParam("pagenumber").ShowTotalSummary(true)
+            </div>
+
+        </div>
+    </body>
+</html>
+
+
+<script src="~/Scripts/System/Import.js"></script>

@@ -1,0 +1,129 @@
+@model Hsr.Models.UserSummaryInfo
+
+
+
+ <div class="ui-body ui-body-a ui-corner-all">
+
+<div class="editor-label">
+   用户类型
+</div>
+<div class="editor-field">
+    <input type="text" disabled="disabled" value='@(Model.UserType==2 ? " 管理员" : "普通用户")' />
+
+
+        
+</div>
+
+<div class="editor-label">
+    用户名
+</div>
+<div class="editor-field">
+    <input type="text" disabled="disabled" value="@Model.UserName" />
+
+</div>
+
+
+<div class="editor-label">
+    真实姓名
+</div>
+
+<div class="editor-field">
+    <input type="text" disabled="disabled" value="@Model.Detail.RealName" />
+</div>
+
+<div class="editor-label">
+    有效标志
+</div>
+
+<div class="editor-field">
+    <input type="text" disabled="disabled" value='@(Model.Detail.Isenabled == 0 ? " 否" : "是")' />
+</div>
+
+<div class="editor-label">
+    公司
+</div>
+<div>
+    <input type="text" disabled="disabled" value="@Model.Detail.CompName" id="CompNameViewId" />
+</div>
+    
+<div class="editor-label">
+    部门
+</div>
+<div>
+    <input type="text" disabled="disabled" value="@Model.Detail.DeptName" id="DeptNameViewId" />
+</div>
+
+<div class="editor-label">
+   省名称
+</div>
+<div class="editor-field">
+    <input type="text" disabled="disabled" value='@Model.ProvinceName' />    
+</div>
+<div class="editor-label">
+   城市名称
+</div>
+<div class="editor-field">
+    <input type="text" disabled="disabled" value='@Model.CityName' />      
+</div>
+<div class="editor-label">
+   区县名称
+</div>
+<div class="editor-field">
+    <input type="text" disabled="disabled" value='@Model.AreaName' />     
+</div>
+<div class="editor-label">
+    角色
+</div>
+@try
+{
+    foreach(var ro in Model.Role)
+{
+    <input type="text" disabled="disabled" value="@ro.RoleName" id="RoleNameViewId" />
+}
+}catch
+{
+    
+}
+
+    
+    <div class="editor-label">
+        性别
+    </div>
+<div class="editor-field">
+    <input type="text" disabled="disabled" value="@(Model.Detail.Sex==1?"男":"女")" />
+</div>
+
+    <div class="editor-label">
+        手机号
+    </div>
+    <div class="editor-field">
+        <input type="text" disabled="disabled" value='@(Model.Detail.Mobile == null ? "" : Model.Detail.Mobile)' />
+    </div>
+    <div class="editor-label">
+        座机号
+    </div>
+    <div class="editor-field">
+        <input type="text" disabled="disabled" value="@Model.Detail.Telphone" />
+    </div>
+    <div class="editor-label">
+        出生日期
+    </div>
+    <div class="editor-field">
+        <input type="text" disabled="disabled" value="@Model.Detail.Birthday.ToString()" />
+    </div>
+    <div class="editor-label">
+        邮箱
+    </div>
+    <div class="editor-field">
+        <input type="text" disabled="disabled" value="@Model.Detail.Email" />
+    </div>
+    <div class="editor-label">
+        备注
+    </div>
+    <div class="editor-field">
+        <input type="text" disabled="disabled" value="@Model.Detail.Description" />
+    </div>
+
+    </div>
+
+

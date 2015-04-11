@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "dio";
+}
+@model Hsr.Model.Models.TreeNode
+ 
+@using Hsr.Common
+@using Hsr.App_Start
+   
+<a href="#popup" id="testDia" data-rel="popup" data-position-to="window" data-transition="fade" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b">弹框tree</a>
+<div data-role="popup" id="popup" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+    <div data-role="header" data-theme="a">
+        <h1>角色列表</h1>
+    </div>
+    <div role="main" class="ui-content" id="popupDialog">
+        <div id="jstree">
+               @Html.Action("GetTree")
+        </div>
+        
+     
+    </div>
+    <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+</div>
+
+ 
+
+@section scripts
+ {
+       @Styles.Render(BundleConfig.JsTreeCss)
+       @Scripts.Render("~/bundles/jstree")
+       @Scripts.Render("~/bundles/dialogtree")
+       @Styles.Render(BundleConfig.JmFilterStylePath)
+       @Scripts.Render(BundleConfig.JmFilterScriptPath)
+ };
+

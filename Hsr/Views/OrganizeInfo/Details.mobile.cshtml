@@ -1,0 +1,108 @@
+﻿@model Hsr.Model.Models.OrganizeInfo
+
+@{
+    ViewBag.Title = "Details";
+     
+}
+
+<h2 class="ui-bar ui-bar-a ui-corner-all">查看详细</h2>
+<div class="ui-body ui-body-a ui-corner-all">
+
+    <fieldset>
+        <legend>OrganizeInfo</legend>
+
+        OrderNum
+        <div class="display-field">
+            @Html.DisplayFor(model => model.OrderNum)
+        </div>
+
+        种类
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Category)
+        </div>
+
+        LOGO
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Logo)
+        </div>
+
+        区域ID
+        <div class="display-field">
+            @Html.DisplayFor(model => model.AreaId)
+        </div>
+
+        城市编号
+        <div class="display-field">
+            @Html.DisplayFor(model => model.CityId)
+        </div>
+
+        地区编号
+        <div class="display-field">
+            @Html.DisplayFor(model => model.ProvinceId)
+        </div>
+
+        是否可用
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Isenabled)
+        </div>
+
+        创建人
+        <div class="display-field">
+            @Html.DisplayFor(model => model.CreateBy)
+        </div>
+
+        创建人编号
+        <div class="display-field">
+            @Html.DisplayFor(model => model.CreateUserid)
+        </div>
+
+        创建时间
+        <div class="display-field">
+            @Html.DisplayFor(model => model.CreateTime)
+        </div>
+
+        详细信息
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Description)
+        </div>
+
+        地址
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Address)
+        </div>
+
+        邮编
+        <div class="display-field">
+            @Html.DisplayFor(model => model.PostCode)
+        </div>
+
+        传真
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Fax)
+        </div>
+
+        联系电话
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Phone)
+        </div>
+
+        层级
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Layer)
+        </div>
+
+        机构父ID
+        <div class="display-field">
+            @Html.DisplayFor(model => model.OrgPid)
+        </div>
+
+        机构名称
+        <div class="display-field">
+            @Html.DisplayFor(model => model.OrgName)
+        </div>
+    </fieldset>
+    <p>
+  
+        <a href="/OrganizeInfo/Index" data-role="button" data-icon="back">返回上一层</a>
+    </p>
+</div>

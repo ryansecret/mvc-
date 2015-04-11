@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "_Dialog";
+}
+@using Hsr.Common
+@model Hsr.Model.Models.TreeNode
+
+<a href="#testDia" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-shadow ui-btn-inline  ui-btn-icon-left ui-btn-b">Show Tree</a>
+
+<div data-role="popup" id="roleDialog" data-overlay-theme="b" data-theme="e" data-dismissible="false" style="max-width:400px;">
+    <div data-role="header" data-theme="a">
+        <h3>用户角色</h3>
+    </div>
+    <div role="main" class="ui-content">
+      <div id="jstree">
+    @Html.TreeFor(Model)
+        </div>
+        <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+    </div>
+</div>
+ 

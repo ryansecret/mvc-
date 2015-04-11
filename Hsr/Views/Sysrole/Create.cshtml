@@ -1,0 +1,22 @@
+﻿@model  Hsr.Model.Models.ViewModel.RoleVm
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>新建</h2>
+
+@using (Html.BeginForm("Create", "Sysrole", FormMethod.Post, new { @class = "form-horizontal" })) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+       
+		@Html.Partial("_CreateOrEdit", Model)
+    </fieldset>
+	 <p>
+        @Html.ActionLink("返回", "Index","Sysrole",new{@class="btn  btn-default",role="button"}) 
+       <input type="submit" class="btn btn-primary" value="提交"/>
+    </p>
+}
+ 
+
+

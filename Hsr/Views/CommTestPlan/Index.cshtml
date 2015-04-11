@@ -1,0 +1,81 @@
+﻿@using Hsr.App_Start
+@using Hsr.HtmlHelperEX
+@model Hsr.Models.ComTestPlanPage
+ 
+ 
+<div class="panel-group col-md-2" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne" data-target="#collapseOne" data-toggle="collapse" data-parent="#accordion">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">区域查询
+                </a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body treeContainer">
+                <div id='divAreatree'></div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">条件查询
+                </a>
+            </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+                <form>
+                     
+                    <div class="form-group">
+                        <label>开始日期</label>
+                        <input name="BeginTime" class="form-control" data-provide="datepicker"/>
+                    </div>
+                    <div class="form-group">
+                        <label>结束日期</label>
+                        <input name="EndTime" class="form-control" data-provide="datepicker"/>
+                    </div>
+                    
+
+                    <div class="form-group">
+                        <label>编辑用户</label>
+                        <input name="EditUser" class="form-control" />
+                    </div>
+                    <div class="btn-group">
+                        <input type="button" class="btn btn-primary" value="查询" id="SearchContains" />
+                        <input type="reset" class="btn" value="清空"/>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-10">   
+    <div class="row">
+        <button class="btn btn-primary btn-none" onclick="$('#accordion').toggle(300)" data-toggle="button" ><span class="glyphicon glyphicon-pushpin" ></span></button>
+        <div class="btn-group" role="group">
+            @Html.ActionLinks(@"新建", "Create", "CommTestPlan",null,new{@class="btn btn-success",id="Create",name="Create"})
+        </div>
+    </div>
+   
+      <h3>方案列表</h3>
+  
+    
+       @Html.Partial("_PlanList",Model)
+    
+</div>
+ 
+@section scripts
+{
+    @Scripts.Render(BundleConfig.JsTree) 
+    @Styles.Render(BundleConfig.JsTreeCss)
+    @Scripts.Render(BundleConfig.DatePickerJs)
+    @Styles.Render(BundleConfig.DatePikerCss)
+    @Scripts.Render(BundleConfig.ComTestPlanJs)
+     
+}
+
+

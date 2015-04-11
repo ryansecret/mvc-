@@ -1,0 +1,91 @@
+﻿@using Hsr.Core.HtmlEx
+@using Hsr.Models
+@model Hsr.Model.Models.ViewModel.MenuVm
+
+ 
+ 
+<div class="form-group">
+    @Html.LabelFor(model => model.Menuname,new{@class="control-label col-md-3"})
+
+<div class="col-md-9">
+    @Html.TextBoxFor(model => model.Menuname,new{@class="form-control"})
+    @Html.ValidationMessageFor(model => model.Menuname)
+</div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Isenabled,new{@class="control-label col-md-3"})
+ 
+<div class="col-md-9">
+    @Html.CheckBoxFor(model => model.Isenabled,new{@class="form-control"})
+    @Html.ValidationMessageFor(model => model.Isenabled)
+</div>
+ </div>
+@if (Model!=null&&Model.Pid != 0)
+{
+    <div class="form-group">
+    @Html.LabelFor(model => model.Action,new{@class="control-label col-md-3"})
+ 
+<div class="col-md-9">
+    @Html.TextBoxFor(model => model.Action,new{@class="form-control"})
+    @Html.ValidationMessageFor(model => model.Action)
+</div></div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Controller,new{@class="control-label col-md-3"})
+
+    <div class="col-md-9">
+        @Html.TextBoxFor(model => model.Controller,new{@class="form-control"})
+        @Html.ValidationMessageFor(model => model.Controller)
+    </div>
+ </div>
+}
+
+@Html.HiddenFor(d=>d.Layer)
+@Html.HiddenFor(d=>d.PmenuName)
+@Html.HiddenFor(d=>d.Pid)
+<div class="form-group">
+    @Html.LabelFor(model => model.Icon,new{@class="control-label col-md-3"})
+
+    <div class="col-md-9">
+        @Html.TextBoxFor(model => model.Icon,new{@class="form-control"})
+        @Html.ValidationMessageFor(model => model.Icon)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.OrderNum,new{@class="control-label col-md-3"})
+
+    <div class="col-md-9">
+        
+        @Html.TextBoxFor(model => model.OrderNum,new{@class="form-control",type="number"})
+      
+        @Html.ValidationMessageFor(model => model.OrderNum)
+    </div>
+</div>
+@if (Model.Pid!=0)
+{
+    <div class="form-group">
+        @Html.Label("可用功能", new { @class = "control-label col-md-3" })
+        <div class="col-md-9">
+            <div class="input-group-btn">
+                <button type="button" class="btn  dropdown-toggle" value="choose" data-ishold="true" data-toggle="dropdown" aria-expanded="false"><b>@Model.ForbiddenAction</b><span class="caret"></span></button>
+                @Html.HiddenFor(d => d.ForbiddenAction)
+                <ul class="dropdown-menu" role="menu" ishold="true">
+                    @foreach (var item in (List<SysDictionaryInfo>)ViewBag.ForbiddenActions)
+                    {
+                        string check = "";
+                        if (!string.IsNullOrWhiteSpace(Model.ForbiddenAction) && Model.ForbiddenAction.Contains(item.Chname))
+                        {
+                            check = "checked";
+                        }
+                        <li><a href="#">
+                            <input type="checkbox" name="@item.Chname" value="@item.Enname" @check/>
+                            @item.Chname</a></li>
+         }
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+}

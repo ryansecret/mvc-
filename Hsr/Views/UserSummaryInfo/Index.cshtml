@@ -1,0 +1,91 @@
+﻿@using System.ServiceModel.Security.Tokens
+@using Hsr.App_Start
+@using Hsr.HtmlHelperEX
+@model  Hsr.Models.UserSummaryInfos
+ 
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="div-custom row">
+     <button class="btn btn-primary btn-none" onclick="$('#accordion').toggle(300)" data-toggle="button"><span class="glyphicon glyphicon-pushpin"></span></button>
+</div>
+<div class="panel-group col-md-3" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-primary" >
+        <div class="panel-heading" role="tab" id="headingOne" data-target="#collapseOne" data-toggle="collapse" data-parent="#accordion">
+            <h5 class="tree-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <span class="glyphicon glyphicon-th-list"></span>组织机构
+                </a>
+            </h5>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body treeContainer">
+                <div id='jstree'></div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading" role="tab" id="headingTwo">
+            <h5 class="tree-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <span class="glyphicon glyphicon-search"></span>条件查询
+                </a>
+            </h5>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+                <form>
+                     
+                    <div class="form-group form-group-sm">
+                        <label>公司名称</label>
+                        <input name="CompName" class="form-control" />
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label>部门名称</label>
+                        <input name="DeptName" class="form-control" />
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label>角色名称</label>
+                        <input name="RoleName" class="form-control" />
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label>用户名称</label>
+                        <input name="UserName"  class="form-control" />
+                    </div>
+
+                    <div class="form-group form-group-sm">
+                        <label>真实姓名</label>
+                        <input name="RealName" class="form-control" />
+                    </div>
+                    <div class="btn-group">
+                        <input type="button" class="btn btn-success btn-sm" value="查询" id="SearchContains" />
+                        <input type="reset" class="btn btn-warning btn-sm" value="清空"/>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-8">
+    <div class="row" >
+        <h4 style="float: left">用户列表</h4>
+        @Html.ActionLinks(@"新建", "Create", "UserSummaryInfo", null, new{@class="btn btn-success btn-sm",id="Create",name="Create", @style="float: right; margin-top:5px"})
+    </div>
+    @Html.Partial("UserList", Model)
+</div>
+@section scripts
+{
+    @Scripts.Render(BundleConfig.JsTree) 
+    @Styles.Render(BundleConfig.JsTreeCss)
+    @Scripts.Render(BundleConfig.DatePickerJs)
+    @Styles.Render(BundleConfig.DatePikerCss)
+    @Scripts.Render(BundleConfig.SingleFileUpLoadJsPath)
+    @Scripts.Render("~/bundles/usersummary")
+    @Scripts.Render(BundleConfig.Md5ScriptPath)
+}
+
+
+
+

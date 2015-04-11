@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Hsr.Models.Test>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>列表</h2>
+
+<p>
+    @Html.ActionLink("新建", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            Name
+        </th>
+        <th>
+            Ids
+        </th>
+        <th>
+            Person
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(@"编辑", "Edit", new { id=item.ControlleId }) |
+            @Html.ActionLink(@"详细", "Details", new { id=item.ControlleId }) |
+            @Html.ActionLink(@"删除", "Delete", new { id=item.ControlleId })
+        </td>
+        <td>
+			@item.Name
+        </td>
+        <td>
+			@item.Ids
+        </td>
+        <td>
+			@(item.Person == null ? "None" : item.Person.Count.ToString())
+        </td>
+    </tr>
+}
+
+</table>
+
+

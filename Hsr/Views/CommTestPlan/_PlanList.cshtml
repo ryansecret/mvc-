@@ -1,0 +1,77 @@
+﻿@using System.Collections
+@using Hsr.Models
+@using MVC.Controls
+@using MVC.Controls.Paging
+@using Hsr.HtmlHelperEX
+@model  ComTestPlanPage
+<div id="divList" class="strollContainer">
+    <table class="table table-striped table-hover table-bordered">
+        <tr>
+          
+            <th>
+                方案名称
+            </th>
+            <th>
+                方案类型
+            </th>
+            <th>
+                执行次数
+            </th>
+            <th>
+                循环间隔
+            </th>
+            <th>
+                编辑日期
+            </th>
+            <th>
+                编辑用户
+            </th>
+            <th>
+                状态
+            </th>
+            <th>
+                操作
+            </th>
+        
+        </tr>
+
+        @foreach (var  item in  Model.Data) {
+            <tr>
+       
+                <td>
+                    @item.PlanName
+                </td>
+                <td>
+                    @String.Format("{0}", item.PlayTypeName)
+                </td>
+                <td>
+                    @String.Format("{0:g}", item.LoopSum)
+                </td>
+                <td>
+                    @String.Format("{0:g}", item.LoopInterval)
+                </td>
+
+                <td>
+                    @String.Format("{0}", item.CreateTime)
+                </td>
+        
+                <td>
+                    @item.CreateUsername
+                </td>
+                <td>
+                    @String.Format("{0}", item.IsEnabled==1?"可用":"禁用")
+                </td>
+               
+                <td>
+                    @Html.ActionLinks(@"编辑", "Edit", "CommTestPlan",new { id=item.PlanId },null) |
+                    @Html.ActionLinks(@"查看", "Detail", "CommTestPlan", new { id=item.PlanId },null) |
+                    @Html.ActionLinks("删除","Delete", "CommTestPlan",null,new {onclick="Delete("+"'"+@item.PlanId+"'"+")", href="javascript:void(0)"})
+                </td>
+            </tr>
+        }
+
+    </table>
+      <div class="pager" id="pager">
+        @Html.Pager(Model).QueryParam("pagenumber").ShowTotalSummary(true)
+    </div>
+</div>

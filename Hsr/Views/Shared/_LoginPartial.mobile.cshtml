@@ -1,0 +1,22 @@
+﻿
+@using Hsr.Core
+@{
+    var attribute = new Dictionary<string, object>();
+    attribute.Add("class", "ui-btn");
+    attribute.Add("data-mini", "true");
+}
+@if (Session[CommonHelper.UserName] != null && !string.IsNullOrWhiteSpace(Session[CommonHelper.UserName].ToString()))
+{
+    <text>
+        你好，@Html.ActionLink(Session[CommonHelper.UserName].ToString(), "Manage", "Account", routeValues: null, htmlAttributes: new {@class = "username", title = "管理" })!
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+            @Html.AntiForgeryToken()
+            <a href="javascript:document.getElementById('logoutForm').submit()">注销</a>
+           
+        }
+    </text>
+} else {
+    
+    @Html.ActionLink("登录", "Login", "Account", routeValues: null, htmlAttributes: attribute)
+    
+}

@@ -1,0 +1,20 @@
+﻿@model Hsr.Model.Models.ViewModel.RoleVm
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm("Edit", "Sysrole", FormMethod.Post, new { @class = "form-horizontal" })) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+
+        @Html.HiddenFor(model => model.RoleId)
+		@Html.Partial("_CreateOrEdit", Model)
+
+       <p>
+            <button class="btn" onclick="history.go(-1)">取消</button>
+            <button class="btn btn-primary" type="submit">保存</button>
+        </p>
+    </fieldset>
+}
+ 

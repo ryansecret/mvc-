@@ -1,0 +1,26 @@
+@model Hsr.Models.Test
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>明细</h2>
+
+<fieldset>
+    <legend>Test</legend>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">@Model.Name</div>
+
+    <div class="display-label">Ids</div>
+    <div class="display-field">@Model.Ids</div>
+
+    <div class="display-label">Person</div>
+    <div class="display-field">@(Model.Person == null ? "None" : Model.Person.Count.ToString())</div>
+</fieldset>
+<p>
+    @Html.ActionLink("编辑", "Edit", new { id=Model.ControlleId }) |
+    @Html.ActionLink("返回", "Index")
+</p>
+
+

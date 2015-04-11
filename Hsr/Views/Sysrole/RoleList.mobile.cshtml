@@ -1,0 +1,52 @@
+﻿@model  Hsr.Model.Models.ViewModel.RoleVms
+@using MVC.Controls
+
+<div>
+    <table class="ui-responsive ui-table ui-table-reflow"  data-role="table" data-mode="reflow" >
+        <thead>
+            <tr>
+           
+                <th>
+                    角色名称
+                </th>
+                <th>
+                    角色分类
+                </th>
+                <th>
+                    描述
+                </th>
+                <th>
+                    提交时间
+                </th>
+                <th>
+                    创建人
+                </th>
+                <th>
+                    有效标志
+                </th>
+                <th>操作</th>
+           
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.Data) {
+            <tr>
+                <th style="background-color:transparent;font-size:1em;font-weight:normal">@item.RoleName </th>
+                <td>@item.Category</td>
+                <td>@item.Description</td>
+                <td>@item.CreateTime</td>
+                <td>@item.Category</td>
+                <td>@item.Isenabled</td>
+                <td>
+                    @Html.ActionLink(@"编辑", "Edit", new { id=item.RoleId },new {@class="ui-btn ui-mini ui-btn-inline ui-icon-edit ui-btn-icon-notext",style="margin: 0"}) 
+                    @Html.ActionLink(@"详细", "Details", new { id=item.RoleId },new {@class="ui-btn ui-mini ui-btn-inline ui-btn-icon-notext ui-icon-action",style="margin: 0"}) 
+                    <a href="javascript:void(0)" onclick="Delete('@item.RoleId')" class="ui-btn ui-mini ui-btn-inline ui-btn-icon-notext  ui-icon-delete" style="margin: 0">删除</a>  
+                </td>
+            </tr>
+        }
+    </tbody>
+    </table>
+    <div class="pager" id="pager">
+        @Html.Pager(Model).QueryParam("pagenumber").ShowTotalSummary(true)
+    </div>
+</div>

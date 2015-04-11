@@ -1,0 +1,73 @@
+﻿@model   Hsr.Model.Models.ViewModel.OrganizeInfoVms
+@using MVC.Controls
+ 
+<table  class="ui-responsive ui-table ui-table-reflow"  data-role="table" data-mode="reflow">
+    <thead>
+        <tr>
+            
+            <th >
+                序号
+            </th>
+            <th >
+                组织级别
+            </th>
+            <th  >
+                名称
+            </th>
+            <th>
+                地址
+            </th>
+            <th  >
+                有效标志
+            </th>
+            <th  >    
+                操作
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Data) {
+            <tr>
+                <th style="background-color:transparent;font-size:1em;font-weight:normal">
+                   <b class="ui-table-cell-label">序号</b> @item.OrgId  
+                </th>
+                 
+                <td><b class="ui-table-cell-label">组织级别</b>
+                    @if(item.Category=="1")
+                    {
+                        @:公司
+                    }else
+                    {
+                        @:部门
+                    }
+                </td>
+                <td><b class="ui-table-cell-label">名称</b>  @item.Orgname</td>
+          
+
+                <td><b class="ui-table-cell-label">地址</b>@item.Address</td>
+               
+
+                <td><b class="ui-table-cell-label">有效标志</b>
+                    @if(item.Isenabled==true)
+                    {
+                        @:是
+                    }else
+                    {
+                        @:否
+                    }
+                </td>
+                <td><b class="ui-table-cell-label">操作</b>
+                    @Html.ActionLink(@"编辑", "Edit", new { id=item.OrgId},new {@class="ui-btn ui-mini ui-btn-inline ui-icon-edit ui-btn-icon-notext",style="margin: 0"}) 
+                    @Html.ActionLink(@"详细", "Details", new { id=item.OrgId },new {@class="ui-btn ui-mini ui-btn-inline ui-btn-icon-notext ui-icon-action",style="margin: 0"}) 
+                    <a href="javascript:void(0)" onclick="Delete('@item.OrgId')" class="ui-btn ui-mini ui-btn-inline ui-btn-icon-notext  ui-icon-delete" style="margin: 0">删除</a>
+                </td>
+          
+            </tr>
+        }
+    </tbody>
+
+</table>
+ <div class="pager" id="pager">
+      @Html.Pager(Model).QueryParam("pagenumber").ShowTotalSummary(true)
+ </div>
+ 

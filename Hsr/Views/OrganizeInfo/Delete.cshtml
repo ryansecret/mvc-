@@ -1,0 +1,71 @@
+﻿@model Hsr.Model.Models.OrganizeInfo
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>删除</h2>
+
+<h3>确定删除当前所选?</h3>
+<fieldset>
+    <legend>OrganizeInfo</legend>
+
+    <div class="display-label">@Html.LabelFor(model => model.OrderNum)</div>
+    <div class="display-field">@String.Format("{0:F}", Model.OrderNum)</div>
+
+    <div class="display-label">@Html.LabelFor(model => model.Category)</div>
+    <div class="display-field">@Model.Category</div>
+
+    <div class="display-label">@Html.LabelFor(model => model.Logo)</div>
+    <div class="display-field">@Model.Logo</div>
+
+    <div class="display-label">@Html.LabelFor(model => model.AreaId)</div>
+    <div class="display-field">@String.Format("{0:F}", Model.AreaId)</div>
+
+    <div class="display-label">@Html.LabelFor(model => model.CityId)</div>
+    <div class="display-field">@String.Format("{0:F}", Model.CityId)</div>
+
+    <div class="display-label">@Html.LabelFor(model => model.ProvinceId)</div>
+    <div class="display-field">@String.Format("{0:F}", Model.ProvinceId)</div>
+
+    <div class="display-label">@Html.LabelFor(model => model.Isenabled)</div>
+    <div class="display-field">@String.Format("{0:F}", Model.Isenabled)</div>
+
+    <div class="display-label">@Html.LabelFor(model => model.CreateBy)</div>
+    <div class="display-field">@Model.CreateBy</div>
+
+    <div class="display-label">@Html.LabelFor(model => model.CreateUserid)</div>
+    <div class="display-field">@Model.CreateUserid</div>
+
+    <div class="display-label">@Html.LabelFor(model => model.CreateTime)</div>
+    <div class="display-field">@String.Format("{0:g}", Model.CreateTime)</div>
+
+    <div class="display-label">@Html.LabelFor(model => model.Description)</div>
+    <div class="display-field">@Model.Description</div>
+
+    <div class="display-label">@Html.LabelFor(model => model.Address)</div>
+    <div class="display-field">@Model.Address</div>
+
+    <div class="display-label">@Html.LabelFor(model => model.PostCode)</div>
+    <div class="display-field">@String.Format("{0:F}", Model.PostCode)</div>
+
+    <div class="display-label">@Html.LabelFor(model => model.Fax)</div>
+    <div class="display-field">@Model.Fax</div>
+
+    <div class="display-label">@Html.LabelFor(model => model.Phone)</div>
+    <div class="display-field">@Model.Phone</div>
+
+    <div class="display-label">@Html.LabelFor(model => model.OrgPid)</div>
+    <div class="display-field">@String.Format("{0:F}", Model.OrgPid)</div>
+
+    <div class="display-label">@Html.LabelFor(model => model.OrgName)</div>
+    <div class="display-field">@Model.OrgName</div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("退回", "Index")
+    </p>
+}
+
+

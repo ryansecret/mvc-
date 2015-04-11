@@ -1,0 +1,59 @@
+﻿@using Hsr.HtmlHelperEX
+@using MVC.Controls
+@model Hsr.Model.Models.ViewModel.RoleVms
+ <div id="divList">
+     <table class="table table-striped table-hover table-bordered">
+         <tr>
+         
+             <th>
+                 角色名称
+             </th>
+             <th>
+                 创建日期
+             </th>
+             <th>
+                 创建人
+             </th>
+             <th>
+                 描述
+             </th>
+             <th>
+                 状态
+             </th>
+             <th>
+                 操作
+             </th>
+        
+         </tr>
+
+         @foreach (var item in Model.Data) {
+             <tr>
+        
+                 <td>
+                     @item.RoleName
+                 </td>
+                 <td>
+                     @item.CreateTime.ToShortDateString()
+                 </td>
+                 <td>
+                     @item.CreateBy
+                 </td>
+                 <td>
+                     @item.Description
+                 </td>
+                 <td>
+                     @String.Format("{0}", item.Isenabled?"可用":"禁用")
+                 </td>
+                 <td>
+                     @Html.ActionLinks(@"编辑", "Edit", "Sysrole",new { id=item.RoleId },null) |
+                     @Html.ActionLinks(@"详细", "Detail","Sysrole", new { id=item.RoleId },null) |
+                     @Html.ActionLinks("删除","Delete","Sysrole",null,new {onclick="Delete("+"'"+@item.RoleId+"'"+")", href="javascript:void(0)"})
+                 </td>
+             </tr>
+         }
+
+     </table>
+       <div class="pager" id="pager">
+        @Html.Pager(Model).QueryParam("pagenumber").ShowTotalSummary(true)
+       </div>
+    </div>

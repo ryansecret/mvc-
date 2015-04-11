@@ -1,0 +1,45 @@
+@using Hsr.App_Start
+@model Hsr.Models.UserSummaryInfo
+@section HeaderContent{
+@Scripts.Render("~/bundles/dateTime")
+}
+@{
+    ViewBag.Title = "Edit";
+}
+<h2 class="ui-bar ui-bar-a ui-corner-all">ÐÞ¸Ä</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>UserSummary</legend>
+        
+		@Html.Partial("_CreateOrEdit", Model)
+
+        <p>
+            <input type="submit" id="edit" value="±£´æ" />
+        </p>
+        <input type="hidden" id="RoleIds" name="RoleIds" value="@Model.RoleIds"/>
+        <input type="hidden" id="RoleNames" name="RoleNames" value="@Model.RoleNames"/>
+    </fieldset>
+}
+
+<input type="hidden" value="0" id="selectedId" />
+<input type="hidden" value="0" id="selectedName" />
+<input type="hidden" id="DataSouceId" value="1" />  
+<div>
+    <a href="/UserSummaryInfo/Index" data-role="button">·µ»Ø</a>
+    @*@Html.ActionLink("Return", "Index")*@
+</div>
+@section scripts
+{
+    @Styles.Render(BundleConfig.JsTreeCss)
+    @Scripts.Render("~/bundles/jstree")
+    @Scripts.Render("~/bundles/RoleTree")
+    @Scripts.Render("~/bundles/usersummary")
+    @Scripts.Render("~/bundles/Dept")
+    @Scripts.Render("~/bundles/Comp")
+    @Scripts.Render(BundleConfig.JmFilterScriptPath)
+    @Scripts.Render(Hsr.App_Start.BundleConfig.Md5ScriptPath)
+}
+

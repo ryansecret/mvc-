@@ -1,0 +1,15 @@
+﻿@model  IEnumerable<Hsr.Model.Models.ViewModel.OrganizeInfoVm>
+
+
+
+<form>
+    <div class="ui-field-contain">
+        <label for="select-custom-20">部门显示</label>
+        @foreach(var item in Model)
+        {
+            <select name="select-custom-20" id="select-custom-20" data-native-menu="false" class="filterable-select">
+                <option value="AL">@item.Orgname</option>
+            </select>
+        }
+    </div>
+</form>

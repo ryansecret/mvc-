@@ -1,0 +1,43 @@
+﻿@using Hsr.App_Start
+@using Hsr.HtmlHelperEX
+@model Hsr.Model.Models.ViewModel.RoleVms
+@{
+    ViewBag.Title = "Index";
+}
+<div class="div-custom">
+    <div class="row">
+        <button class="btn btn-primary btn-none" onclick=" $('#menuTreeId').toggle(300) " data-toggle="button"><span class="glyphicon glyphicon-pushpin" ></span></button>
+    </div>
+    </div>
+    <div class="col-md-3"  id="menuTreeId">
+        <div  class="panel panel-primary" style="margin-right: -15px">
+            <div class="panel-heading row">
+                <h5 class="tree-title"><span class="glyphicon glyphicon-user"></span>角色</h5>
+            </div>
+            <div id="divTree" class="panel-body treeContainer">
+                @Html.Action("GetTree")
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8">   
+        <div class="row">
+            <h4 style="float: left">角色列表</h4>
+             @Html.ActionLinks(@"新建", "Create", "Sysrole",null,new{@class="btn btn-success btn-sm",id="Create",name="Create", @style="float:right; margin-top:5px"})
+        </div>
+          @Html.Partial("RoleList", Model)
+    </div>
+
+@section scripts
+{
+    @Scripts.Render(BundleConfig.JsTree) 
+    @Styles.Render(BundleConfig.JsTreeCss)
+     @Scripts.Render("~/bundles/menu")
+    <script>
+        var hsrTree = new HsrTree({ searchUri: '@Url.Action("GetList")', delUri: '@Url.Action("Delete")', addUri: '@Url.Action("Create")', addTempalteUri: '@Url.Action("Create")' });
+        hsrTree.initial();
+    </script>
+}
+
+
+

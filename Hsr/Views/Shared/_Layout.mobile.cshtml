@@ -1,0 +1,133 @@
+﻿@using Hsr.App_Start
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - Hsr 应用程序</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width;initial-scale=1.0; 
+        maximum-scale=1.0; user-scalable=0;" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Styles.Render("~/Content/Mobile/themes/base/css")
+        @RenderSection("HeaderContent", required: false)
+        @Scripts.Render("~/bundles/jquery")
+    </head>
+    
+    <body class="bodyImage" >
+ 
+        <div data-role="header" data-theme="c">
+            <a href="#" data-rel="back" class="ui-btn ui-btn-left ui-btn-inline ui-alt-icon ui-nodisc-icon ui-corner-all ui-btn-icon-notext ui-icon-carat-l ">Back</a>
+            <span class="ui-title"></span>
+             <div class="ui-btn-right">
+                @Html.Partial("_LoginPartial")
+            </div>
+            <div data-role="navbar" data-iconpos="left" class="ui-state-persist">
+                <ul>  
+                  @*  <li>@Ajax.ActionLink("菜单管理","Index","Menu",new AjaxOptions(){HttpMethod = "Get",UpdateTargetId ="ajaxContent",OnBegin ="requestBegin",OnComplete ="ajaxComplete",InsertionMode = InsertionMode.Replace})</li>  *@
+                    <li><a href="@Url.Action("Index","Menu")"   data-icon="cloud">菜单管理</a></li>
+                    <li><a href="@Url.Action("Index","UserSummaryInfo")" data-icon="grid">用户管理</a></li>
+                    <li><a href="@Url.Action("Index","Sysrole")"  data-icon="grid">角色管理</a></li>
+                    <li><a href="@Url.Action("Index","OrganizeInfo")"  data-icon="grid">组织管理</a></li>
+                    <li><a href="@Url.Action("Index","Authority")"   data-icon="grid">权限管理</a></li>
+                    <li><a href="@Url.Action("Index","Import")"   data-icon="grid">导入管理</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div   data-role="page" data-theme="c">
+           
+            <div role="main">
+                @RenderSection("featured", required: false)
+                <div id="ajaxContent"></div>
+                <section class="content-wrapper main-content clear-fix">
+                    @RenderBody()
+                </section>
+            </div>      
+            @RenderSection("subscripts", required: false)
+        </div>
+        @RenderSection("SubPage",required:false)
+          <div   data-role="page" id="test">
+           
+            <div role="main">
+               <div>asdffffffffffffffffffffffffffffffff</div>
+            </div>      
+        </div>
+       
+      
+        <div data-role="footer" data-position="fixed" data-theme="a">
+            <div class="float-left">
+                <p>&copy; @DateTime.Now.Year - 我的 ASP.NET MVC 应用程序</p>
+            </div>
+        </div>
+
+        @Styles.Render("/Content/hint")
+        @StackExchange.Profiling.MiniProfiler.RenderIncludes()
+         @Scripts.Render("~/bundles/jqueryMobile")
+        @Styles.Render(BundleConfig.MessageStylePath)
+        @Scripts.Render(BundleConfig.MessageJsPath)
+        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/Navigation")
+        @Scripts.Render("~/bundles/LoadAnima")
+        @Styles.Render("~/Content/Validator")
+        @Styles.Render("~/Content/Paging")
+    </body>
+        @RenderSection("scripts", required: false)
+    <script>
+        $(function () {
+            $("[data-role='header']").toolbar({ transition: "fade" });
+            $("[data-role='footer']").toolbar({ tapToggle: false, transition: "fade", updatePagePadding: true });
+
+            Messenger.options = {
+                extraClasses: 'messenger-fixed messenger-on-top',
+                theme: 'flat'
+            };
+        });
+
+        function requestBegin(data) {
+            
+            if (data) {
+                data.setRequestHeader("ryan","chen");
+            }
+            
+            $.mobile.loading("show",
+                {
+                    text: "客官别急，正在拼命加载……",
+                    textVisible: true,
+                    theme: "b",
+                    
+                }
+            );
+        }
+        
+        window.addEventListener('popstate', function (e) {
+            if (history.state) {
+                var state = e.state;
+            }
+        }, false);
+        
+        function ajaxComplete(data) {
+           history.pushState({}, "", "Menu");
+           // location.hash = "#menu";
+           $.mobile.loading("hide");
+        }
+        
+        $(window).on("navigate", function () {
+            console.log("navigated!");
+        });
+        
+          //导航选中
+        function PanelWay(panelid,speed) {
+            $("#" + panelid).toggle(speed);
+        };
+
+        function ModalDialog(parameters) {
+            if (confirm(parameters.bodyContent)==true) {
+                parameters.confirmFun();
+            }
+        }
+       
+    </script>
+</html>
+ 

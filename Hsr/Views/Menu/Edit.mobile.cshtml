@@ -1,0 +1,24 @@
+﻿@model Hsr.Model.Models.ViewModel.MenuVm
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2 class="ui-bar ui-bar-a ui-corner-all">Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Menu</legend>
+
+        @Html.HiddenFor(model => model.Id)
+		@Html.Partial("_CreateOrEdit", Model)
+        <p>
+            <input type="submit" value="保存" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    <a href="#" data-rel="back" class="ui-btn ui-btn-icon-notext ui-icon-carat-l">Back</a>
+</div>

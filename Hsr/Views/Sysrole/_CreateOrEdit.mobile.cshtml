@@ -1,0 +1,43 @@
+﻿@model Hsr.Model.Models.ViewModel.RoleVm
+@using Hsr.Core.HtmlEx
+
+@using Hsr.App_Start
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+ 
+<div class="ui-body ui-body-a ui-corner-all">
+
+    <div class="editor-label" data-role="fieldcontain">
+        <label for="fullname">角色名称  </label> 
+        @Html.EditorFor(model => model.RoleName)
+        @Html.ValidationMessageFor(model => model.RoleName)
+    </div>
+    <div class="editor-label" data-role="fieldcontain">
+        <label for="fullname">角色分类</label> 
+         @Html.EditorFor(model => model.Category)
+        @Html.ValidationMessageFor(model => model.Category)
+        @*    @Html.SelectMenu(d=>d.Category,"select",ViewBag.ff as List<SelectListItem>,true,true)*@
+    </div>
+
+    @Html.FlipSwichFor(d=>d.Isenabled,isChecked:Model.Isenabled)
+
+    <div class="editor-label" data-role="fieldcontain">
+        <label for="fullname" >描述</label> 
+        @Html.EditorFor(model => model.Description)
+        @Html.ValidationMessageFor(model => model.Description)
+    </div>
+
+ 
+
+    <div class="editor-label" data-role="fieldcontain">
+        <label for="fullname">OrderNum</label>
+        @Html.TextBoxFor(d=>d.OrderNum,new {type="number"})
+        @Html.ValidationMessageFor(model => model.OrderNum)
+    </div>
+   @* <input data-role="date" data-inline="true"/>*@
+
+    @Html.HiddenFor(d => d.RolePid)
+    @Html.HiddenFor(d=>d.RoleLayer)
+ </div>
+
+ 

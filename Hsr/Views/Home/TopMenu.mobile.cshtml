@@ -1,0 +1,37 @@
+﻿ 
+@using Hsr.Model.Models.ViewModel
+@using Hsr.Models
+ 
+@model IEnumerable<Hsr.Model.Models.ViewModel.MenuVm>
+@{
+    ViewBag.Title = "关于";
+}
+
+<div >
+    <ul id="nav">
+        @foreach (MenuVm menu in Model.Where(d=>d.Layer==1))
+        {
+            string href = "#";
+            if (!string.IsNullOrWhiteSpace(menu.Action))
+            {
+                href = Url.Action(menu.Action, menu.Controller);
+            }
+            <li><a href="@href"><img src="@menu.Icon"/>@menu.Menuname</a>
+                @if (menu.Children!=null&&menu.Children.Any())
+                {
+                    <div class="subs">
+                        <div class="col">
+                            <ul>
+                                @foreach (var child in menu.Children)
+                                {
+                                    <li><a href="@Url.Action(child.Action,child.Controller)"><img src="@child.Icon"/>@child.Menuname</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                }
+            </li>
+        }
+    </ul>
+</div>
+ 

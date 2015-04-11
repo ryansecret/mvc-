@@ -1,0 +1,51 @@
+﻿@model Hsr.Model.Models.ViewModel.RoleVm
+ 
+<div class="form-group">
+    @Html.LabelFor(model => model.RoleName,new{@class="control-label col-md-2"})
+
+<div class="col-md-10">
+    @Html.TextBoxFor(model => model.RoleName,new{@class="form-control"})
+    @Html.ValidationMessageFor(model => model.RoleName)
+</div>
+</div>
+ 
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Category,new{@class="control-label col-md-2"})
+
+<div class="col-md-10">
+    @Html.DropDownListFor(d=>d.Category,new SelectListItem[]{new SelectListItem(){Text ="用户类",Value ="0",Selected =!Model.Category.HasValue||Model.Category==0},new SelectListItem(){Text ="管理类",Value ="1",Selected =Model.Category.HasValue&& Model.Category==1} },new {@class="form-control"})
+    @Html.ValidationMessageFor(model => model.Category)
+</div>
+</div>
+ 
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Isenabled,new{@class="control-label col-md-2"})
+
+<div class="col-md-10">
+    @Html.CheckBoxFor(model => model.Isenabled,new{@class="form-control"})
+    @Html.ValidationMessageFor(model => model.Isenabled)
+</div>
+</div>
+ 
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Description,new{@class="control-label col-md-2"})
+
+<div class="col-md-10">
+    @Html.TextAreaFor(model => model.Description,new{@class="form-control",rows="3"})
+    @Html.ValidationMessageFor(model => model.Description)
+</div>
+</div>
+ @Html.HiddenFor(d=>d.RolePid)
+@if (Model.RoleId.HasValue)
+{
+    @Html.HiddenFor(d=>d.CreateUserid)
+    @Html.HiddenFor(d=>d.CreateTime,new {@class="ignore"})
+    @Html.HiddenFor(d=>d.CreateBy)
+}      
+
+ 
+ 
+

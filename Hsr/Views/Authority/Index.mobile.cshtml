@@ -1,0 +1,47 @@
+﻿@using Hsr.App_Start
+@model Hsr.Models.Authority
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="self-adaption">
+<div class="col w2"  id="authTreeId">
+    <div data-role="collapsible"  data-theme="b" data-iconpos="none" data-collapsed="false">
+        <h1>权限管理</h1>
+        <div id="jstree">
+        </div>
+    </div>
+</div>
+</div>
+
+<style>
+    .ui-collapsible-heading .ui-btn {
+        text-align:center;
+    }
+</style>
+
+<input  type="hidden" value="0" id="selectedId" />
+  
+ <div style="float: left;margin-top: 7px">
+    <a class="ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-notext ui-btn-b" onclick="PanelWay('authTreeId',800)"></a>
+</div>
+
+<div class="col w8 last box header" style="height: 500px">   
+    <div class="head"><div></div></div>
+    <h2 class="ui-bar ui-bar-a ui-corner-all">权限管理</h2>
+        <div id="menuTree">
+    </div>
+    <input type="hidden" name="MenuIds" id="MenuIds" value=""/>
+    <div data-role="footer" class="ui-btn" style="padding-bottom: 0px;padding-top: 0px;">
+        <input type="button" value="设置权限" id="SaveTree" />
+        <input type="submit" value="清除权限" id="ClearTree"/>
+    </div>
+    <div class="bottom"><div></div></div>
+</div>
+@section scripts
+{
+    @Styles.Render(BundleConfig.JsTreeCss)
+    @Styles.Render("~/Content/JmMedia")
+    @Scripts.Render("~/bundles/jstree")
+    @Scripts.Render("~/bundles/Authority")
+}

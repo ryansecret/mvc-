@@ -1,0 +1,60 @@
+﻿@using Hsr.HtmlHelperEX
+@using MVC.Controls
+@model  Hsr.Model.Models.ViewModel.OrganizeInfoVms
+<div class="strollContainer">
+        <table class="table table-striped table-hover table-bordered">
+    <tr>
+        <th>
+            组织级别
+        </th>
+        <th>
+            名称
+        </th>
+        <th>
+            地址
+        </th>
+        <th>
+            有效
+        </th>
+        
+        <th>
+            编辑
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model.Data) {
+    <tr>
+         <td>
+			@if (item.Category=="1")
+			{
+			  <span class="glyphicon glyphicon-grain"></span>
+			}
+			else
+			{
+			  <span class="glyphicon glyphicon-leaf"></span>
+			}
+        </td>
+        <td>
+            @item.OrgName
+        </td>
+       
+        <td>
+            @item.Address
+        </td>
+        <td>
+            @string.Format("{0}",item.Isenabled.ToString()=="1"?"是":"否")
+        </td>
+        <td>
+            @Html.ActionLinks(@"编辑", "Edit", "OrganizeInfo",new { id=item.OrgId },null) |
+            @Html.ActionLinks(@"查看", "Detail", "OrganizeInfo",new { id=item.OrgId },null) |
+            @Html.ActionLinks("删除","Delete","OrganizeInfo",null,new {onclick="Delete("+"'"+@item.OrgId+"'"+")", href="javascript:void(0)"})
+        </td>
+    </tr>
+}
+
+</table>
+  <div class="pager" id="pager">
+        @Html.Pager(Model).QueryParam("pagenumber").ShowTotalSummary(true)
+    </div>
+</div>

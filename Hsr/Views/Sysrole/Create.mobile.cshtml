@@ -1,0 +1,36 @@
+@using Hsr.App_Start
+@model Hsr.Model.Models.ViewModel.RoleVm
+
+@{
+    ViewBag.Title = "Create";
+}
+ 
+ 
+<h2 class="ui-bar ui-bar-a ui-corner-all">ÐÂ½¨</h2>
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Sysrole</legend>
+
+		@Html.Partial("_CreateOrEdit", Model)
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+
+<div>
+    <a href="/Sysrole/Index" data-role="button" data-icon="back">Return</a>
+</div>
+ @section scripts
+ {
+       @Styles.Render(BundleConfig.JmDatepickerStylePath)
+       @Scripts.Render(BundleConfig.JmDatepickerScriptPath)
+       @Styles.Render(BundleConfig.JsTreeCss)
+       @Scripts.Render("~/bundles/jstree")
+       @Scripts.Render("~/bundles/dialogtree")
+      
+ }
+

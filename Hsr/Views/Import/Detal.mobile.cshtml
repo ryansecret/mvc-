@@ -1,0 +1,75 @@
+﻿@{var num = 0;}
+@using Hsr.Models
+@using MVC.Controls
+@model Hsr.Models.Datamapping
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Detal</title>
+</head>
+    <body>
+        <h2 class="ui-bar ui-bar-a ui-corner-all">查看</h2>
+        @using (Html.BeginForm()) {
+
+      
+		<div class="editor-label">
+    数据库表名称
+</div>
+            <div class="editor-field">
+                <input type="text" disabled="disabled" value="@Model.Dbtable" />
+
+            </div>
+            <div class="editor-label">
+                用户起的别称
+            </div>
+            <div class="editor-field">
+                <input type="text" disabled="disabled" value="@Model.Nickname" />
+            </div>
+            
+ <h2 class="ui-bar ui-bar-a ui-corner-all">列信息</h2>
+        <div class="ui-body ui-body-a ui-corner-all">
+            
+            <div style="height: 100%; overflow-x: auto" >
+                <table   class="ui-responsive ui-table ui-table-reflow" data-role="table" >
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>数据库表列名称</th>
+                            <th>模板列名称</th>
+                            <th>数据类型</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in (ViewBag.list as DatamappingColumns).Data)
+                        {
+                            <tr>
+                                <td>
+                                    @{num = num + 1; }
+                                    @num.ToString() 
+                                </td>
+                                <td>@item.Dbcolname</td>
+                                <td>@item.Tempalecolname</td>
+                                <td>@item.Datatype</td>
+                        
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="pager">
+                @Html.Pager(ViewBag.list as DatamappingColumns).QueryParam("pagenumber").ShowTotalSummary(true)
+            </div>
+
+        </div>
+}
+<div>
+    <a href="/Import/Index " data-role="button">返回</a>
+</div>
+    </body>
+</html>
+
+
+

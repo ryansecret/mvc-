@@ -1,0 +1,28 @@
+﻿@model Hsr.Models.UserSummaryInfo
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>删除</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>UserSummaryInfo</legend>
+
+		@Html.Partial("_UserView", Model)
+        
+         <p>
+            <input type="submit"  value="Delete"  id="Delete" name="Delete" onclick="deleted()"/>
+        </p>
+    </fieldset>
+}
+<div>
+    @*@Html.ActionLink("返回", "Index")*@
+    <a href="/UserSummaryInfo/Index " data-role="button">返回</a>
+</div>
+@section scripts
+{
+    @Scripts.Render("~/bundles/usersummary")
+}

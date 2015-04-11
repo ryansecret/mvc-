@@ -1,0 +1,19 @@
+﻿@model Hsr.Models.CommTestPlan
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = null;
+}
+ 
+
+@using (Html.BeginForm("Edit", "Hsr.Models.CommTestPlan", FormMethod.Post, new { @class = "form-horizontal" })) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+      
+        @Html.HiddenFor(model => model.PlanId)
+		@Html.Partial("_CreateOrEdit", Model)
+
+      
+    </fieldset>
+}
+ 

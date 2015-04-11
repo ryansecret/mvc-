@@ -1,0 +1,66 @@
+﻿@using Hsr.App_Start
+@model Hsr.Model.Models.ViewModel.OrganizeInfoVm
+
+@{
+    ViewBag.Title = "Create";
+}
+ 
+<script id="template" type="x-tmpl-mustache">
+  {{#areas}}
+     <option value="{{id}}">{{text}}</option>
+  {{/areas}}
+</script>
+<h2 class="ui-bar ui-bar-a ui-corner-all">
+    @{
+        if (Session["Category"].ToString() == "1")
+        {
+            @:创建公司：
+        }
+        else
+        {
+            @:创建部门：
+        }
+    }
+</h2>
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>OrganuzeInfo</legend>
+ 
+		@Html.Partial("_CreateOrEdit", Model)
+        
+        <p>
+            <input type="submit" value="创建"/>
+        </p>
+    </fieldset>
+}
+
+
+<div>
+    <a href="/OrganizeInfo/Index" data-role="button" data-icon="back">返回</a>
+</div>
+ @section scripts
+ {
+
+     @Styles.Render(BundleConfig.JsTreeCss)
+     @Scripts.Render("~/bundles/jstree")
+     @Scripts.Render(BundleConfig.MusachesJsPath)
+      @Scripts.Render(MobileBundle.HsrSelectMenu)
+     @Scripts.Render("~/bundles/organizeInfo")  
+     <script>
+
+         $(function() {
+              
+             $('#province').selectMenu({
+                 searchUri: '/Common/GetCitys',
+                 destinyElmentId: "CityId"
+             });
+             $('#CityId').selectMenu({
+                 searchUri: '/Common/GetAreas',
+                 destinyElmentId: "AreaId"
+             });
+         });
+         
+     </script>
+ }
+

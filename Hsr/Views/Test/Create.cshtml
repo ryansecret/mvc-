@@ -1,0 +1,26 @@
+@model Hsr.Model.Models.Test
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>新建</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Test</legend>
+
+		@Html.Partial("_CreateOrEdit", Model)
+
+        <p>
+            <input type="submit" value="新建" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("退回", "Index")
+</div>
+
+

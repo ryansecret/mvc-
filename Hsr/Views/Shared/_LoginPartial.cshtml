@@ -1,0 +1,19 @@
+﻿
+@using Hsr.Core
+ 
+@if (Session[CommonHelper.UserName] != null && !string.IsNullOrWhiteSpace(Session[CommonHelper.UserName].ToString()))
+{
+     
+     <ul class="nav navbar-nav navbar-right" style="margin-right: 30px">
+        <li> <p class="navbar-text">你好，@Html.ActionLink(Session[CommonHelper.UserName].ToString(), "Manage", "Account", routeValues: null, htmlAttributes: new {@class = "navbar-link", title = "管理"})!
+        </p></li>
+         <li class="dropdown">
+             @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-text" }))
+             {
+                 @Html.AntiForgeryToken()
+                 <a href="javascript:document.getElementById('logoutForm').submit()" class="navbar-link">注销</a>
+             }
+         </li>
+         <li> </li>
+      </ul>
+} 

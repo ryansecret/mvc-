@@ -1,0 +1,27 @@
+﻿@model  Hsr.Model.Models.ViewModel.RoleVm
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>明细</h2>
+
+<fieldset>
+    @Html.Partial("_CreateOrEdit", Model)
+</fieldset>
+<p>
+    @Html.ActionLink("返回", "Index",null,new{@class="btn  btn-default",role="button"}) 
+    
+</p>
+@section scripts
+{
+    <script>
+        $("input,textarea").each(
+                  function () {
+                      $(this).attr("disabled", "disabled");
+                  }
+              );
+        
+    </script>
+}
+    
+
